@@ -17,7 +17,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     SignupComponent,
   ],
   imports: [
-    BrowserModule, HttpClientModule, AppRoutingModule, MatToolbar
+    BrowserModule, HttpClientModule, AppRoutingModule,
   ],
   providers: [
     provideAnimationsAsync()
