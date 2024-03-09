@@ -39,7 +39,7 @@ svg {
   overflow: visible;
 }
 
-:host {
+/*:host {
   position: relative;
   flex: 1;
   align-self: stretch;
@@ -48,7 +48,7 @@ svg {
   background-color: #fff;
   overflow-y: auto;
   overflow-x: hidden;
-}
+}*/
 .retroWallpaper3 {
   position: absolute;
   left: 0;
