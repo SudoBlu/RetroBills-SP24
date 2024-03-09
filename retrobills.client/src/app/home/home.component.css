@@ -13,6 +13,20 @@ header, footer{
     margin: auto;
 }
 
+footer{
+    text-align: left;
+    vertical-align: middle;
+}
+.link-button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    outline: none;
+    color: white;
+}
+
 .logo{
     position: absolute;
     width: 100%;
@@ -33,9 +47,9 @@ header, footer{
 .box{
     position: relative;
     background-color: rgb(1, 1, 106);
-    width: 50%;
-    left: 40%;
-    height: 40%;
+    width: 30%;
+    left: 70%;
+    height: auto;
 
     color: white;
     text-align: center;
