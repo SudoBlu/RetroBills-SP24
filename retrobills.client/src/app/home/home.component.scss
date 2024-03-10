@@ -45,16 +45,19 @@ footer{
 }
 
 .box{
-    background-color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    background-color: rgb(1, 1, 106);
+    width: 50%;
     height: auto;
     color: black;
     text-align: center;
 
     width: 60%;
 
-    position: relative;
-    left: 20%;
-    top: 5%;
+    top: 10%;
+    left: 30%;
+    color: white;
+    text-align: center;
 }
 
 *{
