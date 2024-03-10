@@ -5,9 +5,8 @@ import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { LoginPageComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
@@ -16,7 +15,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
+    LoginPageComponent,
     SignupComponent,
     AboutComponent,
     ContactComponent,
@@ -26,9 +25,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     HttpClientModule,
     AppRoutingModule,
     BrowserModule
-  ],
-  providers: [
-    provideAnimationsAsync()
   ],
   providers: [
     provideAnimationsAsync()
