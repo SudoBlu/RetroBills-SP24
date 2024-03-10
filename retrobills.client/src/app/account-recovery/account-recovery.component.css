@@ -1,0 +1,25 @@
+button{
+    color: #00D4D5;
+    background-color: #602893;
+}
+
+a, p{
+    color: #3B2685;
+}
+
+h1, label{
+    color: #522E81;
+}
+
+header > h1{
+    text-align: left;
+    color: white;
+}
+
+form{
+    width: 50%;
+    margin-left: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+
+    padding: 20px;
+}

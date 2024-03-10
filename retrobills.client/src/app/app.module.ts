@@ -10,7 +10,8 @@ import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AccountRecoveryComponent } from './account-recovery/account-recovery.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     SignupComponent,
     AboutComponent,
     ContactComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AccountRecoveryComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

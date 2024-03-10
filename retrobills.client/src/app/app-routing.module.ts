@@ -6,6 +6,7 @@ import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from "./signup/signup.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { NgModule } from "@angular/core";
+import { AccountRecoveryComponent } from "./account-recovery/account-recovery.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'home/contact', component: ContactComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
+  {path: 'recovery', component: AccountRecoveryComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
   {path: '**', component: PageNotFoundComponent}
 ];
