@@ -1,0 +1,19 @@
+.contact-form{
+    position: relative;
+    display: inline-block;
+    left: 30%;
+    top: 20%;
+    width: auto;
+    height: auto;
+
+    background-color: blueviolet;
+    border: 2px solid black;
+
+    text-align: center;
+
+    padding: 10px;
+}
+
+textarea{
+    resize: none;
+}

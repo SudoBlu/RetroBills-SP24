@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrl: '../home/home.component.scss'
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['../home/home.component.scss', './contact.component.css']
 })
-export class AboutComponent {
+export class ContactComponent {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   /**
