@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import type { OnInit } from '@angular/core';
 
+/* @figmaId 113:5 */
 @Component({
-  selector: 'app-signup',
+  selector: 'cl-signup-page-1',
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent {
-
+export class SignupPage1Component implements OnInit {
+  constructor() {}
+  ngOnInit(): void {}
 }

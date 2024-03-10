@@ -1,0 +1,166 @@
+:host,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  flex-shrink: 0;
+  text-decoration: none;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+:host,
+:not(span, a, ul, ol, li, p) {
+  display: flex;
+}
+
+ul,
+ol {
+  text-indent: 0;
+  padding-inline-start: 1.5em;
+}
+
+p:empty::before {
+  content: '';
+  display: inline-block;
+}
+
+img {
+  object-fit: contain;
+}
+
+svg {
+  overflow: visible;
+}
+
+:host {
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.retroWallpaper3 {
+  position: absolute;
+  left: 0;
+  top: 266px;
+  width: 1728px;
+  height: 1024px;
+  background-image: url('/assets/retroWallpaper3.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.frame4 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1728px;
+  height: 130px;
+  flex-direction: column;
+  align-items: flex-start;
+  background-image: linear-gradient(90deg, #9e2cacff 11%, #3b2685ff 78%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  overflow: hidden;
+  box-shadow: 0px 10px 10px 0px #00000080;
+}
+.retroBills {
+  color: #fff;
+  font-size: 96px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 60px;
+  top: 0;
+  width: 454px;
+  height: 153px;
+  flex-direction: column;
+}
+.forgotYourPassword {
+  color: #522e81;
+  font-size: 96px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 28px;
+  top: 145px;
+  width: 1152px;
+  height: 106px;
+  flex-direction: column;
+}
+.doNotWorryEnterTheEmailAddress {
+  color: #3b2685;
+  font-size: 32px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 28px;
+  top: 285px;
+  width: 818px;
+  height: 172px;
+  flex-direction: column;
+}
+.email {
+  color: #522e81;
+  font-size: 36px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 28px;
+  top: 460.3019px;
+  width: 117.5395px;
+  height: 34.9737px;
+  flex-direction: column;
+}
+.rectangle7 {
+  position: absolute;
+  left: 28px;
+  top: 505.2681px;
+  width: 490.1647px;
+  height: 65.9503px;
+  background-color: #fff;
+  box-shadow: inset 0px 4px 4px 0px #00000040, 0px 4px 4px 0px #00000040;
+}
+.rectangle8 {
+  position: absolute;
+  left: 81px;
+  top: 616px;
+  width: 355px;
+  height: 71px;
+  border-radius: 5px;
+  background-color: #602893;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+.sendResetInstructions {
+  color: #00d4d5;
+  font-size: 32px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 95px;
+  top: 629px;
+  width: 385px;
+  height: 42px;
+  flex-direction: column;
+}
+.returnToLogIn {
+  color: #3b2685;
+  font-size: 24px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  text-decoration: underline;
+  position: absolute;
+  left: 87px;
+  top: 686px;
+  width: 208px;
+  height: 40px;
+  text-shadow: 0px 4px 4px #00000040;
+  flex-direction: column;
+}

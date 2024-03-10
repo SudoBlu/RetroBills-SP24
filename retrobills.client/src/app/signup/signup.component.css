@@ -1,0 +1,388 @@
+:host,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  flex-shrink: 0;
+  text-decoration: none;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+:host,
+:not(span, a, ul, ol, li, p) {
+  display: flex;
+}
+
+ul,
+ol {
+  text-indent: 0;
+  padding-inline-start: 1.5em;
+}
+
+p:empty::before {
+  content: '';
+  display: inline-block;
+}
+
+img {
+  object-fit: contain;
+}
+
+svg {
+  overflow: visible;
+}
+
+:host {
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.retroWallpaper3 {
+  position: absolute;
+  left: 0;
+  top: 174px;
+  width: 1728px;
+  height: 1024px;
+  background-image: url('/assets/retroWallpaper3.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.rectangle36 {
+  position: absolute;
+  left: 0;
+  top: 224px;
+  width: 864px;
+  height: 974px;
+  overflow: visible;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.retro_Money__1_RemovebgPreview {
+  position: absolute;
+  left: 234px;
+  top: 320px;
+  width: 373px;
+  height: 397px;
+  background-image: url('/assets/retro_Money__1_RemovebgPreview.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.tryRocketBillsForFree {
+  color: #522e81;
+  font-size: 96px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: -22px;
+  top: 832px;
+  width: 886px;
+  height: 262px;
+  text-align: center;
+  align-items: center;
+  text-shadow: 0px 4px 4px #00000040;
+  flex-direction: column;
+}
+.achieveYourDesiredLifestyleWit {
+  color: #000;
+  font-size: 36px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 57px;
+  top: 1054px;
+  width: 728px;
+  height: 177px;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+.rectangle2 {
+  position: absolute;
+  left: 864px;
+  top: 320px;
+  width: 748px;
+  height: 803px;
+  outline: solid 5px #00d4d5;
+  outline-offset: -5px;
+  border-radius: 9px;
+  background-color: #602893;
+}
+.signupForFreeToday {
+  color: #fff;
+  font-size: 48px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 997px;
+  top: 369px;
+  width: 464px;
+  height: 59px;
+  flex-direction: column;
+}
+.rectangle5 {
+  position: absolute;
+  left: 1037px;
+  top: 969px;
+  width: 384.7946px;
+  height: 85.3729px;
+  outline: solid 9px #00d4d5;
+  outline-offset: -9px;
+  background-color: #fff;
+}
+.signupForFree {
+  color: #00d4d5;
+  font-size: 40px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 1087.2871px;
+  top: 984.4575px;
+  width: 284px;
+  height: 54px;
+  flex-direction: column;
+}
+.rectangle22 {
+  position: absolute;
+  left: 910px;
+  top: 557px;
+  width: 285px;
+  height: 68px;
+  overflow: visible;
+}
+.icon2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.byCreatingAnAccountYouAgreeToT {
+  position: absolute;
+  left: calc(50% - -374px);
+  top: 935px;
+  width: 644px;
+  height: 14px;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  transform: translateX(-50%);
+}
+.labelWrapper {
+  font-size: 16px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  flex-shrink: 1;
+}
+.label {
+  color: #fff;
+  font-size: 16px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+}
+.label2 {
+  color: #fff;
+  font-size: 16px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  text-decoration: underline;
+}
+.label3 {
+  color: #fff;
+  font-size: 16px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+}
+.label4 {
+  color: #fff;
+  font-size: 16px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  text-decoration: underline;
+}
+.username {
+  color: #fff;
+  font-size: 36px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 910px;
+  top: 507px;
+  width: 323px;
+  height: 55px;
+  flex-direction: column;
+}
+.rectangle39 {
+  position: absolute;
+  left: 1255px;
+  top: 695px;
+  width: 284px;
+  height: 68px;
+  overflow: visible;
+}
+.icon3 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lastName {
+  color: #fff;
+  font-size: 36px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 1255px;
+  top: 644px;
+  width: 323px;
+  height: 55px;
+  flex-direction: column;
+}
+.rectangle40 {
+  position: absolute;
+  left: 910px;
+  top: 832px;
+  width: 285px;
+  height: 68px;
+  overflow: visible;
+}
+.icon4 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.address {
+  color: #fff;
+  font-size: 36px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 910px;
+  top: 782px;
+  width: 323px;
+  height: 54px;
+  flex-direction: column;
+}
+.rectangle41 {
+  position: absolute;
+  left: 1255px;
+  top: 832px;
+  width: 284px;
+  height: 68px;
+  overflow: visible;
+}
+.icon5 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.email {
+  color: #fff;
+  font-size: 36px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 1255px;
+  top: 782px;
+  width: 323px;
+  height: 54px;
+  flex-direction: column;
+}
+.rectangle38 {
+  position: absolute;
+  left: 910px;
+  top: 695px;
+  width: 285px;
+  height: 68px;
+  overflow: visible;
+}
+.icon6 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.firstName {
+  color: #fff;
+  font-size: 36px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 910px;
+  top: 644px;
+  width: 323px;
+  height: 55px;
+  flex-direction: column;
+}
+.rectangle37 {
+  position: absolute;
+  left: 1255px;
+  top: 557px;
+  width: 284px;
+  height: 68px;
+  overflow: visible;
+}
+.icon7 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.password {
+  color: #fff;
+  font-size: 36px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 1255px;
+  top: 507px;
+  width: 323px;
+  height: 55px;
+  flex-direction: column;
+}
+.noCreditCardRequired {
+  color: #fff;
+  font-size: 32px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 1064px;
+  top: 440px;
+  width: 437px;
+  height: 41px;
+  flex-direction: column;
+}
+.frame4 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1728px;
+  height: 130px;
+  flex-direction: column;
+  align-items: flex-start;
+  background-image: linear-gradient(90deg, #9e2cacff 11%, #3b2685ff 78%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  overflow: hidden;
+  box-shadow: 0px 10px 10px 0px #00000080;
+}
+.retroBills {
+  color: #fff;
+  font-size: 96px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 60px;
+  top: 0;
+  width: 454px;
+  height: 153px;
+  flex-direction: column;
+}
