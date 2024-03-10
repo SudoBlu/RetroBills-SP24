@@ -1,0 +1,62 @@
+header, footer{
+    position: relative;
+    width: 100%;
+    height: 10vh;
+    overflow: hidden;
+    background-image: linear-gradient(to right, rgb(167, 2, 167), rgb(56, 2, 96));
+
+    display: flex;
+    text-align: center;
+    color: white;
+    justify-content: space-evenly;
+    padding: auto;
+    margin: auto;
+}
+
+footer{
+    text-align: left;
+    vertical-align: middle;
+}
+.link-button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    outline: none;
+    color: white;
+}
+
+.logo{
+    position: absolute;
+    width: auto;
+    height: 100%;
+}
+
+.content{
+    background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: aliceblue;
+    height: 80vh;
+
+    margin: 0;
+}
+
+.box{
+    background-color: rgba(255, 255, 255, 0.7);
+    height: auto;
+    color: black;
+    text-align: center;
+
+    width: 60%;
+
+    position: relative;
+    left: 20%;
+    top: 5%;
+}
+
+*{
+    font-family: Jua;
+}

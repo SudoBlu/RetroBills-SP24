@@ -5,20 +5,30 @@ import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { LoginPageComponent } from './login/login.component';
+import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    LoginComponent,
+    SignupComponent,
+    AboutComponent,
+    ContactComponent,
+    PageNotFoundComponent
   ],
   imports: [
     HttpClientModule,
     AppRoutingModule,
     BrowserModule
+  ],
+  providers: [
+    provideAnimationsAsync()
   ],
   providers: [
     provideAnimationsAsync()

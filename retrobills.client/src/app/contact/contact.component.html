@@ -1,5 +1,5 @@
 <header>
-    <img src="../../assets/assets/Homepage assets/retro_Money__1_RemovebgPreview.png" alt="Retro Bills Logo"/>
+    <img src="../../assets/assets/Homepage assets/retro_Money__1_RemovebgPreview.png" alt="Retro Bills Logo">
     <button class="link-button"(click)="OnHomeClicked()">Home</button>
     <button class="link-button" (click)="OnAboutClicked()">About
     </button>
@@ -11,9 +11,14 @@
     </button>
 </header>
 <div class="content">
-    <div class="box">
-        <h2>It's who we are</h2>
-        <p>This is the content of the home page</p>
+    <div class="contact-form">
+        <h2>Want to talk to us?</h2>
+        <p>Leave your email and message below!</p>
+        <form>
+            <span><label>Email: </label><input type="email" placeholder="email@domain.com"/></span><br>
+            <span><label>Message: </label><textarea placeholder="Your message..." cols="20"></textarea></span><br>
+            <button type="submit">Submit</button>
+        </form>
     </div>
 </div>
 <footer>
