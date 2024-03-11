@@ -8,14 +8,12 @@ import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login/login.component';
 import { SignupPage1Component } from './signup/signup.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { RecoveryComponent } from './recovery/recovery.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    RecoveryComponent
   ],
   imports: [
     HttpClientModule,

@@ -37,18 +37,17 @@ svg {
 
 :host {
   position: relative;
-  flex: 1;
-  align-self: stretch;
+  width: 100%;
+  height: 1310px;
   flex-direction: column;
   align-items: flex-start;
   background-color: #fff;
-  overflow-y: auto;
-  overflow-x: hidden;
+
 }
 .retroWallpaper3 {
   position: absolute;
   left: 0;
-  top: 174px;
+  top: 100%;
   width: 1728px;
   height: 1024px;
   background-image: url('/assets/retroWallpaper3.jpeg');
@@ -56,7 +55,7 @@ svg {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.rectangle36 {
+.blurForBackground {
   position: absolute;
   left: 0;
   top: 224px;
@@ -69,13 +68,13 @@ svg {
   height: 100%;
   object-fit: cover;
 }
-.retro_Money__1_RemovebgPreview {
+.retroSignupLogo {
   position: absolute;
   left: 234px;
   top: 320px;
   width: 373px;
   height: 397px;
-  background-image: url('/assets/retro_Money__1_RemovebgPreview.png');
+  background-image: url('/assets/retroSignupLogo.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -122,13 +121,13 @@ svg {
 }
 .signupForFreeToday {
   color: #fff;
-  font-size: 48px;
+  font-size: 64px;
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: 997px;
-  top: 369px;
-  width: 464px;
+  left: 934px;
+  top: 358px;
+  width: 607px;
   height: 59px;
   flex-direction: column;
 }
@@ -153,19 +152,7 @@ svg {
   width: 284px;
   height: 54px;
   flex-direction: column;
-}
-.rectangle22 {
-  position: absolute;
-  left: 910px;
-  top: 557px;
-  width: 285px;
-  height: 68px;
-  overflow: visible;
-}
-.icon2 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  margin-top: 10px;
 }
 .byCreatingAnAccountYouAgreeToT {
   position: absolute;
@@ -210,6 +197,19 @@ svg {
     'Liberation Sans', sans-serif;
   text-decoration: underline;
 }
+.usernameForm {
+  position: absolute;
+  left: 910px;
+  top: 557px;
+  width: 285px;
+  height: 68px;
+  overflow: visible;
+}
+.icon2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .username {
   color: #fff;
   font-size: 36px;
@@ -222,7 +222,7 @@ svg {
   height: 55px;
   flex-direction: column;
 }
-.rectangle39 {
+.lastNameForm {
   position: absolute;
   left: 1255px;
   top: 695px;
@@ -247,7 +247,7 @@ svg {
   height: 55px;
   flex-direction: column;
 }
-.rectangle40 {
+.addressForm {
   position: absolute;
   left: 910px;
   top: 832px;
@@ -272,7 +272,7 @@ svg {
   height: 54px;
   flex-direction: column;
 }
-.rectangle41 {
+.emailForm {
   position: absolute;
   left: 1255px;
   top: 832px;
@@ -297,7 +297,7 @@ svg {
   height: 54px;
   flex-direction: column;
 }
-.rectangle38 {
+.firstNameForm {
   position: absolute;
   left: 910px;
   top: 695px;
@@ -322,7 +322,7 @@ svg {
   height: 55px;
   flex-direction: column;
 }
-.rectangle37 {
+.passwordForm {
   position: absolute;
   left: 1255px;
   top: 557px;
@@ -355,11 +355,11 @@ svg {
   position: absolute;
   left: 1064px;
   top: 440px;
-  width: 437px;
+  width: 339px;
   height: 41px;
   flex-direction: column;
 }
-.frame4 {
+.bannerFrame {
   position: absolute;
   left: 0;
   top: 0;
