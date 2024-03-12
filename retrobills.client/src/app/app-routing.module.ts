@@ -17,11 +17,11 @@ const routes: Routes = [
   { path: 'signup', component: SignupPage1Component },
   {path: 'recovery', component: AccountRecoveryComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
+  
+  {path: 'dashboard',component: DashboardComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
-const routes: Routes = [
-  {path: 'dashboard',component: DashboardComponent},
-{path: '', redirectTo: 'dashboard', pathMatch: 'full'}];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -67,9 +67,10 @@ width: 70em;
 background-color: #301934;
 width: 13em;
 height:6em;
+margin-left: 30px;
 }
 p,th{
-color: white;
+color: black;
 font-family: 'Jua';
 
 }
