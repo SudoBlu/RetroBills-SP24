@@ -6,9 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignupPage1Component } from './signup/signup.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AccountRecoveryComponent } from './account-recovery/account-recovery.component'
 
@@ -17,11 +17,12 @@ import { AccountRecoveryComponent } from './account-recovery/account-recovery.co
     AppComponent,
     HomeComponent,
     LoginPageComponent,
-    SignupComponent,
+    SignupPage1Component,
     AboutComponent,
     ContactComponent,
     PageNotFoundComponent,
-    AccountRecoveryComponent
+    AccountRecoveryComponent,
+    AboutComponent
   ],
   imports: [
     HttpClientModule,
