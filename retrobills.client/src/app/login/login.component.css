@@ -153,10 +153,8 @@ svg {
   position: absolute;
   left: calc(50% - -98px);
   top: calc(50% - -152px);
-  width: 36px;
-  height: 36px;
-  background-color: #fff;
-  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
 }
 .forgotPassword {
   color: #fff;
