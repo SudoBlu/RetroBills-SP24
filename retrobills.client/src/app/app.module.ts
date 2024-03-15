@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
@@ -15,6 +16,7 @@ import { AccountRecoveryComponent } from './account-recovery/account-recovery.co
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
     HomeComponent,
     LoginPageComponent,
     SignupPage1Component,
@@ -25,9 +27,9 @@ import { AccountRecoveryComponent } from './account-recovery/account-recovery.co
     AboutComponent
   ],
   imports: [
+    BrowserModule, 
     HttpClientModule,
-    AppRoutingModule,
-    BrowserModule
+    AppRoutingModule 
   ],
   providers: [
     provideAnimationsAsync()
