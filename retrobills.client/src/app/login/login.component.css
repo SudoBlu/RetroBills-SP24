@@ -1,3 +1,25 @@
+header, footer{
+  position: absolute;
+  width: 100%;
+  height: 130px;
+  overflow: hidden;
+  background-image: linear-gradient(to right, rgb(167, 2, 167), rgb(56, 2, 96));
+  background-size: auto;
+  display: flex;
+  text-align: center;
+  color: white;
+  justify-content: space-evenly;
+  padding: auto;
+  margin: auto;
+  box-shadow: 0px 10px 10px 0px #00000080;
+}
+
+footer{
+  text-align: left;
+  vertical-align: middle;
+  height: 14vh;
+}
+
 :host,
 * {
   box-sizing: border-box;
@@ -44,6 +66,9 @@ svg {
   background-color: #fff;
   overflow: hidden;
 }
+
+
+
 .imageRemovebgPreview2 {
   position: absolute;
   left: 0;
@@ -56,7 +81,11 @@ svg {
   background-size: cover;
   transform: translateY(-50%);
 }
-.blurForBackground {
+
+
+
+
+/*.blurForBackground {
   position: absolute;
   left: 0;
   top: calc(50% - -66px);
@@ -64,7 +93,7 @@ svg {
   height: 1178px;
   overflow: visible;
   transform: translateY(-50%);
-}
+}*/
 .icon {
   width: 100%;
   height: 100%;
@@ -76,7 +105,7 @@ svg {
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: 60px;
+  left: 0%;
   top: calc(50% - -404px);
   width: 744px;
   height: 218px;
@@ -228,7 +257,8 @@ svg {
   flex-direction: column;
   transform: translate(-50%, -50%);
 }
-.bannerFrame {
+
+/*.bannerFrame {
   position: absolute;
   left: -14px;
   right: 0;
@@ -242,7 +272,8 @@ svg {
   background-size: auto;
   overflow: hidden;
   box-shadow: 0px 10px 10px 0px #00000080;
-}
+}*/
+
 .retroBills {
   color: #fff;
   font-size: 96px;
