@@ -4,6 +4,12 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+public enum TransactionType
+{
+    Income,
+    Expense
+}
+
 public class Transaction
 {
     [Key]
@@ -16,7 +22,11 @@ public class Transaction
     public int AccountID { get; set; }
 
     [Required]
-    public string TransactionType { get; set; }
+    public TransactionType TransactionType { get; set; }
+
+    [ForeignKey("Category")]
+    // The '?' indicates it's now nullable 
+    public int? CategoryID { get; set; } 
 
     public string CategoryName { get; set; }
 
