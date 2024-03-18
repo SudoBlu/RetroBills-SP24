@@ -1,49 +1,30 @@
-:host,
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-  flex-shrink: 0;
-  text-decoration: none;
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-:host,
-:not(span, a, ul, ol, li, p) {
-  display: flex;
-}
-
-ul,
-ol {
-  text-indent: 0;
-  padding-inline-start: 1.5em;
-}
-
-p:empty::before {
-  content: '';
-  display: inline-block;
-}
-
-img {
-  object-fit: contain;
-}
-
-svg {
-  overflow: visible;
-}
-
-:host {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #fff;
+header{
+  position: absolute;
+  width: 100%;
+  height: 10vh;
+  height: 130px;
   overflow: hidden;
+  background-image: linear-gradient(to right, rgb(167, 2, 167), rgb(56, 2, 96));
+  background-size: auto;
+  display: flex;
+  text-align: center;
+  color: white;
+  justify-content: space-evenly;
+  padding: auto;
+  margin: auto;
+  box-shadow: 0px 10px 10px 0px #00000080;
 }
+
+.content {
+  background-image: url("../../assets/assets/SigninPage assets/imageRemovebgPreview1.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: aliceblue;
+  height: 80vh;
+  margin: 0;
+}
+
 .imageRemovebgPreview1 {
   position: absolute;
   left: -3px;
@@ -65,11 +46,7 @@ svg {
   overflow: visible;
   transform: translateY(-50%);
 }
-.icon {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .retroSignupLogo {
   position: absolute;
   left: 252px;
@@ -88,6 +65,8 @@ svg {
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
+  padding-bottom: 30%;
+  padding-right: 7%;
   left: -31px;
   top: calc(50% - -312px);
   width: 986px;
@@ -104,7 +83,7 @@ svg {
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: 54.8809px;
+  left: 5.8809px;
   top: calc(50% - -491.5px);
   width: 814.2382px;
   height: 177px;
@@ -113,7 +92,7 @@ svg {
   flex-direction: column;
   transform: translateY(-50%);
 }
-.rectangle2 {
+.rectangle {
   position: absolute;
   left: calc(50% - -453px);
   top: calc(50% - -70.5px);
@@ -125,7 +104,7 @@ svg {
   background-color: #602893;
   transform: translate(-50%, -50%);
 }
-.rectangle5 {
+.rectangleBtn {
   position: absolute;
   left: calc(50% - -444.3973px);
   top: calc(50% - -380.6864px);
@@ -155,14 +134,11 @@ svg {
   top: calc(50% - 60px);
   width: 287.5333px;
   height: 68px;
-  overflow: visible;
+  border-radius: 5px;
+  /*background-color: #fff;*/
   transform: translate(-50%, -50%);
 }
-.icon2 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .username {
   color: #fff;
   font-size: 36px;
@@ -182,14 +158,10 @@ svg {
   top: calc(50% - -78px);
   width: 286.5244px;
   height: 68px;
-  overflow: visible;
+  border-radius: 5px;
   transform: translate(-50%, -50%);
 }
-.icon3 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .lastName {
   color: #fff;
   font-size: 36px;
@@ -209,14 +181,10 @@ svg {
   top: calc(50% - -215px);
   width: 287.5333px;
   height: 68px;
-  overflow: visible;
+  border-radius: 5px;
   transform: translate(-50%, -50%);
 }
-.icon4 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .address {
   color: #fff;
   font-size: 36px;
@@ -236,14 +204,10 @@ svg {
   top: calc(50% - -215px);
   width: 286.5244px;
   height: 68px;
-  overflow: visible;
+  border-radius: 5px;
   transform: translate(-50%, -50%);
 }
-.icon5 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .email {
   color: #fff;
   font-size: 36px;
@@ -263,14 +227,10 @@ svg {
   top: calc(50% - -78px);
   width: 287.5333px;
   height: 68px;
-  overflow: visible;
+  border-radius: 5px;
   transform: translate(-50%, -50%);
 }
-.icon6 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .firstName {
   color: #fff;
   font-size: 36px;
@@ -290,14 +250,10 @@ svg {
   top: calc(50% - 60px);
   width: 286.5244px;
   height: 68px;
-  overflow: visible;
+  border-radius: 5px;
   transform: translate(-50%, -50%);
 }
-.icon7 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .password {
   color: #fff;
   font-size: 36px;
@@ -334,13 +290,7 @@ svg {
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
 }
-.label2 {
-  color: #fff;
-  font-size: 16px;
-  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  text-decoration: underline;
-}
+
 .noCreditCardRequired {
   color: #fff;
   font-size: 32px;
@@ -362,11 +312,12 @@ svg {
   position: absolute;
   left: calc(50% - -441px);
   top: calc(50% - 263.5px);
-  width: 602px;
+  width: 650px;
   height: 59px;
   flex-direction: column;
   transform: translate(-50%, -50%);
 }
+
 .bannerFrame {
   position: absolute;
   left: 0;
@@ -382,6 +333,7 @@ svg {
   overflow: hidden;
   box-shadow: 0px 10px 10px 0px #00000080;
 }
+
 .retroBills {
   color: #fff;
   font-size: 96px;
