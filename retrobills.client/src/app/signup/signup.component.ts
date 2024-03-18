@@ -5,7 +5,7 @@ import type { OnInit } from '@angular/core';
 @Component({
   selector: 'cl-signup-page-1',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css'],
+  styleUrls: ['./signup.component.scss'],
 })
 export class SignupPage1Component implements OnInit {
   constructor() {}
