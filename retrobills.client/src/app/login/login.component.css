@@ -20,54 +20,16 @@ footer{
   height: 14vh;
 }
 
-:host,
-* {
-  box-sizing: border-box;
+.content{
+  background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: aliceblue;
+  height: 80vh;
+
   margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-  flex-shrink: 0;
-  text-decoration: none;
-  min-width: 0;
-  overflow-wrap: anywhere;
 }
-
-:host,
-:not(span, a, ul, ol, li, p) {
-  display: flex;
-}
-
-ul,
-ol {
-  text-indent: 0;
-  padding-inline-start: 1.5em;
-}
-
-p:empty::before {
-  content: '';
-  display: inline-block;
-}
-
-img {
-  object-fit: contain;
-}
-
-svg {
-  overflow: visible;
-}
-
-:host {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #fff;
-  overflow: hidden;
-}
-
-
 
 .imageRemovebgPreview2 {
   position: absolute;
@@ -82,9 +44,6 @@ svg {
   transform: translateY(-50%);
 }
 
-
-
-
 /*.blurForBackground {
   position: absolute;
   left: 0;
@@ -94,11 +53,7 @@ svg {
   overflow: visible;
   transform: translateY(-50%);
 }*/
-.icon {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .achieveYourDesiredLifestyleWit {
   color: #522e81;
   font-size: 36px;
@@ -147,11 +102,7 @@ svg {
   overflow: visible;
   transform: translate(-50%, -50%);
 }
-.icon2 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .login {
   color: #00d4d5;
   font-size: 64px;
@@ -205,7 +156,7 @@ svg {
   width: 616px;
   height: 69px;
   border-radius: 5px;
-  background-color: #fff;
+  /*background-color: #fff;*/
   transform: translate(-50%, -50%);
 }
 .password {
@@ -228,7 +179,6 @@ svg {
   width: 616px;
   height: 69px;
   border-radius: 5px;
-  background-color: #fff;
   transform: translate(-50%, -50%);
 }
 .emailAddress {
@@ -258,7 +208,7 @@ svg {
   transform: translate(-50%, -50%);
 }
 
-/*.bannerFrame {
+.bannerFrame {
   position: absolute;
   left: -14px;
   right: 0;
@@ -272,7 +222,7 @@ svg {
   background-size: auto;
   overflow: hidden;
   box-shadow: 0px 10px 10px 0px #00000080;
-}*/
+}
 
 .retroBills {
   color: #fff;
