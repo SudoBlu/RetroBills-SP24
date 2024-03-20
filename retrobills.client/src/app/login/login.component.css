@@ -1,4 +1,4 @@
-header, footer{
+header{
   position: absolute;
   width: 100%;
   height: 130px;
@@ -14,21 +14,18 @@ header, footer{
   box-shadow: 0px 10px 10px 0px #00000080;
 }
 
-footer{
-  text-align: left;
-  vertical-align: middle;
-  height: 14vh;
-}
-
-.content{
+body {
   background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
   background-color: aliceblue;
-  height: 80vh;
+  height: 100vh;
+  width: auto;
+  padding-top: 20%;
+}
+.content{
 
-  margin: 0;
 }
 
 .imageRemovebgPreview2 {
@@ -44,15 +41,15 @@ footer{
   transform: translateY(-50%);
 }
 
-/*.blurForBackground {
+.blurForBackground {
   position: absolute;
-  left: 0;
-  top: calc(50% - -66px);
+  left: -3px;
+  top: calc(50% - -65px);
   width: 1361px;
-  height: 1178px;
+  height: 1180px;
   overflow: visible;
   transform: translateY(-50%);
-}*/
+}
 
 .achieveYourDesiredLifestyleWit {
   color: #522e81;
@@ -60,7 +57,7 @@ footer{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: 0%;
+  left: 6%;
   top: calc(50% - -404px);
   width: 744px;
   height: 218px;
@@ -78,28 +75,34 @@ footer{
   background-image: url('/assets/retroLoginLogo.png');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+
   transform: translateY(-50%);
 }
-.rectangle2 {
+.rectangleBox {
   position: absolute;
-  left: calc(50% - -386px);
-  top: calc(50% - -0.5px);
-  width: 748px;
-  height: 803px;
+  left: calc(50% - -453px);
+  top: 75%;
+  padding-bottom:30%;
+  width: 766px;
+  height: 740px;
   outline: solid 5px #00d4d5;
   outline-offset: -5px;
   border-radius: 9px;
   background-color: #602893;
   transform: translate(-50%, -50%);
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
 }
-.rectangle5 {
+
+.rectangleBtn {
   position: absolute;
-  left: calc(50% - -399.5px);
-  top: calc(50% - -281.5px);
+  left: 850%;
+  top: 500%;
   width: 433px;
   height: 103px;
   overflow: visible;
+  color:black;
   transform: translate(-50%, -50%);
 }
 
@@ -109,8 +112,8 @@ footer{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -402px);
-  top: calc(50% - -281px);
+  left: 50%;
+  top: 40%;
   width: 164px;
   height: 66px;
   flex-direction: column;
@@ -131,8 +134,8 @@ footer{
 }
 .rectangle4 {
   position: absolute;
-  left: calc(50% - -98px);
-  top: calc(50% - -152px);
+  left: 6.5%;
+  top: 60%;
   width: 40px;
   height: 40px;
 }
@@ -142,8 +145,8 @@ footer{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -565.5px);
-  top: calc(50% - -148.5px);
+  left: 1300%;
+  top: 50%;
   width: 163px;
   height: 25px;
   flex-direction: column;
@@ -151,7 +154,7 @@ footer{
 }
 .passwordForm {
   position: absolute;
-  left: calc(50% - -380px);
+  left: 46.5%;
   top: calc(50% - -67.5px);
   width: 616px;
   height: 69px;
@@ -165,7 +168,7 @@ footer{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -234px);
+  left: 16%;
   top: calc(50% - -1.5px);
   width: 308px;
   height: 47px;
@@ -174,7 +177,7 @@ footer{
 }
 .emailForm {
   position: absolute;
-  left: calc(50% - -380px);
+  left: 46.5%;
   top: calc(50% - 80.5px);
   width: 616px;
   height: 69px;
@@ -187,21 +190,21 @@ footer{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -246.5px);
+  left: 20%;
   top: calc(50% - 143px);
   width: 349px;
   height: 56px;
   flex-direction: column;
   transform: translate(-50%, -50%);
 }
-.login2 {
+.loginTitle {
   color: #fff;
   font-size: 128px;
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -368px);
-  top: calc(50% - 287px);
+  left: 50%;
+  top: 7%;
   width: 296px;
   height: 124px;
   flex-direction: column;
@@ -235,4 +238,36 @@ footer{
   width: 454px;
   height: 153px;
   flex-direction: column;
+}
+
+*{
+  font-family: Jua;
+}
+
+.keepme {
+  top: 55%;
+  left: 8%;
+  width: 400%;
+  display: flex
+}
+
+.label {
+  color: #fff;
+  font-size: 16px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+}
+
+p {
+  color: #00d4d5;
+  font-size: 36px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 20%;
+  top: calc(50% - 143px);
+  width: 349px;
+  height: 56px;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
 }
