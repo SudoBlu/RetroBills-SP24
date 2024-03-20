@@ -24,9 +24,6 @@ body {
   width: auto;
   padding-top: 20%;
 }
-.content{
-
-}
 
 .imageRemovebgPreview2 {
   position: absolute;
@@ -271,3 +268,17 @@ p {
   flex-direction: column;
   transform: translate(-50%, -50%);
 }
+/* form {
+  border: 2px solid black;
+}
+
+.link-button{
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  outline: none;
+  color: purple;
+  text-decoration: underline;
+} */
