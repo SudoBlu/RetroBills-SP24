@@ -17,12 +17,13 @@ header{
 body {
   background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: center center; /* Center the background image */
   background-size: cover;
   background-color: aliceblue;
-  height: 100vh;
+  height: 125vh;
   width: auto;
   padding-top: 20%;
+  margin: 0; /* Remove default margin */
 }
 .content{
 
@@ -58,7 +59,7 @@ body {
     'Liberation Sans', sans-serif;
   position: absolute;
   left: 6%;
-  top: calc(50% - -404px);
+  top: calc(50% - -330px);
   width: 744px;
   height: 218px;
   text-align: center;
@@ -69,7 +70,7 @@ body {
 .retroLoginLogo {
   position: absolute;
   left: 85px;
-  top: calc(50% - 35px);
+  top: calc(50% - 10px);
   width: 676px;
   height: 738px;
   background-image: url('/assets/retroLoginLogo.png');
@@ -81,7 +82,7 @@ body {
 .rectangleBox {
   position: absolute;
   left: calc(50% - -453px);
-  top: 75%;
+  top: 65%;
   padding-bottom:30%;
   width: 766px;
   height: 740px;
