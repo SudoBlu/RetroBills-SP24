@@ -268,17 +268,9 @@ p {
   flex-direction: column;
   transform: translate(-50%, -50%);
 }
-/* form {
-  border: 2px solid black;
-}
 
-.link-button{
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font: inherit;
-  outline: none;
-  color: purple;
-  text-decoration: underline;
-} */
+.error{
+  font-size: 36px;
+  font-family: Jua, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: red;
+}

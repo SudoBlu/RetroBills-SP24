@@ -14,37 +14,30 @@
     </div>
     <div class="rectangleBox">
       <div class="loginTitle">Login</div>
-      <div class="password">Password</div>
-      <div class="passwordForm">
-        <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="emailAddress">Email address</div>
-      <div class="emailForm">
-        <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="rectangle4">
-        <label class="keepme" for="defaultCheck1">
-          <input class="" type="checkbox" value="" id="defaultCheck1">
-          Keep me logged in
-        </label>
-        <div class="forgotPassword"><a href="recovery">Forgot password?</a></div>
-        <a href="dashboard">
-          <div class="rectangleBtn" >
-            <p class="login">Login</p>
-            <img src="assets/rectangle-5-icon.svg" alt="" class="" />
-          </div>
-        </a>
-      </div>
+      <span class="error" *ngIf="invalidLogin">An incorrect email or password was entered</span>
+      <form [formGroup]="loginForm" (ngSubmit)="OnSubmit()">
+        <div class="password">Password</div>
+        <div class="passwordForm">
+          <input type="password" class="form-control" formControlName="Password" placeholder="" aria-label="Password" aria-describedby="basic-addon1">
+        </div>
+        <div class="emailAddress">Email address</div>
+        <div class="emailForm">
+          <input type="email" class="form-control" formControlName="Email" placeholder="" aria-label="Email" aria-describedby="basic-addon1">
+        </div>
+        <div class="rectangle4">
+          <label class="keepme" for="defaultCheck1">
+            <input class="" type="checkbox" value="" id="defaultCheck1">
+            Keep me logged in
+          </label>
+          <div class="forgotPassword"><a (click)="OnForgotPasswordClick()">Forgot password?</a></div>
+          <a (click)="OnSubmit()">
+            <div class="rectangleBtn" >
+              <p class="login">Login</p>
+              <img src="assets/rectangle-5-icon.svg" alt="" class="" />
+            </div>
+          </a>
+        </div>
+      </form>
     </div>
   </div>
 </body>
-<!-- <form [formGroup]="loginForm" (ngSubmit)="OnSubmit()">
-  <label for="email">Email: 
-  <input type="email" formControlName="Email"></label>
-
-  <label for="password">Password: 
-  <input type="password" formControlName="Password"></label>
-
-  <button type="submit">Login</button>
-
-</form> -->
