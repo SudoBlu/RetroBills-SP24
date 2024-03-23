@@ -3,7 +3,7 @@ import type { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs';
+import { first, map } from 'rxjs';
 
 /* @figmaId 113:5 */
 @Component({
@@ -33,12 +33,13 @@ export class SignupPage1Component {
     const address = this.registrationForm.value.Address;
 
     if(this.registrationForm.valid){
-      this.userService.CreateUser(username!, firstName!, lastName!, password!, address!, email!).subscribe(
-        response => response.pipe(map(x => {
-          if(!x) throw new Error('User could not be created')
+      this.userService.CreateUser(username!, firstName!, lastName!, password!, address!, email!).subscribe(response => {
+        if (response) {
           this.router.navigate(['dashboard'])
-        }))
-      )
+        }else{
+          console.error('Error creating user')
+        }
+      })
     }else{
       console.error('Please fill out all fields')
     }

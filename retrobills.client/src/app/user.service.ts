@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, find, map, max } from 'rxjs';
+import { Observable, catchError, find, map, max, switchMap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -44,41 +44,49 @@ export class UserService {
     )
   }
 
-  CreateUser(username: string, firstName: string, lastName: string,password: string, address: string, email: string){
-    let maxId: number;
-
-    return this.FindMaxUserId().pipe(map(user => {
-      maxId = user.UserId
-      let newUser: User = {
-        UserId: maxId,
-        UserName: username,
-        FirstName: firstName,
-        LastName: lastName,
-        Email: email,
-        Password: password,
-        Address: address
-      };
-      console.log(newUser);
-
-      return this.WriteToJSON(newUser).pipe(
-        map(response => {
-        console.log('User successfully created', response);
-        return true;
-        }))}))
+  CreateUser(username: string, firstName: string, lastName: string,password: string, address: string, email: string): Observable<boolean>{
+    return this.FindMaxUserId().pipe(
+      switchMap(maxId => {
+        const newUser: User = {
+          UserId: maxId + 1,
+          UserName: username,
+          FirstName: firstName,
+          LastName: lastName,
+          Email: email,
+          Password: password,
+          Address: address
+        };
+        return this.WriteToJSON(newUser);
+      })
+    )
   }
 
-  FindMaxUserId(): Observable<User>{
+  FindMaxUserId(): Observable<number>{
     return this.GetUsers().pipe(
       map(users => {
-        let id = users.find(user => max((a) => a = user.UserId))
-        console.log(id);
-        if(!id) throw new Error('Error retrieving IDs for creation')
-        return id;
-      })
-    );
+        let maxId = 0;
+        users.forEach(user => {
+          if(user.UserId > maxId){
+            maxId = user.UserId;
+          }
+        });
+        return maxId
+      }
+    )
+    )
   }
 
-  WriteToJSON(data: User): Observable<any>{
-    return this.http.post<any>(this.userUrl, data);
+  WriteToJSON(data: User): Observable<boolean>{
+    return this.GetUsers().pipe(
+      switchMap(users => {
+        users.push(data);
+        return this.http.put(this.userUrl, {users}).pipe(
+          map(() => true),
+          catchError(() => {
+            return throwError('Error writing to JSON file')
+          })
+        )
+      })
+    )
   }
 }
