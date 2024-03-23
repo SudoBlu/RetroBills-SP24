@@ -1,4 +1,4 @@
-<header>
+<!-- <header>
   <div class="bannerFrame">
     <div class="retroBills">Retro Bills</div>
   </div>
@@ -56,4 +56,14 @@
     </div>
   </div>
 </body>
+ -->
 
+ <form [formGroup]="registrationForm" (ngSubmit)="OnSubmit()">
+  <label for="FirstName">First Name: <input type="text" formControlName="FirstName"></label>
+  <label for="LastName">Last Name: <input type="text" formControlName="LastName"></label>
+  <label for="Username">Username: <input type="text" formControlName="Username"></label>
+  <label for="Email">Email: <input type="email" formControlName="Email"></label>
+  <label for="Password">Password: <input type="password" formControlName="Password"></label>
+  <label for="Address">Address: <input type="text" formControlName="Address"></label>
+  <button type="submit">Submit</button>
+</form>

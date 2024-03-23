@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
@@ -9,7 +9,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginPageComponent{
-  constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   invalidLogin: boolean = false; //flag to determine if valid email/password was given
 
