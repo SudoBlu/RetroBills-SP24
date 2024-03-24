@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SignupPage1Component } from './signup/signup.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AccountRecoveryComponent } from './account-recovery/account-recovery.component'
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { AccountRecoveryComponent } from './account-recovery/account-recovery.co
   imports: [
     BrowserModule, 
     HttpClientModule,
-    AppRoutingModule 
+    AppRoutingModule,
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimationsAsync()
