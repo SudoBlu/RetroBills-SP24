@@ -43,7 +43,16 @@ export class SignupPage1Component {
     if(this.registrationForm.valid){
       this.invalidRegister = false;
       //create the user
-      this.userService.CreateUser(username!, firstName!, lastName!, password!, address!, email!).subscribe(id => {
+      const UserDTO = {
+        UserName: username,
+        Password: password,
+        Email: email,
+        FirstName: firstName,
+        LastName: lastName,
+        Address: address
+      }
+
+      this.userService.CreateUser(UserDTO).subscribe(id => {
         if (id) {
           //log the user in
           this.authService.loginUser();
