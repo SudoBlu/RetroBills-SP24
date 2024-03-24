@@ -14,6 +14,7 @@
     </div>
     <div class="rectangleBox">
       <div class="loginTitle">Login</div>
+      <span class="error" *ngIf="emptyForm">Please fill out all fields</span>
       <span class="error" *ngIf="invalidLogin">An incorrect email or password was entered</span>
       <form [formGroup]="loginForm" (ngSubmit)="OnSubmit()">
         <div class="password">Password</div>
