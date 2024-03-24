@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { User } from './user';
+import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, switchMap, throwError } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,8 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   /**
-   * Gets users from the data source. Returns an Observable
-   * of type User[]
-   * @returns 
+   * Gets users from the data source.
+   * @returns An Observable with an array of Users found in the data source
    */
   GetUsers(): Observable<User[]>{
     return this.http.get<User[]>(`${this.userUrl}`);
@@ -24,9 +23,10 @@ export class UserService {
 
   /**
    * Attempts to find a user from the list of users by matching
-   * the user's email. Returns a User object if found, undefined otherwise
+   * the user's email.
    * @param email the email to match
-   * @returns 
+   * @returns Returns an Observable with a User object if found, 
+   * undefined otherwise
    */
   GetUserByEmail(email: string): Observable<User | undefined>{
     return this.GetUsers().pipe(
@@ -43,6 +43,11 @@ export class UserService {
     )
   }
 
+  /**
+   * Creates a User entry in the database
+   * @param userDTO the parameters of the User object
+   * @returns 
+   */
   CreateUser(userDTO: any){
     return this.http.post<any>(`${this.userUrl}`, userDTO)
   }
