@@ -1,36 +1,23 @@
-namespace RetroBills.Server;
-
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-public class User
+namespace RetroBills.Server.Models;
+
+public partial class User
 {
-    [Key]
-    public int UserID { get; set; }
+    public int UserId { get; set; }
 
-    [Required]
-    public string UserName { get; set; }
+    public string UserName { get; set; } = null!;
 
-    [Required]
-    public string Password { get; set; }
+    public string Password { get; set; } = null!;
 
-    [Required]
-    [EmailAddress]
-    public string Email { get; set; }
+    public string Email { get; set; } = null!;
 
-    [Required]
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } = null!;
 
-    [Required]
-    public string LastName { get; set; }
+    public string LastName { get; set; } = null!;
 
-    [Required] 
-    public string Address { get; set; }
+    public string Address { get; set; } = null!;
 
-    // Navigation property for many-to-many relationship with Account through User_Account
-    public ICollection<User_Account> User_Accounts { get; set; }
-    
-    // Navigation property for one-to-many relationship with Transaction
-    public ICollection<Transaction> Transactions { get; set; }
-    
+    public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
 }
