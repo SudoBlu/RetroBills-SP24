@@ -1,24 +1,15 @@
-namespace RetroBills.Server;
-
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-public class Account
+namespace RetroBills.Server.Models;
+
+public partial class Account
 {
-    [Key]
-    public int AccountID { get; set; }
+    public int AccountId { get; set; }
 
-    [Required]
-    public string AccountType { get; set; }
+    public string AccountType { get; set; } = null!;
 
-    [Required]
-    [Column(TypeName = "decimal(18,2)")]
     public decimal Balance { get; set; }
 
-    // Navigation properties for one-to-many relationship with Transaction 
-    public ICollection<Transaction> Transactions { get; set; }
-    
-    // Navigation property for many-to-many relationship with User through User_Account
-    public ICollection<User_Account> User_Accounts { get; set; }
+    public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
 }

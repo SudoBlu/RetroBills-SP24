@@ -1,35 +1,27 @@
-namespace RetroBills.Server;
+﻿using System;
+using System.Collections.Generic;
 
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+namespace RetroBills.Server.Models;
 
-public class Transaction
+public partial class Transaction
 {
-    [Key]
-    public int TransactionID { get; set; }
-    
-    [ForeignKey("User")]
-    public int UserID { get; set; }
+    public int TransactionId { get; set; }
 
-    [ForeignKey("Account")]
-    public int AccountID { get; set; }
+    public int UserId { get; set; }
 
-    [Required]
-    public string TransactionType { get; set; }
+    public int AccountId { get; set; }
 
-    public string CategoryName { get; set; }
+    public string TransactionType { get; set; } = null!;
 
-    [Required]
-    [Column(TypeName = "decimal(18,2)")]
+    public string CategoryName { get; set; } = null!;
+
     public decimal Amount { get; set; }
 
-    [Required]
     public DateTime TransactionDateTime { get; set; }
 
-    public string TransactionDescription { get; set; }
+    public string? TransactionDescription { get; set; }
 
-    // Navigation properties
-    public User User { get; set; }
-    public Account Account { get; set; }
+    public virtual Account Account { get; set; } = null!;
+
+    public virtual User User { get; set; } = null!;
 }
