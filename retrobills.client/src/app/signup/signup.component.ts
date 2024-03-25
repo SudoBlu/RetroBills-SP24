@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import type { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { first, map } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { map, switchMap, tap } from 'rxjs';
+import { UserDTO } from '../DTOs/UserDTO';
 
 /* @figmaId 113:5 */
 @Component({
@@ -18,7 +18,7 @@ export class SignupPage1Component {
   invalidRegister: boolean = false; //flag for invalid form
 
   registrationForm = new FormGroup({
-    Username: new FormControl('', [Validators.required]),
+    UserName: new FormControl('', [Validators.required]),
     Password: new FormControl('', [Validators.required]),
     Email: new FormControl('', [Validators.required]),
     FirstName: new FormControl('', [Validators.required]),
@@ -30,9 +30,9 @@ export class SignupPage1Component {
    * On submition of the register form, form values are validated and the user
    * is registered with the UserService. If the form is incorrect, an error is thrown
    */
-  OnSubmit(){
+  async OnSubmit(){
     //get values from form
-    const username = this.registrationForm.value.Username;
+    const username = this.registrationForm.value.UserName;
     const firstName = this.registrationForm.value.FirstName;
     const lastName = this.registrationForm.value.LastName;
     const email = this.registrationForm.value.Email;
@@ -43,27 +43,42 @@ export class SignupPage1Component {
     if(this.registrationForm.valid){
       this.invalidRegister = false;
       //create the user
-      const UserDTO = {
-        UserName: username,
-        Password: password,
-        Email: email,
-        FirstName: firstName,
-        LastName: lastName,
-        Address: address
+      const UserDTO: UserDTO = {
+        UserName: username!,
+        password: password!,
+        email: email!,
+        FirstName: firstName!,
+        LastName: lastName!,
+        Address: address!
       }
-
-      this.userService.CreateUser(UserDTO).subscribe(id => {
-        if (id) {
-          //log the user in
-          this.authService.loginUser();
-
-          //route to their dashboard
-          this.router.navigate(['dashboard', id])
-        }else{
-          //throw error
-          console.error('Error creating user')
-        }
-      })
+      console.log(UserDTO);
+      try{
+        console.log(UserDTO);
+        //Create the user
+        this.userService.CreateUser(UserDTO).subscribe(
+          () => {
+            //Get the latest user
+            this.userService.GetLatestUser().subscribe(
+              response => {
+                console.log(response);
+                const userId = response.userId; //find user Id
+                console.log(userId);
+                if(userId){
+                  //log user in
+                  this.authService.loginUser();
+                  this.router.navigate(['dashboard', userId])
+                }
+              },
+              error => {console.error('Error occured while fetching the latest user: ', error);}
+            );
+          },
+          error => {
+            console.error('Error occured while creating the user: ', error)
+          }
+        )
+      }catch(error){
+        console.error('Error occured', error)
+      }
     }else{
       //error for if the form is incomplete
       this.invalidRegister = true;
