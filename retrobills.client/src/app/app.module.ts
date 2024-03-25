@@ -14,7 +14,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AccountRecoveryComponent } from './account-recovery/account-recovery.component';
 import { BudgetPageComponent } from './budget-page/budget-page.component';
 
-import { AccountRecoveryComponent } from './account-recovery/account-recovery.component'
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
