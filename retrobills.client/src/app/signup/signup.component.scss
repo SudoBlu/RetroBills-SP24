@@ -4,7 +4,7 @@ header{
   height: 10vh;
   height: 130px;
   overflow: hidden;
-  background-image: linear-gradient(to right, rgb(167, 2, 167), rgb(56, 2, 96));
+  background-image: linear-gradient(to right, rgb(167, 2, 167), #380260);
   background-size: auto;
   display: flex;
   text-align: center;
@@ -12,36 +12,28 @@ header{
   justify-content: space-evenly;
   padding: auto;
   margin: auto;
+
   box-shadow: 0px 10px 10px 0px #00000080;
 }
 
-.content {
-  background-image: url("../../assets/assets/SigninPage assets/imageRemovebgPreview1.png");
+body {
+  background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
   background-color: aliceblue;
-  height: 80vh;
-  margin: 0;
+  height: 100vh;
+  width: auto;
+  padding-top: 20%;
+
+
 }
 
-.imageRemovebgPreview1 {
-  position: absolute;
-  left: -3px;
-  right: 0;
-  top: calc(50% - -65px);
-  height: 1180px;
-  background-image: url('/assets/imageRemovebgPreview1.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transform: translateY(-50%);
-}
 .blurForBackground {
   position: absolute;
   left: -3px;
   top: calc(50% - -65px);
-  width: 1361px;
+  width: 50vw;
   height: 1180px;
   overflow: visible;
   transform: translateY(-50%);
@@ -50,9 +42,9 @@ header{
 .retroSignupLogo {
   position: absolute;
   left: 252px;
-  top: calc(50% - 133px);
+  top: 545px;
   width: 419px;
-  height: 528px;
+  height: 515px;
   background-image: url('/assets/retroSignupLogo.png');
   background-position: center;
   background-repeat: no-repeat;
@@ -61,13 +53,13 @@ header{
 }
 .tryRocketBillsForFree {
   color: #522e81;
-  font-size: 96px;
+  font-size: 90px;
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  padding-bottom: 30%;
-  padding-right: 7%;
-  left: -31px;
+  padding-bottom: 25%;
+  padding-right: 3%;
+  left: -20px;
   top: calc(50% - -312px);
   width: 986px;
   height: 262px;
@@ -83,31 +75,36 @@ header{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: 5.8809px;
+  left: 80px;
   top: calc(50% - -491.5px);
   width: 814.2382px;
   height: 177px;
   text-align: center;
   align-items: center;
   flex-direction: column;
+  padding-right: 3%;
   transform: translateY(-50%);
 }
 .rectangle {
   position: absolute;
   left: calc(50% - -453px);
-  top: calc(50% - -70.5px);
+  top: 75%;
+  padding-bottom:30%;
   width: 766px;
-  height: 803px;
+  height: 740px;
   outline: solid 5px #00d4d5;
   outline-offset: -5px;
   border-radius: 9px;
   background-color: #602893;
   transform: translate(-50%, -50%);
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
 }
 .rectangleBtn {
   position: absolute;
-  left: calc(50% - -444.3973px);
-  top: calc(50% - -380.6864px);
+  left: 50%;
+  top: 90%;
   width: 384.7946px;
   height: 85.3729px;
   outline: solid 9px #00d4d5;
@@ -120,9 +117,9 @@ header{
   font-size: 40px;
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
-  position: absolute;
-  left: calc(50% - -444.2871px);
-  top: calc(50% - -380.4575px);
+  position: relative;
+  left: 50%;
+  top: 50%;
   width: 284px;
   height: 54px;
   flex-direction: column;
@@ -130,8 +127,8 @@ header{
 }
 .usernameForm {
   position: absolute;
-  left: calc(50% - -280.7667px);
-  top: calc(50% - 60px);
+  left: 190px;
+  top: 300px;
   width: 287.5333px;
   height: 68px;
   border-radius: 5px;
@@ -145,8 +142,8 @@ header{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -299.9356px);
-  top: calc(50% - 116.5px);
+  left: 120px;
+  top: 225px;
   width: 325.8711px;
   height: 55px;
   flex-direction: column;
@@ -154,8 +151,8 @@ header{
 }
 .lastNameForm {
   position: absolute;
-  left: calc(50% - -635.3911px);
-  top: calc(50% - -78px);
+  left: 560px;
+  top: 435px;
   width: 286.5244px;
   height: 68px;
   border-radius: 5px;
@@ -168,8 +165,8 @@ header{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -655.0645px);
-  top: calc(50% - -20.5px);
+  left: 500px;
+  top: 360px;
   width: 325.8711px;
   height: 55px;
   flex-direction: column;
@@ -177,8 +174,8 @@ header{
 }
 .addressForm {
   position: absolute;
-  left: calc(50% - -280.7667px);
-  top: calc(50% - -215px);
+  left: 190px;
+  top: 565px;
   width: 287.5333px;
   height: 68px;
   border-radius: 5px;
@@ -191,8 +188,8 @@ header{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -299.9356px);
-  top: calc(50% - -158px);
+  left: 110px;
+  top: 490px;
   width: 325.8711px;
   height: 54px;
   flex-direction: column;
@@ -200,8 +197,8 @@ header{
 }
 .emailForm {
   position: absolute;
-  left: calc(50% - -635.3911px);
-  top: calc(50% - -215px);
+  left: 560px;
+  top: 565px;
   width: 286.5244px;
   height: 68px;
   border-radius: 5px;
@@ -214,8 +211,8 @@ header{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -655.0645px);
-  top: calc(50% - -158px);
+  left: 460px;
+  top: 495px;
   width: 325.8711px;
   height: 54px;
   flex-direction: column;
@@ -223,8 +220,8 @@ header{
 }
 .firstNameForm {
   position: absolute;
-  left: calc(50% - -280.7667px);
-  top: calc(50% - -78px);
+  left: 190px;
+  top: 435px;
   width: 287.5333px;
   height: 68px;
   border-radius: 5px;
@@ -237,8 +234,8 @@ header{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -299.9356px);
-  top: calc(50% - -20.5px);
+  left: 125px;
+  top: 360px;
   width: 325.8711px;
   height: 55px;
   flex-direction: column;
@@ -246,8 +243,8 @@ header{
 }
 .passwordForm {
   position: absolute;
-  left: calc(50% - -635.3911px);
-  top: calc(50% - 60px);
+  left: 560px;
+  top: 300px;
   width: 286.5244px;
   height: 68px;
   border-radius: 5px;
@@ -260,8 +257,8 @@ header{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -655.0645px);
-  top: calc(50% - 116.5px);
+  left: 490px;
+  top: 225px;
   width: 325.8711px;
   height: 55px;
   flex-direction: column;
@@ -269,8 +266,8 @@ header{
 }
 .byCreatingAnAccountYouAgreeToT {
   position: absolute;
-  left: calc(50% - -444px);
-  top: calc(50% - -305px);
+  left: 50%;
+  top: 80%;
   width: 712px;
   height: 14px;
   text-align: center;
@@ -297,8 +294,8 @@ header{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -442.5px);
-  top: calc(50% - 190.5px);
+  left: 50%;
+  top: 15%;
   width: 339px;
   height: 41px;
   flex-direction: column;
@@ -310,8 +307,8 @@ header{
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: calc(50% - -441px);
-  top: calc(50% - 263.5px);
+  left: 50%;
+  top: 5%;
   width: 650px;
   height: 59px;
   flex-direction: column;
@@ -345,4 +342,21 @@ header{
   width: 454px;
   height: 153px;
   flex-direction: column;
+}
+
+*{
+  font-family: Jua;
+}
+
+.error{
+    font-size: 36px;
+  font-family: Jua, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: red;
+  position: absolute;
+  left: 50%;
+  top: 22%;
+  width: 650px;
+  height: 59px;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
 }
