@@ -1,9 +1,12 @@
+import { Transaction } from "./transaction";
+
 export interface User {
-    UserId: number;
+    userId: number;
     UserName: string;
-    Password: string;
-    Email: string;
+    password: string;
+    email: string;
     FirstName: string;
     LastName: string;
     Address: string;
+    Transactions: Transaction[]
 }

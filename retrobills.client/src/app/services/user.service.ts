@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, map, of, switchMap, tap } from 'rxjs';
+import { UserDTO } from '../DTOs/UserDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -22,23 +23,41 @@ export class UserService {
   }
 
   /**
-   * Attempts to find a user from the list of users by matching
-   * the user's email.
-   * @param email the email to match
-   * @returns Returns an Observable with a User object if found, 
-   * undefined otherwise
+   * Retrieves the latest user from the data source
+   * @returns An Observable with the latest user
+   */
+  GetLatestUser(): Observable<User>{
+    return this.GetUsers().pipe(
+      switchMap(users => {
+        console.log(users);
+        if(users.length > 0){
+          console.log(users[users.length - 1])
+          return of(users[users.length - 1])
+        }else{
+          throw new Error('No users found')
+        }
+      })
+    )
+  }
+
+  /**
+   * Retrieves a User from the data source based upon the
+   * provided email string
+   * @param email the email of the User to retrieve
+   * @returns an Observable with the matched user or undefined
    */
   GetUserByEmail(email: string): Observable<User | undefined>{
+    console.log(email);
     return this.GetUsers().pipe(
-      map(users => {
-        //find user based on email
-        let foundUser = users.find(user => user.Email === email);
-
-        //if not found, return undefined
-        if(!foundUser) {return undefined}
-
-        //return found user
-        return foundUser;
+      switchMap(users => {
+        console.log(users);
+        if(users.length > 0){
+          let foundUser = users.find(user => user.email === email);
+          console.log(foundUser);
+          return of(foundUser !== undefined ? foundUser : undefined);
+        }else{
+          throw new Error('No users found')
+        }
       })
     )
   }
@@ -48,7 +67,8 @@ export class UserService {
    * @param userDTO the parameters of the User object
    * @returns 
    */
-  CreateUser(userDTO: any){
-    return this.http.post<any>(`${this.userUrl}`, userDTO)
+  CreateUser(userDTO: UserDTO){
+    console.log(userDTO);
+    return this.http.post<UserDTO>(`${this.userUrl}`, userDTO)
   }
 }
