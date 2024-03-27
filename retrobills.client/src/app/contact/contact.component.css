@@ -1,25 +1,37 @@
-.contact-form{
+.contact-form {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-    width: auto;
-    height: auto;
-
-    background-color: #380260;
-    border: 2px solid rgb(167, 2, 167);
-
-    text-align: center;
-    color: white;
-    padding: 10px;
+  width: 300px; /* Set a fixed width for the form */
+  background-color: #380260;
+  border: 2px solid rgb(167, 2, 167);
+  text-align: center;
+  color: white;
+  padding: 10px;
 }
 
-content {
-  justify-content: center;
-  left: 50%;
-
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-textarea{
-    resize: none;
+span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px; /* Add spacing between each field */
+}
+
+label {
+  flex: 1; /* Take up equal space */
+  text-align: right; /* Right-align the label text */
+  margin-right: 10px; /* Add some space between label and input */
+}
+
+input,
+textarea {
+  flex: 2; /* Take up more space than the label */
+  width: 100%; /* Fill the available space */
 }
