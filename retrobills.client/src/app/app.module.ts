@@ -11,7 +11,11 @@ import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignupPage1Component } from './signup/signup.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { AccountRecoveryComponent } from './account-recovery/account-recovery.component'
+import { AccountRecoveryComponent } from './account-recovery/account-recovery.component';
+import { BudgetPageComponent } from './budget-page/budget-page.component';
+
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,12 +28,16 @@ import { AccountRecoveryComponent } from './account-recovery/account-recovery.co
     ContactComponent,
     PageNotFoundComponent,
     AccountRecoveryComponent,
-    AboutComponent
+    AboutComponent,
+    BudgetPageComponent,
+    
   ],
   imports: [
     BrowserModule, 
     HttpClientModule,
-    AppRoutingModule 
+    AppRoutingModule,
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimationsAsync()

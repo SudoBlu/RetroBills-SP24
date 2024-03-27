@@ -6,11 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent  {
-  forecasts(forecasts: any) {
-      throw new Error('Method not implemented.');
-  }
-  ngOnInit() {
-      throw new Error('Method not implemented.');
-  }
   title = 'retrobills.client';
 }

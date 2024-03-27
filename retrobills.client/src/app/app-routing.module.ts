@@ -8,6 +8,9 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { NgModule } from "@angular/core";
 import { AccountRecoveryComponent } from "./account-recovery/account-recovery.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BudgetPageComponent } from "./budget-page/budget-page.component";
+
+import { AuthGuard } from "./auth/Auth.guard";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -18,7 +21,9 @@ const routes: Routes = [
   {path: 'recovery', component: AccountRecoveryComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
   
+  {path: 'budget',component: BudgetPageComponent },
   {path: 'dashboard',component: DashboardComponent},
+  {path: 'dashboard/:id',component: DashboardComponent, canActivate:[AuthGuard]},
   {path: '**', component: PageNotFoundComponent}
 ];
 
