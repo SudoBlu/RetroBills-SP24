@@ -28,15 +28,11 @@ body {
   margin: 0; /* Remove default margin */
 }
 
-.content {
-
-}
-
 .blurForBackground {
   position: absolute;
   left: -3px;
   top: calc(50% - -65px);
-  width: 1361px;
+  width: auto;
   height: 1180px;
   overflow: visible;
   transform: translateY(-50%);
