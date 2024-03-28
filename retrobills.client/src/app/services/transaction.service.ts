@@ -4,11 +4,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, switchMap, throwError } from 'rxjs';
 import { Transaction } from '../transaction';
+import { Account } from '../account';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService {
+  private baseUrl = 'https://localhost:7201/';
   private transactionUrl = 'https://localhost:7201/api/Transaction'; // Replace with your base transaction API URL
 
   constructor(private http: HttpClient) { }
@@ -84,4 +86,16 @@ export class TransactionService {
         })
       );
   }
+
+  // Get all accounts for a specific user
+ getAccountsByUser(userId: number): Observable<Account[]> {
+  return this.http.get<Account[]>(`${this.baseUrl}/account/user/${userId}`) // Adjust the URL
+      .pipe(
+        catchError(error => {
+          console.error('Error getting accounts by user:', error);
+          return throwError(() => new Error(error));
+        })
+      );
+}
+
 }
