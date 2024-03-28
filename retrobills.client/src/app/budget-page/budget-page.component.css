@@ -1,95 +1,95 @@
 header{
-    width: 100%;
-    height: 100px;
-     background: hsla(293, 59%, 42%, 1);
-    
-     background: linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     background: -moz-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     background: -webkit-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9E2CAC", endColorstr="#401246", GradientType=1 );
-    }
-    header ::after{
-    content: "";
-    display: table;
-    clear: both;
-    }
-    img{
-        margin:0;
-        width: 100px;
-        height: 100px;
-        float: left;
-        }
-        nav{
-            float: right;
-            }
-            nav, li{
-            padding-right: 20px;
-            padding-left:20px;
-            list-style-type:none;
-            }
-            li{
-            float:right;
-            }
-            #options{
+  width: 100%;
+  height: 100px;
+   background: hsla(293, 59%, 42%, 1);
 
-                width: 100%;
-    height: 100px;
-     background: hsla(293, 59%, 42%, 1);
-    
-     background: linear-gradient(90deg, #9c2caa 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     background: -moz-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     background: -webkit-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9E2CAC", endColorstr="#401246", GradientType=1 );
-                height: 90% ;
-                width: 15%;
-                opacity: .8;
-            }
-            body{
+   background: linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
 
-                background-image:url("/assets/solocup2.jpg");
-                background-size:cover;
-                background-position:center;
-                }
-            #options>h2{
-                color:black;
-            }
+   background: -moz-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
 
-            .menu{
-                color:white;
-                background:purple;
-                height:6%;
-                width: 210px;
-                position: relative;
-                left: 40px;
-               
-                
-            }
-            span{
-               text-align: center;
-            }
-            table{
-                position: absolute;
-                top:20%;
-                right:20%;
-                width:60%;
-                background-color: #D3D3D3;
-                
-            }
-            th{border:solid black 1.5px;}
-            th,td{
-                padding:10px;
-            }
-            .link{
-                position:relative;
-                background:none;
-                border:none;
-                color:white;
-                margin-top:10px;
-                text-align: left;
-            }
+   background: -webkit-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
+
+   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9E2CAC", endColorstr="#401246", GradientType=1 );
+  }
+  header ::after{
+  content: "";
+  display: table;
+  clear: both;
+  }
+  img{
+      margin:0;
+      width: 100px;
+      height: 100px;
+      float: left;
+      }
+      nav{
+          float: right;
+          }
+          nav, li{
+          padding-right: 20px;
+          padding-left:20px;
+          list-style-type:none;
+          }
+          li{
+          float:right;
+          }
+          #options{
+
+              width: 100%;
+  height: 100px;
+   background: hsla(293, 59%, 42%, 1);
+
+   background: linear-gradient(90deg, #9c2caa 0%, hsla(293, 59%, 17%, 1) 100%);
+
+   background: -moz-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
+
+   background: -webkit-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
+
+   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9E2CAC", endColorstr="#401246", GradientType=1 );
+              height: 90% ;
+              width: 15%;
+              opacity: .8;
+          }
+          body{
+
+              background-image:url("/assets/solocup2.jpg");
+              background-size:cover;
+              background-position:center;
+              }
+          #options>h2{
+              color:black;
+          }
+
+          .menu{
+              color:white;
+              background:purple;
+              height:6%;
+              width: 210px;
+              position: relative;
+              left: 40px;
+
+
+          }
+          span{
+             text-align: center;
+          }
+          table{
+              position: absolute;
+              top:20%;
+              right:20%;
+              width:60%;
+              background-color: #D3D3D3;
+
+          }
+          th{border:solid black 1.5px;}
+          th,td{
+              padding:10px;
+          }
+          .link{
+              position:relative;
+              background:none;
+              border:none;
+              color:white;
+              margin-top:10px;
+              text-align: left;
+          }
