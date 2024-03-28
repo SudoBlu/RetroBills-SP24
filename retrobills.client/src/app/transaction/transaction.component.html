@@ -1,26 +1,28 @@
-<form (ngSubmit)="onSubmit()"> <div>
-    <label for="transactionType">Transaction Type:</label>
-    <select id="transactionType" [(ngModel)]="transaction.transactionType" name="transactionType">
-      <option *ngFor="let type of transactionTypes">{{ type }}</option>
-    </select>
+<p>transaction works!</p>
+
+<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()"> 
+  <div>
+      <label for="transactionType">Transaction Type:</label>
+      <select id="transactionType" formControlName="transactionType">
+          <option *ngFor="let type of transactionTypes">{{ type }}</option>
+      </select>
   </div>
   <div>
-    <label for="amount">Amount:</label>
-    <input type="number" id="amount" [(ngModel)]="transaction.amount" name="amount" required>
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" formControlName="amount" required>
   </div>
   <div>
-    <label for="date">Date:</label>
-    <input type="date" id="date" [(ngModel)]="transaction.transactionDateTime" name="date" required>
+      <label for="category">Category:</label>
+      <select id="category" formControlName="categoryName">
+          <option *ngFor="let category of categories">{{ category }}</option>
+      </select>
   </div>
   <div>
-    <label for="category">Category:</label>
-    <select id="category" [(ngModel)]="transaction.categoryName" name="category">
-      <option *ngFor="let category of categories">{{ category }}</option>
-    </select>
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="transactionDescription" rows="4"></textarea>
   </div>
-  <div>
-    <label for="description">Description:</label>
-    <textarea id="description" [(ngModel)]="transaction.description" name="description" rows="4"></textarea>
-  </div>
+
   <button type="submit">Save Transaction</button>
 </form>
+
+

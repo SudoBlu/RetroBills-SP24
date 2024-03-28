@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Transaction } from '../transaction';
-import { TransactionService } from '../services/transaction.service';
+import { Transaction } from '../transaction'; // interface
+import { TransactionService } from '../services/transaction.service'; // service
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-transaction',
@@ -9,37 +10,42 @@ import { TransactionService } from '../services/transaction.service';
 })
 export class TransactionComponent implements OnInit {
 
-  // ... (other component properties)
+  transactions: Transaction[] = [];
+  transaction: Transaction = {} as Transaction;
+
+  transactionTypes: string[] = ['Expense', 'Income'];
+  categories: string[] = ['Rent', 'Groceries', 'Salary', 'Investments'];
+
+  transactionForm!: FormGroup;
 
   constructor(private transactionService: TransactionService) { }
 
   ngOnInit(): void {
-    // ... (potential code to fetch initial transactions on load)
-  }
+    this.transactionForm = new FormGroup({
+        transactionType: new FormControl('', Validators.required),
+        amount: new FormControl(0, Validators.required), 
+        categoryName: new FormControl('', Validators.required),
+        transactionDescription: new FormControl('') 
+    });
+}
 
-  newTransaction: Transaction = {
-    // Initialize properties or leave empty if using default values
-    TransactionId: 0, // Likely backend-assigned
-    UserId: /* set user ID based on your logic */,
-    accountId: /* set account ID based on your logic */,
-    // ... other properties
-  };
-  
+  getTransactions() {
+    const userId = 1; // Retrieve the actual user ID dynamically
+    this.transactionService.getTransactionsByUser(userId)
+      .subscribe(transactions => this.transactions = transactions);
+  }
 
   onSubmit() {
-    // Call TransactionService to create a new transaction
-    this.transactionService.createTransaction(this.newTransaction)
+
+    const transactionData: Transaction = this.transactionForm.value; 
+    
+    this.transactionService.createTransaction(this.transaction)
       .subscribe(
-        (createdTransaction) => {
-          // Handle successful transaction creation (e.g., clear form, display success message)
-          console.log('Transaction created:', createdTransaction);
-          this.newTransaction = { /* reset form with defaults or desired state */ };
+        (newTransaction) => {
+            this.transactions.push(newTransaction); 
+            this.transaction = {} as Transaction; 
         },
-        (error) => {
-          // Handle errors from the service (e.g., display error message to the user)
-          console.error('Error creating transaction:', error);
-        }
+        (error) => console.error('Error creating transaction:', error) 
       );
   }
-  
 }
