@@ -25,6 +25,9 @@ export class TransactionComponent implements OnInit {
   constructor(private transactionService: TransactionService) { }
 
   ngOnInit(): void {
+
+    this.getTransactions(); //fetch all transactions
+
     this.transactionForm = new FormGroup({
         transactionType: new FormControl('', Validators.required),
         amount: new FormControl(0, Validators.required), 
