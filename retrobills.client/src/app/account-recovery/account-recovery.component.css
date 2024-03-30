@@ -1,25 +1,89 @@
+header{
+  position: absolute;
+  width: 100%;
+  height: 130px;
+  overflow: hidden;
+  background-image: linear-gradient(to right, rgb(167, 2, 167), rgb(56, 2, 96));
+  background-size: auto;
+  display: flex;
+  text-align: left;
+  color: white;
+  justify-content: space-evenly;
+  padding: auto;
+  margin: auto;
+  box-shadow: 0px 10px 10px 0px #00000080;
+}
+
+.retroBills {
+  color: #fff;
+  font-size: 96px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 60px;
+  top: 0;
+  width: 454px;
+  height: 153px;
+  flex-direction: column;
+}
+
+.bannerFrame {
+  position: absolute;
+  left: -14px;
+  right: 0;
+  top: 0;
+  height: 130px;
+  flex-direction: column;
+  align-items: flex-start;
+  background-image: linear-gradient(90deg, #9e2cacff 11%, #3b2685ff 78%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  overflow: hidden;
+  box-shadow: 0px 10px 10px 0px #00000080;
+}
+
 button{
-    color: #00D4D5;
-    background-color: #602893;
+  color: #00D4D5;
+  background-color: #602893;
+  border: 1px solid #00D4D5;
+  padding: 10px 10px;
+  margin-top: 10px;
 }
 
-a, p{
-    color: #3B2685;
+a{
+  margin-top: 10px;
+  color: #00D4D5;
+}
+p{
+    color: white;
+    margin-top: 10px;
 }
 
-h1, label{
-    color: #522E81;
+h1{
+    color: white;
 }
+
+label {
+  color: white;
+  margin-bottom: 5px;
+}
+
+
 
 header > h1{
     text-align: left;
     color: white;
 }
 
-form{
-    width: 50%;
-    margin-left: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  padding: 20px;
+  background-color: #602893;
 
-    padding: 20px;
 }
+

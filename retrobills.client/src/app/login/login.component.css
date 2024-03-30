@@ -23,6 +23,7 @@ body {
   height: 125vh;
   width: auto;
   padding-top: 20%;
+  display: flex;
   margin: 0; /* Remove default margin */
 }
 
@@ -41,8 +42,10 @@ body {
 
 .blurForBackground {
   position: absolute;
-  left: -3px;
-  top: calc(50% - -65px);
+  left: 10%;
+  top: 45%;
+  padding: auto;
+  margin: auto;
   width: 1361px;
   height: 1180px;
   overflow: visible;
@@ -78,9 +81,10 @@ body {
 }
 .rectangleBox {
   position: absolute;
-  left: calc(50% - -453px);
-  top: 65%;
-  padding-bottom:30%;
+  left: 70%;
+  top: 50%;
+  padding: auto;
+  margin: auto;
   width: 766px;
   height: 740px;
   outline: solid 5px #00d4d5;

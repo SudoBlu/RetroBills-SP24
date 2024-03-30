@@ -26,7 +26,7 @@ export class DashboardComponent {
   }
 
   OnBudgetClick(){
-    this.router.navigate(['dashboard', this.userId])
+    this.router.navigate(['budget'])
   }
 
   OnHomeClick(){
