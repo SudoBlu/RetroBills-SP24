@@ -1,95 +1,108 @@
+
 header{
+  position: relative;
   width: 100%;
-  height: 100px;
-   background: hsla(293, 59%, 42%, 1);
+  /*height: 10vh;*/
+  height: 130px;
+  overflow: hidden;
+  background-image: linear-gradient(to right, rgb(167, 2, 167), rgb(56, 2, 96));
+  background-size: auto;
+  display: flex;
+  text-align: center;
+  color: white;
+  justify-content: space-evenly;
+  padding: auto;
+  margin: auto;
+  box-shadow: 0px 10px 10px 0px #00000080;
+}
 
-   background: linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
+.hero {
+  text-align: center;
+  padding: 50px 0;
+  position: fixed; /* Change to fixed to keep the hero div at the top */
+  width: 100%; /* Make the hero div full width */
+  top: 0; /* Position the hero div at the top */
+  z-index: 1; /* Lower z-index to place the hero behind the navbar */
+  background-image: linear-gradient(to right, rgb(167, 2, 167), rgb(56, 2, 96));
 
-   background: -moz-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
+}
 
-   background: -webkit-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
+.hero h1 {
+  margin-bottom: 10px;
+}
 
-   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9E2CAC", endColorstr="#401246", GradientType=1 );
-  }
-  header ::after{
-  content: "";
-  display: table;
-  clear: both;
-  }
-  img{
-      margin:0;
-      width: 100px;
-      height: 100px;
-      float: left;
-      }
-      nav{
-          float: right;
-          }
-          nav, li{
-          padding-right: 20px;
-          padding-left:20px;
-          list-style-type:none;
-          }
-          li{
-          float:right;
-          }
-          #options{
+.hero p {
+  color: #666;
+}
 
-              width: 100%;
-  height: 100px;
-   background: hsla(293, 59%, 42%, 1);
+body {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: aliceblue;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-   background: linear-gradient(90deg, #9c2caa 0%, hsla(293, 59%, 17%, 1) 100%);
+.navbar {
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  overflow-x: hidden;
+  padding-top: 20px;
+  z-index: 2;
+  background-image: linear-gradient(rgb(167, 2, 167), rgb(56, 2, 96));
+}
 
-   background: -moz-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
+.navbar h2 {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  margin: 0; /* Remove margin to align with top of the page */
+  padding: 0 15px; /* Add padding for better readability */
+  position: absolute; /* Position at the top of the page */
+  top: 5%; /* Align with the top of the page */
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
 
-   background: -webkit-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
+.navbar a {
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
 
-   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9E2CAC", endColorstr="#401246", GradientType=1 );
-              height: 90% ;
-              width: 15%;
-              opacity: .8;
-          }
-          body{
+.navbar a:hover {
+  background-color: rgb(56, 2, 96);
+}
 
-              background-image:url("/assets/solocup2.jpg");
-              background-size:cover;
-              background-position:center;
-              }
-          #options>h2{
-              color:black;
-          }
+.navbar a.active {
+  background-color: #00d4d5;
+  color: white;
+}
 
-          .menu{
-              color:white;
-              background:purple;
-              height:6%;
-              width: 210px;
-              position: relative;
-              left: 40px;
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+}
 
-          }
-          span{
-             text-align: center;
-          }
-          table{
-              position: absolute;
-              top:20%;
-              right:20%;
-              width:60%;
-              background-color: #D3D3D3;
-
-          }
-          th{border:solid black 1.5px;}
-          th,td{
-              padding:10px;
-          }
-          .link{
-              position:relative;
-              background:none;
-              border:none;
-              color:white;
-              margin-top:10px;
-              text-align: left;
-          }
+button {
+  margin-bottom: 20px;
+}
