@@ -16,6 +16,7 @@ import { BudgetPageComponent } from './budget-page/budget-page.component';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { TransactionComponent } from './transaction/transaction.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AccountRecoveryComponent,
     AboutComponent,
     BudgetPageComponent,
+    TransactionComponent,
     
   ],
   imports: [

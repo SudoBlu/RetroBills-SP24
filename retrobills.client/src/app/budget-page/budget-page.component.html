@@ -1,47 +1,33 @@
+
 <body>
-    <header>
-        <div id="bar">
-            <img src="\assets\image.png" alt="logo">
-            <nav>
-            <ul>
-                <li> <button class="link"> sign out </button></li>
-            <li> <button class="link">  dashboard </button></li>
-            
-            </ul>
-            </nav>
-        </div>
-    
-    </header>
-    <div id="options">
-        <h2>BUDGET</h2>
-        <nav>
-            <ul>
-                <li><button class="menu"> <span>Reports</span> </button></li>
-                <li><button class="menu"> <span>accounts</span></button></li>
-                <li><button class="menu"> <span>budget</span> </button></li>
-                <li><button class="menu"> <span>Tracking</span> </button></li>
-                <li><button class="menu"> <span>Closed</span></button></li>
-            </ul>
-        </nav>
-    </div>
-    <div>
-        <table>
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Budgeted</th>
-                <th>Activity</th>
-                <th>available</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>item</td>
-                <td>item</td>
-                <td>item</td>
-                <td> item </td>
-              </tr>
-            </tbody>
-            </table>
-    </div>
+  <div class="hero">
+    <h1>Welcome to Your Budget Homepage</h1>
+    <p>Manage your finances efficiently with our budgeting tools.</p>
+  </div>
+
+  <div class="navbar">
+  <h2>BUDGET</h2>
+  <a href="#" class="active">Home</a>
+  <a href="dashboard">Dashboard</a>
+  <a href="#">Reports</a>
+  <a href="budget">Budget</a>
+  </div>
+<div>
+  <button (click)="addRow()">Add Row</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of tableData">
+        <td *ngFor="let cell of row">{{ cell }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </body>

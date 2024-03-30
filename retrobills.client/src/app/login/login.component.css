@@ -23,6 +23,7 @@ body {
   height: 125vh;
   width: auto;
   padding-top: 20%;
+  display: flex;
   margin: 0; /* Remove default margin */
 }
 
@@ -41,8 +42,10 @@ body {
 
 .blurForBackground {
   position: absolute;
-  left: -3px;
-  top: calc(50% - -65px);
+  left: 10%;
+  top: 45%;
+  padding: auto;
+  margin: auto;
   width: 1361px;
   height: 1180px;
   overflow: visible;
@@ -78,9 +81,10 @@ body {
 }
 .rectangleBox {
   position: absolute;
-  left: calc(50% - -453px);
-  top: 65%;
-  padding-bottom:30%;
+  left: 70%;
+  top: 50%;
+  padding: auto;
+  margin: auto;
   width: 766px;
   height: 740px;
   outline: solid 5px #00d4d5;
@@ -138,7 +142,7 @@ body {
   height: 40px;
 }
 .forgotPassword {
-  color: #fff;
+  color: #00d4d5;
   font-size: 20px;
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
@@ -149,6 +153,7 @@ body {
   height: 25px;
   flex-direction: column;
   transform: translate(-50%, -50%);
+  text-decoration: underline;
 }
 .passwordForm {
   position: absolute;
