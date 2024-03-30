@@ -12,22 +12,21 @@
   <a href="#">Reports</a>
   <a href="budget">Budget</a>
   </div>
-<div>
-  <button (click)="addRow()">Add Row</button>
-  <table>
-    <thead>
-      <tr>
-        <th>Column 1</th>
-        <th>Column 2</th>
-        <th>Column 3</th>
-        <th>Column 4</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of tableData">
-        <td *ngFor="let cell of row">{{ cell }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Budget</th>
+          <th>Activity</th>
+          <th>Available</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Your table rows will go here -->
+      </tbody>
+    </table>
+  </div>
+
 </body>

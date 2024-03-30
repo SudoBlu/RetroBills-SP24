@@ -8,6 +8,9 @@ import { AuthService } from '../auth/auth.service';
 })
 export class BudgetPageComponent {
   tableData: any[] = [];
+  transactions: any[] = [];
+
+
 
   addRow() {
     this.tableData.push(['', '', '', '']);
