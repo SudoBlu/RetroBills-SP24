@@ -8,3 +8,67 @@
 *{
     font-family: Jua;
 }
+
+header, footer{
+    position: relative;
+    width: 100%;
+    /*height: 10vh;*/
+    height: 130px;
+    overflow: hidden;
+    background-image: linear-gradient(90deg, #9e2cacff 11%, #3b2685ff 78%);
+    background-size: auto;
+    display: flex;
+    text-align: center;
+    color: white;
+    justify-content: space-evenly;
+    padding: auto;
+    margin: auto;
+    box-shadow: 0px 10px 10px 0px #00000080;
+}
+
+footer{
+    text-align: left;
+    vertical-align: middle;
+    height: 14vh;
+}
+
+.link-button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    outline: none;
+    color: white;
+}
+
+.logo{
+    position: absolute;
+    width: auto;
+    height: 100%;
+}
+
+.content{
+    background-image: url('../assets/assets/Homepage assets/retroWallpaper2.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: aliceblue;
+    height: 80vh;
+
+    margin: 0;
+}
+
+.box{
+    position: relative;
+    background-color: #602893;
+    width: 50%;
+    height: auto;
+    color: black;
+    text-align: center;
+
+    top: 10%;
+    left: 30%;
+    color: white;
+    text-align: center;
+}
