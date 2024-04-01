@@ -40,6 +40,7 @@ header{
   height: 153px;
   flex-direction: column;
 }
+
 body {
   background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
   background-repeat: no-repeat;

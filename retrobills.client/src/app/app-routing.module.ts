@@ -9,6 +9,8 @@ import { NgModule } from "@angular/core";
 import { AccountRecoveryComponent } from "./account-recovery/account-recovery.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BudgetPageComponent } from "./budget-page/budget-page.component";
+import { AccountCreationComponent } from './account-creation/account-creation.component';
+
 
 import { AuthGuard } from "./auth/Auth.guard";
 import { TransactionComponent } from "./transaction/transaction.component";
@@ -21,14 +23,15 @@ const routes: Routes = [
   {path: 'signup', component: SignupPage1Component },
   {path: 'recovery', component: AccountRecoveryComponent},
   {path: 'transaction', component: TransactionComponent},
+  {path: 'creation', component: AccountCreationComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
-  
+
   {path: 'budget',component: BudgetPageComponent },
   {path: 'dashboard',component: DashboardComponent},
   {path: 'dashboard/:id',component: DashboardComponent, canActivate:[AuthGuard]},
   {path: '**', component: PageNotFoundComponent},
 
-  
+
 ];
 
 
