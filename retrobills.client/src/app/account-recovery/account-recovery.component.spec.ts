@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AccountRecoveryComponent } from './account-recovery.component';
 
 describe('AccountRecoveryComponent', () => {
@@ -11,7 +10,7 @@ describe('AccountRecoveryComponent', () => {
       declarations: [AccountRecoveryComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(AccountRecoveryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
