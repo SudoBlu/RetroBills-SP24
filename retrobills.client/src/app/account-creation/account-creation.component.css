@@ -56,45 +56,56 @@ body {
   align-items: center;
   height: 100vh;
 }
-form {
+
+.box {
+  width: 600px; /* Increased width */
+  padding: 30px; /* Increased padding */
   background-image: linear-gradient(#9e2cacff, #3b2685ff);
-  padding: 20px;
+  outline: solid 5px #00d4d5;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  max-width: 100%;
+  margin: 0 auto; /* Center the box horizontally */
 }
 
-form div {
-  margin-bottom: 15px;
-}
-
-label {
+.box-title {
   color: white;
-  display: block;
+  font-size: 30px; /* Increased font size */
   font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-select, input, textarea {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
+.radio-group {
+  margin-bottom: 40px; /* Increased margin */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-button {
-  padding: 10px 20px;
+.radio-label {
+  color: white;
+  margin-right: 30px; /* Increased margin */
+  font-size: 24px; /* Increased font size */
+  padding: 15px; /* Increased padding */
+}
+
+.radio-input {
+  transform: scale(1.5); /* Increase the size of the radio button */
+  margin-right: 10px; /* Adjust spacing between the radio button and label */
+}
+
+.submit-btn {
+  padding: 15px 30px; /* Increased padding */
   background-color: #3b2685ff;
   outline: solid 3px #00d4d5;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 100%;
+  display: block;
+  margin: 0 auto; /* Center the button horizontally */
 }
 
-button:hover {
+.submit-btn:hover {
   background-color: rgb(49, 30, 117);
 }
-
