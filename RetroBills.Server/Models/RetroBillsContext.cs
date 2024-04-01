@@ -1,54 +1,119 @@
-namespace RetroBills.Server;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-public class RetroBillsContext : DbContext
+namespace RetroBills.Server.Models;
+
+public partial class RetroBillsContext : DbContext
 {
-    public DbSet<User> Users { get; set; }
-    public DbSet<Account> Accounts { get; set; }     
-    public DbSet<Transaction> Transactions { get; set; }
-    public DbSet<Category> Categories { get; set; }
-
-
-    public RetroBillsContext(DbContextOptions<RetroBillsContext> options) : base(options)
+    public RetroBillsContext()
     {
-        
     }
-    
+
+    public RetroBillsContext(DbContextOptions<RetroBillsContext> options)
+        : base(options)
+    {
+    }
+
+    public virtual DbSet<Account> Accounts { get; set; }
+
+    public virtual DbSet<Transaction> Transactions { get; set; }
+
+    public virtual DbSet<User> Users { get; set; }
+
+    public virtual DbSet<UserAccount> UserAccounts { get; set; }
+    public virtual DbSet<Budget> Budgets { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=tcp:retro-bills.database.windows.net,1433;Initial Catalog=RetroBills;Persist Security Info=False;User ID=retro-billsadmin;Password=CMPS490!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Define relationships based on the updated requirements
+        modelBuilder.Entity<Account>(entity =>
+        {
+            entity.ToTable("Account");
 
-        // A User can have many Transactions, and a Transaction belongs to one User
-        modelBuilder.Entity<User>()
-            .HasMany(u => u.Transactions)
-            .WithOne(t => t.User)
-            .HasForeignKey(t => t.UserID)
-            .OnDelete(DeleteBehavior.Cascade);
+            entity.Property(e => e.AccountId).HasColumnName("AccountID");
+            entity.Property(e => e.AccountType).HasMaxLength(50);
+            entity.Property(e => e.Balance).HasColumnType("decimal(18, 2)");
+        });
 
-        // An Account can have many Transactions, and a Transaction belongs to one Account
-        modelBuilder.Entity<Account>()
-            .HasMany(a => a.Transactions)
-            .WithOne(t => t.Account)
-            .HasForeignKey(t => t.AccountID)
-            .OnDelete(DeleteBehavior.Cascade);
+        modelBuilder.Entity<Transaction>(entity =>
+        {
+            entity.ToTable("Transaction");
 
-        // Many-to-Many relationship: User_Account junction table
-        modelBuilder.Entity<User_Account>()
-            .HasKey(ua => new { ua.UserID, ua.AccountID });
+            entity.Property(e => e.TransactionId).HasColumnName("TransactionID");
+            entity.Property(e => e.AccountId).HasColumnName("AccountID");
+            entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.CategoryName).HasMaxLength(100);
+            entity.Property(e => e.TransactionDateTime).HasColumnType("datetime");
+            entity.Property(e => e.TransactionType).HasMaxLength(100);
+            entity.Property(e => e.UserId).HasColumnName("UserID");
 
-        modelBuilder.Entity<User_Account>()
-            .HasOne(ua => ua.User)
-            .WithMany(u => u.User_Accounts)
-            .HasForeignKey(ua => ua.UserID);
+            entity.HasOne(d => d.Account).WithMany(p => p.Transactions)
+                .HasForeignKey(d => d.AccountId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Transaction_Account");
 
-        modelBuilder.Entity<User_Account>()
-            .HasOne(ua => ua.Account)
-            .WithMany(a => a.User_Accounts)
-            .HasForeignKey(ua => ua.AccountID);
+            entity.HasOne(d => d.User).WithMany(p => p.Transactions)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Transaction_User");
+        });
 
-        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.ToTable("User");
+
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.Address).HasMaxLength(200);
+            entity.Property(e => e.Email).HasMaxLength(100);
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.LastName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Password).HasMaxLength(100);
+            entity.Property(e => e.UserName).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<UserAccount>(entity =>
+        {
+            entity.HasKey(e => new { e.UserId, e.AccountId });
+            entity.ToTable("User_Account");
+
+            entity.Property(e => e.AccountId).HasColumnName("AccountID");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.Account).WithMany()
+                .HasForeignKey(d => d.AccountId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_User_Account_AccountID");
+
+            entity.HasOne(d => d.User).WithMany()
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_User_Account_UserID");
+        });
+
+        modelBuilder.Entity<Budget>(entity =>
+        {
+            entity.ToTable("Budget");
+
+            entity.Property(e => e.BudgetId).HasColumnName("BudgetID");
+            entity.Property(e => e.AccountId).HasColumnName("AccountID");
+            entity.Property(e => e.BudgetAmount).HasColumnType("decimal(18, 2)");
+
+            entity.HasOne(d => d.Account).WithMany(p => p.Budget)
+                .HasForeignKey(d => d.AccountId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Budget_Account");
+        });
+
+        OnModelCreatingPartial(modelBuilder);
     }
 
-
-
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

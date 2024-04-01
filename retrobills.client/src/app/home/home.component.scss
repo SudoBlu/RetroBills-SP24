@@ -4,7 +4,7 @@ header, footer{
     /*height: 10vh;*/
     height: 130px;
     overflow: hidden;
-    background-image: linear-gradient(to right, rgb(167, 2, 167), rgb(56, 2, 96));
+    background-image: linear-gradient(90deg, #9e2cacff 11%, #3b2685ff 78%);
     background-size: auto;
     display: flex;
     text-align: center;
@@ -20,6 +20,7 @@ footer{
     vertical-align: middle;
     height: 14vh;
 }
+
 .link-button{
     background: none;
     border: none;
@@ -49,13 +50,11 @@ footer{
 
 .box{
     position: relative;
-    background-color: rgb(1, 1, 106);
+    background-color: #602893;
     width: 50%;
     height: auto;
     color: black;
     text-align: center;
-
-    width: 60%;
 
     top: 10%;
     left: 30%;

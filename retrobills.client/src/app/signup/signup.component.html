@@ -4,49 +4,54 @@
   </div>
 </header>
 
-<div class="content">
-  <div class="rectangle"></div>
-  <div class="rectangleBtn"></div>
-  <div class="signupForFreeToday">Signup for free today</div>
-  <div class="noCreditCardRequired">No credit card required!</div>
-  <div class="username">Username</div>
-  <div class="usernameForm">
-    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-  </div>
-  <div class="lastName">Last Name</div>
-  <div class="lastNameForm">
-    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-  </div>
-  <div class="address">Address</div>
-  <div class="addressForm">
-    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-  </div>
-  <div class="email">Email</div>
-  <div class="emailForm">
-    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-  </div>
-  <div class="firstName">First Name</div>
-  <div class="firstNameForm">
-    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-  </div>
-  <div class="password">Password</div>
-  <div class="passwordForm">
-    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-  </div>
-  <div class="byCreatingAnAccountYouAgreeToT">
-    <p class="labelWrapper">
-      <span class="label">
-        By creating an account, you agree to the Rocket Bills Privacy Policy and Terms of Service;
-      </span>
-    </p>
-  </div>
-  <div class="signupForFree">Signup for Free</div>
-
-  <div class="blurForBackground">
-    <div class="retroSignupLogo"></div>
-    <div class="tryRocketBillsForFree">Try Rocket Bills for free!</div>
-    <div class="achieveYourDesiredLifestyleWit">
-    Achieve your desired lifestyle with Rocket Bills, a money management method designed to reduce financial stress.
+<body>
+  <div class="content">
+    <div class="rectangle">
+      <form [formGroup]="registrationForm" (ngSubmit)="OnSubmit()">
+        <button type="submit" class="rectangleBtn">
+          <div class="signupForFree">Signup for Free</div>
+        </button>
+        <div class="signupForFreeToday">Signup for free today</div>
+        <div class="noCreditCardRequired">No credit card required!</div>
+        <div class="username">Username</div>
+        <div class="usernameForm">
+          <input type="text" class="form-control" formControlName="UserName" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="lastName">Last Name</div>
+        <div class="lastNameForm">
+          <input type="text" class="form-control" formControlName="LastName" placeholder="" aria-label="Last Name" aria-describedby="basic-addon1">
+        </div>
+        <div class="address">Address</div>
+        <div class="addressForm">
+          <input type="text" class="form-control" formControlName="Address" placeholder="" aria-label="Address" aria-describedby="basic-addon1">
+        </div>
+        <div class="email">Email</div>
+        <div class="emailForm">
+          <input type="text" class="form-control" formControlName="email" placeholder="" aria-label="Email" aria-describedby="basic-addon1">
+        </div>
+        <div class="firstName">First Name</div>
+        <div class="firstNameForm">
+          <input type="text" class="form-control" formControlName="FirstName" placeholder="" aria-label="First Name" aria-describedby="basic-addon1">
+        </div>
+        <div class="password">Password</div>
+        <div class="passwordForm">
+          <input type="text" class="form-control" formControlName="password" placeholder="" aria-label="Password" aria-describedby="basic-addon1">
+        </div>
+        <div class="byCreatingAnAccountYouAgreeToT">
+          <p class="labelWrapper">
+            <span class="label">
+              By creating an account, you agree to the Rocket Bills Privacy Policy and Terms of Service
+            </span>
+          </p>
+        </div>
+      </form>
+    </div>
+    <div class="blurForBackground">
+      <div class="retroSignupLogo"></div>
+      <div class="tryRocketBillsForFree">Try Rocket Bills for free!</div>
+      <div class="achieveYourDesiredLifestyleWit">
+        Achieve your desired lifestyle with Rocket Bills, a money management method designed to reduce financial stress.
+      </div>
     </div>
   </div>
-</div>
+</body>
