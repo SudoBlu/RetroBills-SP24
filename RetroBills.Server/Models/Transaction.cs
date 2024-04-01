@@ -19,7 +19,7 @@ public partial class Transaction
 
     public DateTime TransactionDateTime { get; set; }
 
-    public string? TransactionDescription { get; set; }
+    public string TransactionDescription { get; set; } = null!;
 
     public virtual Account Account { get; set; } = null!;
 
