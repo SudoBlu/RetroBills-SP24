@@ -1,12 +1,17 @@
-<p>transaction works!</p>
+<header>
+  <div class="bannerFrame">
+    <div class="retroBills">Retro Bills</div>
+  </div>
+</header>
 
-<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()"> 
+<body>
+  <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="account">Account:</label>
     <select id="account" formControlName="accountId">
       <option *ngFor="let account of accounts" [value]="account.AccountId">
-        {{ account.AccountType }} - {{ account.Balance | currency }}  
-      </option> 
+        {{ account.AccountType }} - {{ account.Balance | currency }}
+      </option>
     </select>
   </div>
 
@@ -32,4 +37,5 @@
     </div>
 
     <button type="submit">Save Transaction</button>
-</form>
+  </form>
+</body>
