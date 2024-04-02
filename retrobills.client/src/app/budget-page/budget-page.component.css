@@ -1,95 +1,112 @@
-header{
-    width: 100%;
-    height: 100px;
-     background: hsla(293, 59%, 42%, 1);
-    
-     background: linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     background: -moz-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     background: -webkit-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9E2CAC", endColorstr="#401246", GradientType=1 );
-    }
-    header ::after{
-    content: "";
-    display: table;
-    clear: both;
-    }
-    img{
-        margin:0;
-        width: 100px;
-        height: 100px;
-        float: left;
-        }
-        nav{
-            float: right;
-            }
-            nav, li{
-            padding-right: 20px;
-            padding-left:20px;
-            list-style-type:none;
-            }
-            li{
-            float:right;
-            }
-            #options{
+.hero {
+  text-align: center;
+  padding: 15px 0; /* Reduced padding */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  background-image: linear-gradient(to right, rgb(167, 2, 167), rgb(56, 2, 96));
 
-                width: 100%;
-    height: 100px;
-     background: hsla(293, 59%, 42%, 1);
-    
-     background: linear-gradient(90deg, #9c2caa 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     background: -moz-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     background: -webkit-linear-gradient(90deg, hsla(293, 59%, 42%, 1) 0%, hsla(293, 59%, 17%, 1) 100%);
-    
-     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9E2CAC", endColorstr="#401246", GradientType=1 );
-                height: 90% ;
-                width: 15%;
-                opacity: .8;
-            }
-            body{
+}
 
-                background-image:url("/assets/solocup2.jpg");
-                background-size:cover;
-                background-position:center;
-                }
-            #options>h2{
-                color:black;
-            }
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  margin-bottom: 10px;
+  color:white;
+}
 
-            .menu{
-                color:white;
-                background:purple;
-                height:6%;
-                width: 210px;
-                position: relative;
-                left: 40px;
-               
-                
-            }
-            span{
-               text-align: center;
-            }
-            table{
-                position: absolute;
-                top:20%;
-                right:20%;
-                width:60%;
-                background-color: #D3D3D3;
-                
-            }
-            th{border:solid black 1.5px;}
-            th,td{
-                padding:10px;
-            }
-            .link{
-                position:relative;
-                background:none;
-                border:none;
-                color:white;
-                margin-top:10px;
-                text-align: left;
-            }
+
+
+.hero p {
+  font-size: 1.5em;
+  color: white;
+}
+
+body {
+  background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+
+.navbar {
+  width: 200px;
+  height: 100vh;
+  color: white;
+  padding-top: 20px;
+  position: fixed;
+  z-index: 2;
+  background-image: linear-gradient(rgb(167, 2, 167), rgb(56, 2, 96));
+}
+
+.navbar h2 {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  margin: 0; /* Remove margin to align with top of the page */
+  padding: 0px 15px; /* Add padding for better readability */
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  background-color: rgb(56, 2, 96);
+}
+
+.navbar a.active {
+  background-color: #00d4d5;
+  color: white;
+}
+
+
+.table-container {
+  padding-top: 5px;
+  width: 100%; /* Extend the table to the right of the page */
+  max-width: none; /* Remove the maximum width restriction */
+  margin: 0 auto;
+  margin-top: 18%; /* Add space between hero and table */
+  margin-left: 25%; /* Add space to the right of the navbar */
+  background-color: white;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  min-width: 200px; /* Set the minimum width for the columns */
+
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+

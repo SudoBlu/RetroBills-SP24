@@ -18,6 +18,7 @@ import { BudgetPageComponent } from './budget-page/budget-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReportsComponent } from './reports/reports.component';
 import { SpendChartComponent } from './reports/spend-chart/spend-chart.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SpendChartComponent } from './reports/spend-chart/spend-chart.component
     HttpClientModule,
     AppRoutingModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     provideAnimationsAsync()
