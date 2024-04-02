@@ -38,15 +38,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BudgetPageComponent,
     TransactionComponent,
     AccountCreationComponent,
-    BudgetReportComponent,
 
     ReportsComponent,
     SpendChartComponent,
 
-    
+
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserModule,

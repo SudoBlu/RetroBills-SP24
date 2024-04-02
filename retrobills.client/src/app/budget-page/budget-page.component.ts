@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth/auth.service';

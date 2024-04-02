@@ -8,7 +8,7 @@ import { Chart, registerables as registerable } from 'chart.js';
   templateUrl: './budget-report.component.html',
   styleUrl: './budget-report.component.css'
 })
-export class BudgetPageComponent {
+export class BudgetReportComponent {
   tableData: any[] = [];
   transactions: any[] = [];
   public chart: any;
