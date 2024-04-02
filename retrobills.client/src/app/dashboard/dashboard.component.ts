@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -7,9 +7,16 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
   constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) {}
-  userId = this.route.snapshot.params['userId']
+
+  private userId: number | undefined;
+  ngOnInit(): void {
+    console.log(this.route.snapshot.params)
+    this.userId = parseInt(this.route.snapshot.params['id'])
+    console.log(this.userId);
+  }
+  
   /**
    * Navigates to the login page after clicking the Log In Button
    */
@@ -22,11 +29,11 @@ export class DashboardComponent {
    * clicking the Sign Up button
    */
   OnDetailedClick(){
-    this.router.navigate(['dashboard', this.userId])
+    this.router.navigate(['reports', this.userId])
   }
 
   OnBudgetClick(){
-    this.router.navigate(['dashboard', this.userId])
+    this.router.navigate(['budget', this.userId])
   }
 
   OnHomeClick(){

@@ -9,13 +9,15 @@ import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SignupPage1Component } from './signup/signup.component';
+import { SignupPageComponent } from './signup/signup.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AccountRecoveryComponent } from './account-recovery/account-recovery.component';
 import { BudgetPageComponent } from './budget-page/budget-page.component';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReportsComponent } from './reports/reports.component';
+import { SpendChartComponent } from './reports/spend-chart/spend-chart.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     HomeComponent,
     LoginPageComponent,
-    SignupPage1Component,
+    SignupPageComponent,
     AboutComponent,
     ContactComponent,
     PageNotFoundComponent,
     AccountRecoveryComponent,
     AboutComponent,
     BudgetPageComponent,
+    ReportsComponent,
+    SpendChartComponent,
     
   ],
   imports: [

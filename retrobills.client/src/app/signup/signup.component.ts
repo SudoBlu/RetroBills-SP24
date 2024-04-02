@@ -12,7 +12,7 @@ import { UserDTO } from '../DTOs/UserDTO';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class SignupPage1Component {
+export class SignupPageComponent {
   constructor(private router: Router, private userService: UserService, private authService: AuthService) {}
 
   invalidRegister: boolean = false; //flag for invalid form
