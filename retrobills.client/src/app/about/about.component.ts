@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrl: '../home/home.component.scss'
+  styleUrl: '../about/about.component.scss'
 })
 export class AboutComponent {
   constructor(private router: Router, private route: ActivatedRoute) {}
