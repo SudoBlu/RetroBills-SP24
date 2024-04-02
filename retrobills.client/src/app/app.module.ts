@@ -18,6 +18,7 @@ import { BudgetPageComponent } from './budget-page/budget-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TransactionComponent } from './transaction/transaction.component';
 import { AccountCreationComponent } from './account-creation/account-creation.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AccountCreationComponent } from './account-creation/account-creation.co
     HttpClientModule,
     AppRoutingModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     provideAnimationsAsync()
