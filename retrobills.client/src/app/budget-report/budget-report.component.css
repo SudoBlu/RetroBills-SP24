@@ -74,39 +74,7 @@ body {
 }
 
 
-.table-container {
-  padding-top: 5px;
-  width: 100%; /* Extend the table to the right of the page */
-  max-width: none; /* Remove the maximum width restriction */
-  margin: 0 auto;
-  margin-top: 18%; /* Add space between hero and table */
-  margin-left: 25%; /* Add space to the right of the navbar */
-  background-color: white;
-}
 
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-  min-width: 200px; /* Set the minimum width for the columns */
-
-}
-
-th {
-  background-color: #f2f2f2;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-tr:hover {
-  background-color: #ddd;
-}
 
