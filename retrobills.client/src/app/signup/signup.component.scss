@@ -6,7 +6,8 @@ header {
   overflow: hidden;
   background-image: linear-gradient(to right, rgb(167, 2, 167), #380260);
   background-size: auto;
-  display: flex;
+  display: flex; /* Activate Flexbox */
+  align-items: center; 
   text-align: center;
   color: white;
   justify-content: space-evenly;
@@ -27,6 +28,7 @@ header {
   flex-direction: column;
 }
 .bannerFrame {
+  flex: 1;
   position: absolute;
   left: 0;
   right: 0;
@@ -53,6 +55,7 @@ body {
   padding-top: 5%;
   display: flex;
   justify-content: space-between; // Aligns the blurForBackground and rectangle on opposite sides
+  opacity: 0.9;
 }
 
 .blurForBackground {
@@ -62,7 +65,7 @@ body {
   width: auto;
   height: auto;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8); /* Light transparency background color */
+  // background-color: rgba(255, 255, 255, 0.8); /* Light transparency background color */
 }
 
 .retroSignupLogo {
@@ -118,14 +121,13 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100vh;
-  padding: 0 20px; // Added padding to create space from the edges
 }
 
 .rectangle {
   position: absolute; /* Position relative for absolute positioning of button */
   right: 10%; /* Adjust as needed */
   top:25%; /* Adjust as needed */
-  height:auto;
+  height:75vh;
   width: 400px;
   padding: 20px;
   border-radius: 10px;
@@ -143,11 +145,12 @@ body {
   transform: translateX(-50%);
   background-color: #007bff;
   color: white;
-  padding: -15px 5px; /* Adjusted padding */
+  padding: 5px; /* Adjusted padding */
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px; /* Adjusted font size */
+  margin-bottom: -30px;
 }
 
 .signupForFree {
