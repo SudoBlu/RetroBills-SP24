@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../transaction'; // interface
 import { TransactionService } from '../services/transaction.service'; // service
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormsModule} from '@angular/forms';
 import { Account } from '../account';
 
 @Component({

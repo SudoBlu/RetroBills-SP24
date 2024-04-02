@@ -22,6 +22,10 @@ import { BudgetReportComponent } from './budget-report/budget-report.component';
 import { ReportsComponent } from './reports/reports.component';
 import { SpendChartComponent } from './reports/spend-chart/spend-chart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms'; 
+import { RouterModule } from '@angular/router';
+
+
 
 @NgModule({
   declarations: [
@@ -50,7 +54,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     BrowserModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    RouterModule 
   ],
   providers: [
     provideAnimationsAsync()

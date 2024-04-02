@@ -1,0 +1,58 @@
+.contact-form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px; /* Set a fixed width for the form */
+  background-color: #602893;
+  border: 2px solid #00d4d5;
+  text-align: center;
+  color: white;
+  padding: 10px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-form span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px; /* Add spacing between each field */
+}
+
+.contact-form label {
+  flex: 1; /* Take up equal space */
+  text-align: right; /* Right-align the label text */
+  margin-right: 10px; /* Add some space between label and input */
+}
+
+.contact-form input, textarea {
+  flex: 2; /* Take up more space than the label */
+  width: 100%; /* Fill the available space */
+}
+
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%; 
+  border: 1px solid #ddd; 
+  border-radius: 3px;
+}
+
+/* Submit Button */
+.contact-form button[type="submit"] {
+  background-color: #00d4d5; /* Example color - match your theme */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.contact-form button[type="submit"]:hover {
+  background-color: #00b9b9; /* Slightly darker on hover */
+}
