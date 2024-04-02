@@ -22,6 +22,7 @@ public partial class RetroBillsContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserAccount> UserAccounts { get; set; }
+    public virtual DbSet<Budget> Budgets { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -80,9 +81,8 @@ public partial class RetroBillsContext : DbContext
 
         modelBuilder.Entity<UserAccount>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("User_Account");
+            entity.HasKey(e => new { e.UserId, e.AccountId });
+            entity.ToTable("User_Account");
 
             entity.Property(e => e.AccountId).HasColumnName("AccountID");
             entity.Property(e => e.UserId).HasColumnName("UserID");
@@ -96,6 +96,20 @@ public partial class RetroBillsContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_User_Account_UserID");
+        });
+
+        modelBuilder.Entity<Budget>(entity =>
+        {
+            entity.ToTable("Budget");
+
+            entity.Property(e => e.BudgetId).HasColumnName("BudgetID");
+            entity.Property(e => e.AccountId).HasColumnName("AccountID");
+            entity.Property(e => e.BudgetAmount).HasColumnType("decimal(18, 2)");
+
+            entity.HasOne(d => d.Account).WithMany(p => p.Budget)
+                .HasForeignKey(d => d.AccountId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Budget_Account");
         });
 
         OnModelCreatingPartial(modelBuilder);

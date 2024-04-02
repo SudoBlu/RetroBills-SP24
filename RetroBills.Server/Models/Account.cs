@@ -12,4 +12,5 @@ public partial class Account
     public decimal Balance { get; set; }
 
     public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
+    public virtual ICollection<Budget> Budget { get; set; } = new List<Budget>();
 }
