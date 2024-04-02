@@ -23,6 +23,8 @@ import { ReportsComponent } from './reports/reports.component';
 import { SpendChartComponent } from './reports/spend-chart/spend-chart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms'; 
+import { RouterModule } from '@angular/router';
+
 
 
 @NgModule({
@@ -54,7 +56,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    RouterModule 
   ],
   providers: [
     provideAnimationsAsync()

@@ -33,14 +33,14 @@ header, footer{
 
 .logo{
     position: relative;
-    width: auto;
-    height: 100%;
+    max-width: 100%; 
+    height:100%; 
 }
 
 footer{
     text-align: left;
     vertical-align: middle;
-    height: 14vh;
+    height: 2vh;
 }
 
 
@@ -51,8 +51,10 @@ footer{
     background-size: cover;
     background-color: aliceblue;
     height: 80vh;
+}
 
-    margin: 0;
+.box-title{
+    text-align: center;
 }
 
 .box{
@@ -60,11 +62,12 @@ footer{
     background-color: #602893;
     width: 50%;
     height: auto;
-    color: black;
-    text-align: center;
-
     top: 10%;
     left: 30%;
     color: white;
-    text-align: center;
+    text-align: left;
+    padding: 2rem;
+    opacity: .9;
+    font-size: 20px;
+    line-height: 1.8em;
 }
