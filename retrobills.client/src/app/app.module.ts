@@ -18,6 +18,7 @@ import { BudgetPageComponent } from './budget-page/budget-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TransactionComponent } from './transaction/transaction.component';
 import { AccountCreationComponent } from './account-creation/account-creation.component';
+import { BudgetReportComponent } from './budget-report/budget-report.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AccountCreationComponent } from './account-creation/account-creation.co
     BudgetPageComponent,
     TransactionComponent,
     AccountCreationComponent,
+    BudgetReportComponent,
     
   ],
   imports: [
