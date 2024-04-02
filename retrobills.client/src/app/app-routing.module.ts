@@ -10,6 +10,8 @@ import { AccountRecoveryComponent } from "./account-recovery/account-recovery.co
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BudgetPageComponent } from "./budget-page/budget-page.component";
 import { AccountCreationComponent } from './account-creation/account-creation.component';
+import { BudgetReportComponent } from './budget-report/budget-report.component';
+
 
 
 import { AuthGuard } from "./auth/Auth.guard";
@@ -25,6 +27,7 @@ const routes: Routes = [
   {path: 'recovery', component: AccountRecoveryComponent},
   {path: 'transaction', component: TransactionComponent},
   {path: 'creation', component: AccountCreationComponent},
+  {path: 'budget/report', component: BudgetReportComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
   
   {path: 'budget/:id',component: BudgetPageComponent, canActivate: [AuthGuard]},

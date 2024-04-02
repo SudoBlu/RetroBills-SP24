@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -7,17 +8,17 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './budget-page.component.html',
   styleUrl: './budget-page.component.css'
 })
-export class BudgetPageComponent implements OnInit{
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService){}
-  private userId: number | undefined;
-  ngOnInit(): void {
-    console.log(this.route.snapshot.params)
-    this.userId = parseInt(this.route.snapshot.params['id'])
-    console.log(this.userId);
+export class BudgetPageComponent {
+  tableData: any[] = [];
+  transactions: any[] = [];
+  public chart: any;
+
+
+  addRow() {
+    this.tableData.push(['', '', '', '']);
   }
-  /**
-   * Navigates to the login page after clicking the Log In Button
-   */
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) {}
+  userId = this.route.snapshot.params['userId']
   OnDashClick(){
     this.router.navigate(['dashboard', this.userId])
   }

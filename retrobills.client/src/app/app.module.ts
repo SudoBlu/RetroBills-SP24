@@ -16,6 +16,9 @@ import { BudgetPageComponent } from './budget-page/budget-page.component';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { TransactionComponent } from './transaction/transaction.component';
+import { AccountCreationComponent } from './account-creation/account-creation.component';
+import { BudgetReportComponent } from './budget-report/budget-report.component';
 import { ReportsComponent } from './reports/reports.component';
 import { SpendChartComponent } from './reports/spend-chart/spend-chart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -33,8 +36,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AccountRecoveryComponent,
     AboutComponent,
     BudgetPageComponent,
+    TransactionComponent,
+    AccountCreationComponent,
+    BudgetReportComponent,
+
     ReportsComponent,
     SpendChartComponent,
+
     
   ],
   imports: [
