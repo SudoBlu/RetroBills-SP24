@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SignupPage1Component } from './signup/signup.component';
+import { SignupPageComponent } from './signup/signup.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AccountRecoveryComponent } from './account-recovery/account-recovery.component';
 import { BudgetPageComponent } from './budget-page/budget-page.component';
@@ -19,6 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TransactionComponent } from './transaction/transaction.component';
 import { AccountCreationComponent } from './account-creation/account-creation.component';
 import { BudgetReportComponent } from './budget-report/budget-report.component';
+import { ReportsComponent } from './reports/reports.component';
+import { SpendChartComponent } from './reports/spend-chart/spend-chart.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,7 @@ import { BudgetReportComponent } from './budget-report/budget-report.component';
     DashboardComponent,
     HomeComponent,
     LoginPageComponent,
-    SignupPage1Component,
+    SignupPageComponent,
     AboutComponent,
     ContactComponent,
     PageNotFoundComponent,
@@ -36,6 +39,10 @@ import { BudgetReportComponent } from './budget-report/budget-report.component';
     TransactionComponent,
     AccountCreationComponent,
     BudgetReportComponent,
+
+    ReportsComponent,
+    SpendChartComponent,
+
     
   ],
   imports: [
@@ -43,7 +50,8 @@ import { BudgetReportComponent } from './budget-report/budget-report.component';
     HttpClientModule,
     AppRoutingModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     provideAnimationsAsync()

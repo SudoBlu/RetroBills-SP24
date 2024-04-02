@@ -1,3 +1,4 @@
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
@@ -18,28 +19,12 @@ export class BudgetPageComponent {
   }
   constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) {}
   userId = this.route.snapshot.params['userId']
+  OnDashClick(){
+    this.router.navigate(['dashboard', this.userId])
+  }
 
-   /**
-   * Navigates to the login page after clicking the Log In Button
-   */
-    OnDashClick(){
-      this.router.navigate(['dashboard', this.userId])
-    }
-
-    /**
-     * Navigates to the signup page after
-     * clicking the Sign Up button
-     */
-    OnSwitchClick(){
-      this.router.navigate(['dashboard', this.userId])
-    }
-
-    OnBudgetClick(){
-      this.router.navigate(['budget'])
-    }
-
-    OnHomeClick(){
-      this.authService.logoutUser();
-      this.router.navigate(['home'])
-    }
+  OnHomeClick(){
+    this.authService.logoutUser();
+    this.router.navigate(['home'])
+  }
 }

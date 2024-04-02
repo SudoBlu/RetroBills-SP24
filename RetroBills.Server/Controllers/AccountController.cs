@@ -37,6 +37,16 @@ namespace RetroBills.Server.Controllers
 
         }
 
+        //Getter for all accounts tied to a user
+        [HttpGet("{userID}/accounts")]
+        public async Task<IActionResult> GetAllAccountsUser(int userID)
+        {
+            var userAccounts = await _retroBillsContext.UserAccounts.Where(ua => ua.UserId == userID).Include(ua => ua.Account).Select(ua => ua.Account).ToListAsync();
+            if (userAccounts == null) 
+                return NotFound("User is not tied to an account");
+            return Ok(userAccounts);
+        }
+
         //Create an account for a user
         [HttpPost]
         public async Task<IActionResult> CreateAccountForUser(int userID, AccountDTO accountDTO)
