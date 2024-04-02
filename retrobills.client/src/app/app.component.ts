@@ -11,14 +11,16 @@ export class AppComponent  {
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
+  navIsVisible = false; 
+
+  toggleNav() {
+    this.navIsVisible = !this.navIsVisible;
+  }
+
   OnLoginClick(){
     this.router.navigate(['login'])
   }
 
-  /**
-   * Navigates to the signup page after
-   * clicking the Sign Up button
-   */
   OnSignUpClick(){
     this.router.navigate(['signup'])
   }
