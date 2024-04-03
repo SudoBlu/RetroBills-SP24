@@ -24,6 +24,7 @@ import { SpendChartComponent } from './reports/spend-chart/spend-chart.component
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms'; 
 import { RouterModule } from '@angular/router';
+import { BudgetCreationComponent } from './budget-creation/budget-creation.component';
 
 
 
@@ -45,6 +46,7 @@ import { RouterModule } from '@angular/router';
 
     ReportsComponent,
     SpendChartComponent,
+    BudgetCreationComponent,
 
 
   ],

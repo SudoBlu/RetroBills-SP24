@@ -11,6 +11,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BudgetPageComponent } from "./budget-page/budget-page.component";
 import { AccountCreationComponent } from './account-creation/account-creation.component';
 import { BudgetReportComponent } from './budget-report/budget-report.component';
+import { BudgetCreationComponent } from './budget-creation/budget-creation.component';
+
 
 
 
@@ -28,8 +30,9 @@ const routes: Routes = [
   {path: 'transaction', component: TransactionComponent},
   {path: 'creation', component: AccountCreationComponent},
   {path: 'budget/report', component: BudgetReportComponent},
+  {path: 'budget/creation', component: BudgetCreationComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
-  
+
   {path: 'budget/:id',component: BudgetPageComponent, canActivate: [AuthGuard]},
   {path: 'dashboard/:id',component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'reports/:id', component: ReportsComponent, canActivate: [AuthGuard]},
