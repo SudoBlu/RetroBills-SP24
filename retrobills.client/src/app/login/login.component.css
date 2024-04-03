@@ -162,6 +162,9 @@ body {
   cursor: pointer;
   padding-top: 20px;
 }
+.rectangleBtn:hover {
+  background-color: #00b9b9; /* Button background color */
+}
 
 .rectangleBtn p {
   font-size: 30px;
@@ -187,12 +190,6 @@ body {
   'Liberation Sans', sans-serif;
 }
 
-.keepme {
-  top: 55%;
-  left: 30%;
-  width: 400%;
-  display: flex
-}
 .keepMeLoggedIn {
   color: #fff;
   font-size: 20px;

@@ -43,10 +43,28 @@ header{
   box-shadow: 0px 10px 10px 0px #00000080;
 }
 
+.content{
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: aliceblue;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
 button{
   color: #00D4D5;
   background-color: #602893;
-  border: 1px solid #00D4D5;
+  border: 2px solid #00D4D5;
+  border-radius: 10px;
   padding: 10px 10px;
   margin-top: 10px;
 }
@@ -84,6 +102,5 @@ form {
   width: auto;
   padding: 20px;
   background-color: #602893;
-
 }
 
