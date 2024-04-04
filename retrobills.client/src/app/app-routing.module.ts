@@ -35,7 +35,7 @@ const routes: Routes = [
   {path: 'budget/:id',component: BudgetPageComponent, canActivate: [AuthGuard]},
   {path: 'budget/report/:id', component: BudgetReportComponent, canActivate: [AuthGuard]},
   {path: 'budget/creation/:id', component: BudgetCreationComponent, canActivate: [AuthGuard]},
-  {path: 'dashboard/:id',component: DashboardComponent, },
+  {path: 'dashboard/:id',component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'reports/:id', component: ReportsComponent, canActivate: [AuthGuard]},
   {path: 'transaction/:id', component: TransactionComponent, canActivate: [AuthGuard]},
   {path: 'transaction/history/:id', component: TransactionHistoryComponent, canActivate: [AuthGuard]},
