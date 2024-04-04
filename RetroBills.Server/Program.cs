@@ -11,14 +11,14 @@ builder.Services.AddSwaggerGen();
 // Add CORS services
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigins", builder =>
+    options.AddPolicy("AllowSpecificOrigin", builder =>
     {
-        builder.WithOrigins("http://localhost:4200", "http://127.0.0.1:4200",
-                            "https://localhost:4200", "https://127.0.0.1:4200") // Include HTTPS origins 
+        builder.WithOrigins("http://localhost:4200") // Replace with your Angular app's URL
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
 });
+
 // Added code to use the Database. Connection string is in appsettings.json
 builder.Services.AddDbContext<RetroBillsContext>(options =>
 {
@@ -41,7 +41,7 @@ app.UseStaticFiles();  // To serve static files (CSS, JS etc.)
 
 app.UseAuthorization();
 
-app.UseCors("AllowSpecificOrigins"); // Enable CORS 
+app.UseCors("AllowSpecificOrigin"); // Enable CORS 
 
 app.MapControllers();
 
