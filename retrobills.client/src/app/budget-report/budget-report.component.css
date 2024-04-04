@@ -1,39 +1,12 @@
-.hero {
-  text-align: center;
-  padding: 15px 0; /* Reduced padding */
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1;
-  background-image: linear-gradient(to right, rgb(167, 2, 167), rgb(56, 2, 96));
-
-}
-
-.hero h1 {
-  font-size: 3em;
-  margin-bottom: 20px;
-  margin-bottom: 10px;
-  color:white;
-}
-
-
-
-.hero p {
-  font-size: 1.5em;
-  color: white;
-}
-
 body {
-  background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
-  background-size: cover;
   margin: 0;
   padding: 0;
-  display: flex;
+  background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+  background-size: cover;
 }
-
 
 .navbar {
   width: 200px;
@@ -73,8 +46,48 @@ body {
   color: white;
 }
 
+.content {
+  display: flex;
+  flex-direction: column; /* Align items in a column */
+  margin-left: 200px; /* Adjust according to the width of the navbar */
+  padding: 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 15px 0; /* Reduced padding */
+  position: fixed;
+  width: 100%;
+  left: 10%;
+  top: 0;
+  z-index: 1;
+  background-image: linear-gradient(to right, rgb(167, 2, 167), rgb(56, 2, 96));
+
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  margin-bottom: 10px;
+  color:white;
+}
 
 
 
+.hero p {
+  font-size: 1.5em;
+  color: white;
+}
+
+
+.chart-container {
+  width: 80%; /* Set the width of the chart container */
+  max-width: 1200px; /* Optionally set a maximum width */
+  padding: 20px; /* Add some padding */
+  background-color: #fff; /* Set a background color */
+  border-radius: 10px; /* Add some border radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow */
+  margin: 200 auto; /* Center the chart container horizontally */
+}
 
 

@@ -8,25 +8,29 @@
 </header>
 
 <body>
-  <div class="content">
-    <div id="balance">
-    <p> shows actual balance</p>
-    </div>
-
-    <div id="dash">
+  <div class="transaction-list">
     <table>
-      <tr>
-        <th> Date</th>
-        <th>amount</th>
-        <th>transaction</th>
-      </tr>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2024-04-15</td>
+          <td>Payment received</td>
+          <td>$500.00</td>
+        </tr>
+        <tr>
+          <td>2024-04-14</td>
+          <td>Online purchase</td>
+          <td>-$50.00</td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
     </table>
-    </div>
-
-    <button class="add-transaction-btn" (click)="OnAddClick()">Add Transaction</button>
   </div>
 </body>
-
-
-
 
