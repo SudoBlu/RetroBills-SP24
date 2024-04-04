@@ -40,4 +40,8 @@ export class DashboardComponent implements OnInit{
     this.authService.logoutUser();
     this.router.navigate(['home'])
   }
+
+  OnAddClick(){
+    this.router.navigate(['transaction'])
+  }
 }
