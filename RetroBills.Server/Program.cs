@@ -19,7 +19,6 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod();
     });
 });
-
 // Added code to use the Database. Connection string is in appsettings.json
 builder.Services.AddDbContext<RetroBillsContext>(options =>
 {

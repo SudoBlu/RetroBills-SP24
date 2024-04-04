@@ -25,6 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms'; 
 import { RouterModule } from '@angular/router';
 import { BudgetCreationComponent } from './budget-creation/budget-creation.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 
 
 
@@ -47,6 +48,7 @@ import { BudgetCreationComponent } from './budget-creation/budget-creation.compo
     ReportsComponent,
     SpendChartComponent,
     BudgetCreationComponent,
+    TransactionHistoryComponent,
 
 
   ],

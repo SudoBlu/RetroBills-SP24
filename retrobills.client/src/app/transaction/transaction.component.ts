@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../transaction'; // interface
 import { TransactionService } from '../services/transaction.service'; // service
-import { FormGroup, FormControl, Validators, FormsModule} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Account } from '../account';
+import { Router } from '@angular/router'; // Import Router
 
 @Component({
   selector: 'app-transaction',
@@ -17,22 +18,24 @@ export class TransactionComponent implements OnInit {
   categories: string[] = ['Rent', 'Groceries', 'Salary', 'Investments'];
 
   transactionForm!: FormGroup;
+  accounts: Account[] = [];
+  selectedAccountId!: number;
 
-  // In your transaction.component.ts
-  accounts: Account[] = []; // To store fetched accounts
-  selectedAccountId!: number; // To hold the selected account's ID
-
-  constructor(private transactionService: TransactionService) { }
+  constructor(private transactionService: TransactionService,
+              private router: Router) { } // Inject Router
 
   ngOnInit(): void {
     this.transactionForm = new FormGroup({
         transactionType: new FormControl('', Validators.required),
-        amount: new FormControl(0, Validators.required), 
+        amount: new FormControl(0, Validators.required),
         categoryName: new FormControl('', Validators.required),
         transactionDescription: new FormControl(''),
         accountId: new FormControl('', Validators.required)
     });
-}
+
+    // Load accounts for the current user
+    this.getAccountsForUser(1); // Assuming user ID 1 for demo
+  }
 
   getTransactions() {
     const userId = 1; // Retrieve the actual user ID dynamically
@@ -41,23 +44,25 @@ export class TransactionComponent implements OnInit {
   }
 
   getAccountsForUser(userId: number) {
-    this.transactionService.getAccountsByUser(userId) // Assuming you have such a method 
-        .subscribe(accounts => this.accounts = accounts); 
+    this.transactionService.getAccountsByUser(userId)
+      .subscribe(accounts => this.accounts = accounts);
   }
 
   onSubmit() {
     const transactionData: Transaction = this.transactionForm.value;
-    transactionData.AccountId = this.selectedAccountId; 
+    transactionData.AccountId = this.selectedAccountId;
 
-    // Call TransactionService to create the transaction
     this.transactionService.createTransaction(transactionData)
-        .subscribe(
-            (newTransaction) => { 
-                console.log('Transaction created:', newTransaction);
-                // Optionally reset the form or display a success message
-                this.transactionForm.reset(); // Consider resetting the form
-            },
-            (error) => console.error('Error creating transaction:', error)
-        );
+      .subscribe(
+        (newTransaction) => {
+          console.log('Transaction created:', newTransaction);
+          this.transactionForm.reset(); // Reset the form after successful submission
+        },
+        (error) => console.error('Error creating transaction:', error)
+      );
+  }
+
+  OnSaveClick() {
+    this.router.navigate(['home'])
   }
 }
