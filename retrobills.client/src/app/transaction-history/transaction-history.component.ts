@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  selector: 'app-transaction-history',
+  templateUrl: './transaction-history.component.html',
+  styleUrl: './transaction-history.component.css'
 })
-export class DashboardComponent implements OnInit{
+export class TransactionHistoryComponent {
   constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) {}
 
   private userId: number | undefined;
@@ -35,12 +35,8 @@ export class DashboardComponent implements OnInit{
   OnBudgetClick(){
     this.router.navigate(['budget', this.userId])
   }
-
   OnHomeClick(){
     this.authService.logoutUser();
     this.router.navigate(['home'])
-  }
-  OnAddClick(){
-    this.router.navigate(['transaction', this.userId])
   }
 }
