@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit{
     this.userId = parseInt(this.route.snapshot.params['id'])
     console.log(this.userId);
   }
-  
+
   /**
    * Navigates to the login page after clicking the Log In Button
    */
@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit{
    * clicking the Sign Up button
    */
   OnDetailedClick(){
-    this.router.navigate(['reports', this.userId])
+    this.router.navigate(['transaction/history', this.userId])
   }
 
   OnBudgetClick(){
