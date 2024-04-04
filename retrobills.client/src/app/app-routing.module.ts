@@ -38,6 +38,7 @@ const routes: Routes = [
 
   {path: 'budget/:id',component: BudgetPageComponent, canActivate: [AuthGuard]},
   {path: 'dashboard/:id',component: DashboardComponent, canActivate:[AuthGuard]},
+  {path: 'transaction/history/:id', component: TransactionHistoryComponent, canActivate:[AuthGuard]},
   {path: 'reports/:id', component: ReportsComponent, canActivate: [AuthGuard]},
   {path: '**', component: PageNotFoundComponent}
 ];
