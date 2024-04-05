@@ -9,6 +9,10 @@
   <div class="box">
       <div class="box-title">Enter Your Budget Amount</div>
       <form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
+        <label for="accounts">Select an Account: </label>
+        <select *ngIf="accounts.length > 0" formControlName="accountID" name="accounts">
+          <option *ngFor="let account of accounts" [value]="account">{{account.accountId}}: {{account.accountType}}</option>
+        </select>
         <div class="dollar-input">
           <span>$</span>
           <input formControlName="budgetAmount" type="text" placeholder="0.00" pattern="\d+(\.\d{2})?" title="Please enter a valid dollar amount (e.g., 100.00)" required>

@@ -19,7 +19,6 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
 
 
 import { AuthGuard } from "./auth/Auth.guard";
-import { ReportsComponent } from "./reports/reports.component";
 import { TransactionComponent } from "./transaction/transaction.component";
 
 const routes: Routes = [
@@ -39,8 +38,8 @@ const routes: Routes = [
   {path: 'budget/:id',component: BudgetPageComponent, canActivate: [AuthGuard]},
   {path: 'dashboard/:id',component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'transaction/history/:id', component: TransactionHistoryComponent, canActivate:[AuthGuard]},
-  {path: 'reports/:id', component: ReportsComponent, canActivate: [AuthGuard]},
-  {path: 'budget/:id/create', component: BudgetCreationComponent},
+  {path: 'reports/:id', component: BudgetReportComponent},
+  {path: 'budget/create/:id', component: BudgetCreationComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
