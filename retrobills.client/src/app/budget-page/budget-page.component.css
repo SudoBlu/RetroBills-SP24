@@ -50,24 +50,28 @@ body {
   font-size: 24px;
   text-align: center;
   margin: 0; /* Remove margin to align with top of the page */
-  padding: 0px 15px; /* Add padding for better readability */
+  padding: 30% 15px; /* Add padding for better readability */
   width: 100%; /* Full width */
   box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .navbar a {
   text-decoration: none;
-  font-size: 16px;
+  font-size: 12 em;
   color: white;
-  display: block;
-  padding: 10px 15px;
+  display: inline-block;
+  padding-left: 5px;
+  padding-top: 26%;
+  padding-bottom: 26%;
+  padding-right: 80%;
   transition: 0.3s;
+  overflow: hidden;
 }
 
 .navbar a:hover {
   background-color: rgb(56, 2, 96);
+  width:auto;
 }
-
 .navbar a.active {
   background-color: #00d4d5;
   color: white;
