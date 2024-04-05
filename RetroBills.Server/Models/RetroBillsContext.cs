@@ -22,6 +22,7 @@ public partial class RetroBillsContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserAccount> UserAccounts { get; set; }
+
     public virtual DbSet<Budget> Budgets { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
