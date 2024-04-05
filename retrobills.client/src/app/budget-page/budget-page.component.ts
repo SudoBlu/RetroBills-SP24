@@ -26,4 +26,9 @@ export class BudgetPageComponent {
     this.authService.logoutUser();
     this.router.navigate(['home'])
   }
+
+  OnAddBudget(){
+    this.router.navigate(['budget/create', this.userId])
+  }
+
 }

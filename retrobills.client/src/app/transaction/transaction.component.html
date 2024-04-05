@@ -9,8 +9,8 @@
   <div>
     <label for="account">Account:</label>
     <select id="account" formControlName="accountId">
-      <option *ngFor="let account of accounts" [value]="account.AccountId">
-        {{ account.AccountType }} - {{ account.Balance | currency }}
+      <option *ngFor="let account of accounts" [value]="account.accountId">
+        {{ account.accountType }} - {{ account.Balance | currency }}
       </option>
     </select>
   </div>

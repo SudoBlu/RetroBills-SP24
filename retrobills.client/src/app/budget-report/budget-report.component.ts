@@ -36,7 +36,7 @@ export class BudgetReportComponent {
     }
 
     OnBudgetClick(){
-      this.router.navigate(['budget'])
+      this.router.navigate(['budget', this.userId])
     }
 
     OnHomeClick(){
@@ -44,6 +44,9 @@ export class BudgetReportComponent {
       this.router.navigate(['home'])
     }
 
+    OnAddBudget(){
+      this.router.navigate(['budget/create', this.userId])
+    }
 
   ngAfterViewInit(): void {
     this.createChart();

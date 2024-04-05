@@ -1,8 +1,8 @@
 import { Transaction } from "./transaction";
 
 export interface Account {
-    AccountId: number;
-    AccountType: string;
+    accountId: number;
+    accountType: string;
     Balance: number;
     Transactions: Transaction[];
 }
