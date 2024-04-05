@@ -50,7 +50,7 @@ body {
   font-size: 24px;
   text-align: center;
   margin: 0; /* Remove margin to align with top of the page */
-  padding: 30% 15px; /* Add padding for better readability */
+  padding: 25% 15px; /* Add padding for better readability */
   width: 100%; /* Full width */
   box-sizing: border-box; /* Include padding in width calculation */
 }
@@ -72,6 +72,7 @@ body {
   background-color: rgb(56, 2, 96);
   width:auto;
 }
+
 .navbar a.active {
   background-color: #00d4d5;
   color: white;
