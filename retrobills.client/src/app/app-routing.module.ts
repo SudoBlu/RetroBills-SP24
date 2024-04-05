@@ -40,6 +40,7 @@ const routes: Routes = [
   {path: 'dashboard/:id',component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'transaction/history/:id', component: TransactionHistoryComponent, canActivate:[AuthGuard]},
   {path: 'reports/:id', component: ReportsComponent, canActivate: [AuthGuard]},
+  {path: 'budget/:id/create', component: BudgetCreationComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
