@@ -30,7 +30,8 @@ namespace RetroBills.Server.Controllers
         [HttpGet("{accountID}")]
         public async Task<IActionResult> GetAllBudgetsForAccount(int accountID)
         {
-            var budgets = await _retroBillsContext.Budgets.FindAsync(accountID);
+            //var budgets = await _retroBillsContext.Budgets.FindAsync(accountID);
+            var budgets = _retroBillsContext.Budgets.Where(b => b.AccountId == accountID).ToArray();
             if (budgets == null)
                 return NotFound("There are no budgets set for this account");
             return Ok(budgets);
