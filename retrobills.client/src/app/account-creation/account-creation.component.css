@@ -57,7 +57,7 @@ body {
   height: 100vh;
 }
 
-.box form {
+.box {
   width: 600px; /* Increased width */
   padding: 30px; /* Increased padding */
   background-image: linear-gradient(#9e2cacff, #3b2685ff);
@@ -116,10 +116,11 @@ label{
   background-color: rgb(49, 30, 117);
 }
 
-.box form input[type="radio"] + label { 
-  color: white; 
+.radio-group{ 
+  color: white;
 }
 
-input[type="radio"]{
-  color:white;
+input.radio-input.ng-untouched.ng-pristine.ng-valid{
+  margin:20px;
 }
+

@@ -30,7 +30,8 @@ namespace RetroBills.Server.Controllers
         [HttpGet("{accountID}")]
         public async Task<IActionResult> GetAllBudgetsForAccount(int accountID)
         {
-            var budgets = await _retroBillsContext.Budgets.FindAsync(accountID);
+            //var budgets = await _retroBillsContext.Budgets.FindAsync(accountID);
+            var budgets = _retroBillsContext.Budgets.Where(b => b.AccountId == accountID).ToArray();
             if (budgets == null)
                 return NotFound("There are no budgets set for this account");
             return Ok(budgets);
@@ -38,8 +39,8 @@ namespace RetroBills.Server.Controllers
 
 
         //Create a budget
-        [HttpPost("{accountId}")]
-        public async Task<IActionResult> PostBudgetForAccount(int accountID, Budget budget)
+        [HttpPost("{accountID}")]
+        public async Task<IActionResult> CreateBudgetForAccount(int accountID, BudgetDTO budgetDTO)
         {
             var account = await _retroBillsContext.Accounts.FindAsync(accountID);
             if (account == null)
@@ -47,7 +48,12 @@ namespace RetroBills.Server.Controllers
                 return NotFound("Account not found");
             }
 
-            budget.AccountId = accountID; 
+            var budget = new Budget
+            {
+                AccountId = accountID,
+                BudgetAmount = budgetDTO.BudgetAmount
+            };
+
             _retroBillsContext.Budgets.Add(budget);
             await _retroBillsContext.SaveChangesAsync();
 
@@ -56,7 +62,7 @@ namespace RetroBills.Server.Controllers
 
 
         //Edit a budget
-        [HttpPut("{accountId}")]
+        [HttpPut("{accountID}")]
         public async Task<IActionResult> EditBudgetForAccount(int accountID, int budgetID, BudgetDTO budgetDTO)
         {
             var existingBudget = await _retroBillsContext.Budgets.FindAsync(budgetID);
