@@ -19,6 +19,7 @@ export class BudgetCreationComponent {
 
   private userId: number | undefined;
   public accounts: Account[] = [];
+  public invalidCreate: boolean = false;
 
   ngOnInit(): void {
     console.log(this.route.snapshot.params)
@@ -36,30 +37,36 @@ export class BudgetCreationComponent {
   })
 
   async onSubmit(){
-    console.log(this.accounts);
-    let accountID = this.budgetForm.value.accountID;
-    let budgetAmount = this.budgetForm.value.budgetAmount;
+      this.invalidCreate = false;
+      console.log(this.accounts);
+      let accountID = this.budgetForm.value.accountID;
+      let budgetAmount = this.budgetForm.value.budgetAmount;
 
-    console.log(`AccountID: ${accountID} BudgetAmount: $${budgetAmount}`)
-
-    const budgetDTO: BudgetDTO = {
-      BudgetAmount: budgetAmount!
+      if(this.checkFormValidity(accountID!, budgetAmount!)){
+        this.invalidCreate = true;
+        console.log(`AccountID: ${accountID} BudgetAmount: $${budgetAmount}`)
+  
+        const budgetDTO: BudgetDTO = {
+          BudgetAmount: budgetAmount!
+        }
+    
+        const budgetId = await this.checkForBudgets(accountID!);
+    
+        if(budgetId == 0){
+          console.log(`Creating budget...`)
+          this.budgetService.createBudget(accountID!, budgetDTO).subscribe(() => {
+            this.router.navigate(['budget', this.userId])
+          })
+        }else{
+          console.log(`Editing budget with ID: ${budgetId}`)
+          this.budgetService.updateBudget(accountID!, budgetDTO).subscribe(() => {
+            this.router.navigate(['budget', this.userId])
+          })
+        }
+      }else{
+        this.invalidCreate = false;
+      }
     }
-
-    const budgetId = await this.checkForBudgets(accountID!);
-
-    if(budgetId == 0){
-      console.log(`Creating budget...`)
-      this.budgetService.createBudget(accountID!, budgetDTO).subscribe(() => {
-        this.router.navigate(['budget', this.userId])
-      })
-    }else{
-      console.log(`Editing budget with ID: ${budgetId}`)
-      this.budgetService.updateBudget(accountID!, budgetDTO).subscribe(() => {
-        this.router.navigate(['budget', this.userId])
-      })
-    }
-  }
 
   checkForBudgets(accountID: number): Promise<number>{
     return new Promise<number>((resolve, reject) => {
@@ -80,5 +87,13 @@ export class BudgetCreationComponent {
 
       subscription.add(() => console.log('Subscription added'))
     })
+  }
+
+  checkFormValidity(accountId: number, budgetAmount: number){
+    if(accountId === 0 || budgetAmount === 0){
+      console.log('Form invalid')
+      return false;
+    }
+    return true;
   }
 }
