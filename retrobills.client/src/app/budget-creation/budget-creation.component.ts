@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../services/account.service';
 import { Account } from '../account';
 import { Observable, map } from 'rxjs';
+import { resolve } from '@angular/compiler-cli';
 
 @Component({
   selector: 'app-budget-creation',
@@ -34,7 +35,7 @@ export class BudgetCreationComponent {
     budgetAmount: new FormControl(0, [Validators.required])
   })
 
-  onSubmit(){
+  async onSubmit(){
     console.log(this.accounts);
     let accountID = this.budgetForm.value.accountID;
     let budgetAmount = this.budgetForm.value.budgetAmount;
@@ -45,8 +46,39 @@ export class BudgetCreationComponent {
       BudgetAmount: budgetAmount!
     }
 
-    this.budgetService.createBudget(accountID!, budgetDTO).subscribe(response => {
-      this.router.navigate(['budget', this.userId])
+    const budgetId = await this.checkForBudgets(accountID!);
+
+    if(budgetId == 0){
+      console.log(`Creating budget...`)
+      this.budgetService.createBudget(accountID!, budgetDTO).subscribe(() => {
+        this.router.navigate(['budget', this.userId])
+      })
+    }else{
+      console.log(`Editing budget with ID: ${budgetId}`)
+      this.budgetService.updateBudget(accountID!, budgetDTO).subscribe(() => {
+        this.router.navigate(['budget', this.userId])
+      })
+    }
+  }
+
+  checkForBudgets(accountID: number): Promise<number>{
+    return new Promise<number>((resolve, reject) => {
+      const subscription = this.budgetService.getBudget(accountID).subscribe(response => {
+        console.log(response);
+        console.log(response.budgetId)
+        if(response.budgetId !== 0){
+          resolve(response.budgetId);
+          subscription.unsubscribe()
+        }else{
+          resolve(0)
+          subscription.unsubscribe()
+        }
+      }, error => {
+        reject(error)
+        subscription.unsubscribe()
+      });
+
+      subscription.add(() => console.log('Subscription added'))
     })
   }
 }
