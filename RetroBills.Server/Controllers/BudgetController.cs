@@ -30,8 +30,7 @@ namespace RetroBills.Server.Controllers
         [HttpGet("{accountID}")]
         public async Task<IActionResult> GetAllBudgetsForAccount(int accountID)
         {
-            //var budgets = await _retroBillsContext.Budgets.FindAsync(accountID);
-            var budgets = _retroBillsContext.Budgets.Where(b => b.AccountId == accountID).ToArray();
+            var budgets = await _retroBillsContext.Budgets.FirstOrDefaultAsync(b => b.AccountId == accountID);
             if (budgets == null)
                 return NotFound("There are no budgets set for this account");
             return Ok(budgets);
@@ -46,6 +45,12 @@ namespace RetroBills.Server.Controllers
             if (account == null)
             {
                 return NotFound("Account not found");
+            }
+
+            var budgetCheck = await _retroBillsContext.Budgets.FirstOrDefaultAsync(b => b.AccountId == accountID);
+            if (budgetCheck != null)
+            {
+                return Conflict("Budget is already created for this account, try updating budget instead");
             }
 
             var budget = new Budget
@@ -63,19 +68,13 @@ namespace RetroBills.Server.Controllers
 
         //Edit a budget
         [HttpPut("{accountID}")]
-        public async Task<IActionResult> EditBudgetForAccount(int accountID, int budgetID, BudgetDTO budgetDTO)
+        public async Task<IActionResult> EditBudgetForAccount(int accountID, BudgetDTO budgetDTO)
         {
-            var existingBudget = await _retroBillsContext.Budgets.FindAsync(budgetID);
+            var existingBudget = await _retroBillsContext.Budgets.FirstOrDefaultAsync(b => b.AccountId==accountID);
             if (existingBudget == null)
                 return NotFound("No budget found");
-            //Create a new account
-            var budget = new Budget
-            {
-                BudgetAmount = budgetDTO.BudgetAmount
-            };
-
-            //Add the account to the context
-            _retroBillsContext.Budgets.Add(budget);
+            
+            existingBudget.BudgetAmount = budgetDTO.BudgetAmount;
             await _retroBillsContext.SaveChangesAsync();
             return Ok();
 
