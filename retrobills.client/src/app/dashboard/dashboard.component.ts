@@ -1,49 +1,46 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-import { AccountService } from '../services/account.service';
-import { TransactionService } from '../services/transaction.service';
 import { Account } from '../account';
 import { Transaction } from '../transaction';
+import { AccountService } from '../services/account.service';
+import { TransactionService } from '../services/transaction.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit {
 
   accounts: Account[] = [];
-  selectedAccount: Account | null = null; // Track the selected account
+  selectedAccount!: Account;
   transactions: Transaction[] = [];
-
-  constructor(private router: Router, 
-    private route: ActivatedRoute, 
-    private authService: AuthService,
-    private accountService: AccountService,
-    private transactionService: TransactionService) {}
 
   private userId!: number;
 
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private accountService: AccountService,
+    private transactionService: TransactionService
+  ) {}
+
   ngOnInit(): void {
-    // Fetch route parameters
     this.route.params.subscribe(params => {
-      //console.log(params); // Check if 'id' parameter is present
       this.userId = parseInt(params['id']);
       if (isNaN(this.userId)) {
         console.error('Invalid user ID:', params['id']);
       } else {
         console.log('User ID:', this.userId);
-        // Fetch accounts for the logged-in user when the component initializes
         this.fetchAccountsForUser();
       }
     });
   }
-  
 
   fetchAccountsForUser(): void {
-    const userId = this.userId;
-    this.accountService.getAccountsForUser(userId).subscribe(
+    this.accountService.getAccountsForUser(this.userId).subscribe(
       (accounts: Account[]) => {
         this.accounts = accounts;
         if (this.accounts.length > 0) {
@@ -58,9 +55,7 @@ export class DashboardComponent implements OnInit{
   }
 
   switchAccount(account: Account): void {
-    //console.log("hitting switch account");
     this.selectedAccount = account;
-    // Call method to fetch transactions for the selected account
     this.fetchTransactionsForSelectedAccount();
   }
 
@@ -70,9 +65,13 @@ export class DashboardComponent implements OnInit{
       this.transactionService.getTransactionsByAccount(accountId).subscribe(
         (transactions: Transaction[]) => {
           this.selectedAccount!.transactions = transactions;
-          console.log("selected account: ", this.selectedAccount)
-          //console.log("Balance : ", this.selectedAccount?.transactions)
-          console.log("Transactions for selected account: ", this.selectedAccount?.transactions);
+          console.log("Selected account:", this.selectedAccount);
+          console.log("Transactions for selected account:", this.selectedAccount?.transactions);
+          if (this.selectedAccount?.transactions && this.selectedAccount.transactions.length > 0) {
+            console.log("Transactions exist.");
+          } else {
+            console.log("No transactions found.");
+          }
         },
         (error) => {
           console.error('Error fetching transactions:', error);
@@ -81,24 +80,24 @@ export class DashboardComponent implements OnInit{
     }
   }
 
-  OnDashClick(){
+  OnDashClick(): void {
     this.router.navigate(['dashboard', this.userId])
   }
 
-  OnDetailedClick(){
+  OnDetailedClick(): void {
     this.router.navigate(['transaction/history', this.userId])
   }
 
-  OnBudgetClick(){
+  OnBudgetClick(): void {
     this.router.navigate(['budget', this.userId])
   }
 
-  OnHomeClick(){
+  OnHomeClick(): void {
     this.authService.logoutUser();
     this.router.navigate(['home'])
   }
 
-  OnAddClick(accountId: number) {
+  OnAddClick(accountId: number): void {
     this.router.navigate(['/transaction', accountId]);
   }
 }
