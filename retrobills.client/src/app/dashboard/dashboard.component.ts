@@ -2,7 +2,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { AccountService } from '../services/account.service';
+import { TransactionService } from '../services/transaction.service';
 import { Account } from '../account';
+import { Transaction } from '../transaction';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,11 +15,13 @@ export class DashboardComponent implements OnInit{
 
   accounts: Account[] = [];
   selectedAccount: Account | null = null; // Track the selected account
+  transactions: Transaction[] = [];
 
   constructor(private router: Router, 
     private route: ActivatedRoute, 
     private authService: AuthService,
-    private accountService: AccountService) {}
+    private accountService: AccountService,
+    private transactionService: TransactionService) {}
 
   private userId!: number;
 
@@ -38,14 +42,12 @@ export class DashboardComponent implements OnInit{
   
 
   fetchAccountsForUser(): void {
-    const userId = this.userId; // Replace with actual user ID or fetch it dynamically
+    const userId = this.userId;
     this.accountService.getAccountsForUser(userId).subscribe(
       (accounts: Account[]) => {
         this.accounts = accounts;
-        // Assume the first account is selected by default
         if (this.accounts.length > 0) {
           this.selectedAccount = this.accounts[0];
-          // Call method to fetch transactions for the selected account
           this.fetchTransactionsForSelectedAccount();
         }
       },
@@ -65,17 +67,12 @@ export class DashboardComponent implements OnInit{
   fetchTransactionsForSelectedAccount(): void {
     if (this.selectedAccount) {
       const accountId = this.selectedAccount.accountId;
-      this.accountService.getAccountById(accountId).subscribe(
-        (account: Account) => {
-          console.log('Account:', account);
-        // Check if transactions array exists and is not empty
-        if (account.Transactions && account.Transactions.length > 0) {
-          // If transactions exist, update selected account with fetched data
-          this.selectedAccount!.Transactions = account.Transactions;
-          console.log('Transactions for selected account:', this.selectedAccount!.Transactions);
-        } else {
-          console.log('No transactions found for selected account');
-        }
+      this.transactionService.getTransactionsByAccount(accountId).subscribe(
+        (transactions: Transaction[]) => {
+          this.selectedAccount!.Transactions = transactions;
+          console.log("selected account: ", this.selectedAccount)
+          //console.log("Balance : ", this.selectedAccount?.transactions)
+          console.log("Transactions for selected account: ", this.selectedAccount?.Transactions);
         },
         (error) => {
           console.error('Error fetching transactions:', error);
@@ -101,7 +98,7 @@ export class DashboardComponent implements OnInit{
     this.router.navigate(['home'])
   }
 
-  OnAddClick(){
-    this.router.navigate(['transaction'])
+  OnAddClick(accountId: number) {
+    this.router.navigate(['/transaction', accountId]);
   }
 }

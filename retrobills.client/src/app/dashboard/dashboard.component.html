@@ -21,21 +21,30 @@
     </div>
 
     <div id="dash">
-      <table>
+      <table *ngIf="selectedAccount && selectedAccount.Transactions">
         <tr>
           <th>Date</th>
           <th>Amount</th>
           <th>Transaction</th>
         </tr>
         <!-- Display transactions from selected account -->
-        <tr *ngFor="let transaction of selectedAccount?.Transactions">
-          <td>{{ transaction.TransactionDateTime }}</td>
-          <td>{{ transaction.Amount }}</td>
-          <td>{{ transaction.TransactionDescription }}</td>
-        </tr>
+        <ng-container *ngFor="let transaction of selectedAccount.Transactions">
+          <tr>
+            <td>{{ transaction.TransactionDateTime }}</td>
+            <td>{{ transaction.Amount }}</td>
+            <td>{{ transaction.TransactionDescription }}</td>
+          </tr>
+        </ng-container>
       </table>
+      <div *ngIf="selectedAccount ">
+        SelectedAccount exist
+      </div>
+      <div *ngIf="selectedAccount?.Transactions">
+        No transactions found.
+      </div>
     </div>
+    
 
-    <button class="add-transaction-btn" (click)="OnAddClick()">Add Transaction</button>
+    <button class="add-transaction-btn" (click)="OnAddClick(selectedAccount!.accountId)">Add Transaction</button>
   </div>
 </body>
