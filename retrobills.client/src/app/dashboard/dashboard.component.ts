@@ -69,10 +69,10 @@ export class DashboardComponent implements OnInit{
       const accountId = this.selectedAccount.accountId;
       this.transactionService.getTransactionsByAccount(accountId).subscribe(
         (transactions: Transaction[]) => {
-          this.selectedAccount!.Transactions = transactions;
+          this.selectedAccount!.transactions = transactions;
           console.log("selected account: ", this.selectedAccount)
           //console.log("Balance : ", this.selectedAccount?.transactions)
-          console.log("Transactions for selected account: ", this.selectedAccount?.Transactions);
+          console.log("Transactions for selected account: ", this.selectedAccount?.transactions);
         },
         (error) => {
           console.error('Error fetching transactions:', error);
