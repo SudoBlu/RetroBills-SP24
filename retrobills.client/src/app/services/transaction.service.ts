@@ -65,7 +65,7 @@ export class TransactionService {
 
   // Update an existing transaction
   updateTransaction(transaction: Transaction): Observable<Transaction> {
-    return this.http.put<Transaction>(`${this.transactionUrl}/${transaction.TransactionId}`, transaction)
+    return this.http.put<Transaction>(`${this.transactionUrl}/${transaction.transactionId}`, transaction)
       .pipe(
         catchError(error => {
           // Handle errors updating a transaction

@@ -30,9 +30,9 @@
         <!-- Display transactions from selected account -->
         <ng-container *ngFor="let transaction of selectedAccount.transactions">
           <tr>
-            <td>{{ transaction.TransactionDateTime }}</td>
-            <td>{{ transaction.Amount }}</td>
-            <td>{{ transaction.TransactionDescription }}</td>
+            <td>{{ transaction.transactionDateTime }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.transactionDescription }}</td>
           </tr>
         </ng-container>
       </table>      

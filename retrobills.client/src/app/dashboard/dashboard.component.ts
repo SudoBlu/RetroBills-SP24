@@ -66,8 +66,8 @@ export class DashboardComponent implements OnInit {
         (transactions: Transaction[]) => {
           this.selectedAccount!.transactions = transactions;
           console.log("Selected account:", this.selectedAccount);
-          console.log("Transactions for selected account:", this.selectedAccount?.transactions);
-          if (this.selectedAccount?.transactions && this.selectedAccount.transactions.length > 0) {
+          console.log("Transactions for selected account:", this.selectedAccount!.transactions);
+          if (this.selectedAccount!.transactions && this.selectedAccount.transactions.length > 0) {
             console.log("Transactions exist.");
           } else {
             console.log("No transactions found.");
