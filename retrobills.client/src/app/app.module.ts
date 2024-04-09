@@ -44,6 +44,7 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
     BudgetPageComponent,
     TransactionComponent,
     AccountCreationComponent,
+    BudgetReportComponent,
 
     ReportsComponent,
     SpendChartComponent,
