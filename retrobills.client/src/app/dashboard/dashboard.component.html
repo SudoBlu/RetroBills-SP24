@@ -17,7 +17,7 @@
 <body>
   <div class="content">
     <div id="balance">
-      <p>Shows actual balance</p>
+      <p>Actual Balance: {{ selectedAccount?.balance }}</p>
     </div>
 
     <div id="dash">
@@ -25,7 +25,7 @@
         <tr>
           <th>Date</th>
           <th>Amount</th>
-          <th>Transaction</th>
+          <th>Transaction Description</th>
         </tr>
         <!-- Display transactions from selected account -->
         <ng-container *ngFor="let transaction of selectedAccount.transactions">
@@ -35,13 +35,7 @@
             <td>{{ transaction.transactionDescription }}</td>
           </tr>
         </ng-container>
-      </table>      
-      <div *ngIf="selectedAccount ">
-        SelectedAccount exist
-      </div>
-      <div *ngIf="selectedAccount?.transactions">
-        No transactions found.
-      </div>
+      </table>
     </div>
     
 
