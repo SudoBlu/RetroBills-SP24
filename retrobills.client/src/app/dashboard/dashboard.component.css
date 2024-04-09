@@ -36,7 +36,6 @@ header {
   border-radius: 5px;
   cursor: pointer;
 }
-
 .add-transaction-btn:hover {
   background-color: rgb(42, 24, 109);
 }
