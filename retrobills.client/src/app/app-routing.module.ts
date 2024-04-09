@@ -35,9 +35,9 @@ const routes: Routes = [
   {path: 'transaction/history', component: TransactionHistoryComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
 
-  {path: 'budget/:id',component: BudgetPageComponent, canActivate: [AuthGuard]},
-  {path: 'dashboard/:id',component: DashboardComponent, canActivate:[AuthGuard]},
-  {path: 'transaction/history/:id', component: TransactionHistoryComponent, canActivate:[AuthGuard]},
+  {path: 'budget/:userId/:accountId',component: BudgetPageComponent},
+  {path: 'dashboard/:id',component: DashboardComponent},
+  {path: 'transaction/history/:id', component: TransactionHistoryComponent},
   {path: 'reports/:id', component: BudgetReportComponent},
   {path: 'budget/create/:id', component: BudgetCreationComponent},
   {path: '**', component: PageNotFoundComponent}

@@ -7,6 +7,8 @@ import { EMPTY, of } from 'rxjs';
 import { Budget } from '../interfaces/budget';
 import { TransactionService } from '../services/transaction.service';
 import { Transaction } from '../transaction';
+import { Account } from '../account';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-budget-page',
@@ -14,23 +16,31 @@ import { Transaction } from '../transaction';
   styleUrl: './budget-report.component.css'
 })
 export class BudgetReportComponent implements OnInit{
-  tableData: number[] = [0, 0, 0, 0, 0, 0, 0];
+  tableData: number[] = [0, 0, 0, 0];
   transactions: Transaction[] = [];
   public chart: any;
+  public account: Account = {
+    accountId: 0,
+    accountType: '',
+    balance: 0,
+    transactions: []
+  };
 
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private budgetService: BudgetsService, private transactionService: TransactionService) {Chart.register(...registerable)}
-  private budget: any;
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private budgetService: BudgetsService, private transactionService: TransactionService, private accountService: AccountService) {Chart.register(...registerable)}
+  
 
   async ngOnInit(): Promise<void> {
-    let accountID: number = 12;
-    console.log(`Retrieving budget from accountId: ${accountID}`)
-    this.budget = this.checkForBudget(accountID);
-    console.log(this.budget)
-    let testData = await this.getTransactionData(accountID);
-    console.log(testData);
-    this.updateTableData(testData)
+    this.account = await this.getAccount(this.accountId)
+    let budget: Budget
+    console.log(`Retrieving budget from accountId: ${this.accountId}`)
+    budget = await this.checkForBudget(this.accountId);
+    let testData = await this.getTransactionData(this.accountId);
+    this.updateTableData(testData, budget.budgetAmount)
+    this.createChart();
   }
   userId = this.route.snapshot.params['userId']
+  accountId = this.route.snapshot.params['accountId']
+
 
    /**
    * Navigates to the login page after clicking the Log In Button
@@ -60,10 +70,6 @@ export class BudgetReportComponent implements OnInit{
       this.router.navigate(['budget/create', this.userId])
     }
 
-  ngAfterViewInit(): void {
-    this.createChart();
-  }
-
   ngOnDestroy(): void {
     if(this.chart){
         this.chart.destroy();
@@ -80,11 +86,11 @@ export class BudgetReportComponent implements OnInit{
     this.chart = new Chart(canvas, {
       type: 'pie', //this denotes the type of chart
       data: { //values on the x-axis
-        labels: ['Food', 'Groceries', 'Entertainment', 'Utilities', 'Transportation', 'Other', 'Unspent'],
+        labels: ['Rent', 'Groceries', 'Other Expense', 'Unspent'],
         datasets: [{
-          label: 'Percentage spent',
-          data: [10, 10, 10, 10, 5, 5, 50],
-          backgroundColor: ['red', 'pink', 'green', 'yellow', 'orange', 'blue', 'gray'],
+          label: 'Amount',
+          data: this.tableData,
+          backgroundColor: ['Red', 'Blue', 'Yellow', 'Gray'],
           hoverOffset: 36
         }],
       },
@@ -109,8 +115,6 @@ export class BudgetReportComponent implements OnInit{
   getTransactionData(accountID: number): Promise<Transaction[]>{
     return new Promise<Transaction[]>((resolve, reject) => {
       const subscription = this.transactionService.getTransactionsByAccount(accountID).subscribe(response => {
-        console.log(response);
-        console.log(response[0]);
         resolve(response);
         subscription.unsubscribe();
       }, error => {
@@ -120,34 +124,37 @@ export class BudgetReportComponent implements OnInit{
     })
   }
 
-  updateTableData(transactions: Transaction[]){
+  updateTableData(transactions: Transaction[], budgetAmount: number){
     let totalAmount = 0;
+    let unspent = 0;
     transactions.forEach(transaction => {
-      console.log(transaction);
       totalAmount += transaction.amount;
-      console.log(totalAmount)
-      switch(transaction.CategoryName){
-        case 'food':
+      switch(transaction.categoryName){
+        case 'Rent':
           this.tableData[0] += transaction.amount;
           break;
-        case 'groceries':
+        case 'Groceries':
           this.tableData[1] += transaction.amount;
           break;
-        case 'entertainment':
+        case 'Other Expense':
           this.tableData[2] += transaction.amount;
           break;
-        case 'utilities':
-          this.tableData[3] += transaction.amount;
-          break;
-        case 'transportation':
-          this.tableData[4] += transaction.amount;
-          break;
         default:
-          this.tableData[5] += transaction.amount;
           break;
       }
     });
-    this.tableData[6] = totalAmount;
-    console.log(this.tableData);
+    unspent = budgetAmount - totalAmount;
+    if(unspent < 0) unspent = 0;
+    this.tableData[3] = unspent;
+  }
+
+  getAccount(accountId: number){
+    return new Promise<Account>((resolve, reject) => {
+      const subscription = this.accountService.getAccountById(accountId).subscribe(response => {
+        resolve(response);
+      }, error => {
+        reject(error);
+      })
+    })
   }
 }

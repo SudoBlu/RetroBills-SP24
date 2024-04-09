@@ -46,7 +46,7 @@ export class BudgetsService{
             const fakeBudget: Budget = {
               budgetId: 0,
               AccountId: 0,
-              BudgetAmount: 0,
+              budgetAmount: 0,
               Account: {
                 accountId: 0,
                 accountType: '',
