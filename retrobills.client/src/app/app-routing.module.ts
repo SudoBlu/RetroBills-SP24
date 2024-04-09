@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent },
   {path: 'signup', component: SignupPageComponent },
   {path: 'recovery', component: AccountRecoveryComponent},
-  {path: 'transaction', component: TransactionComponent},
+  { path: 'transaction/:accountId', component: TransactionComponent },
   {path: 'createaccount/:userId', component: AccountCreationComponent},
   {path: 'budget/report/:userId/:accountId', component: BudgetReportComponent},
   {path: 'budget/creation', component: BudgetCreationComponent},

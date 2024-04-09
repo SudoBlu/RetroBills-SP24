@@ -2,14 +2,14 @@ import { Account } from "./account";
 import { User } from "./user";
 
 export interface Transaction {
-    TransactionId: number;
-    UserId: number;
-    AccountId: number;
-    TransactionType: string;
-    CategoryName: string;
+    transactionId: number;
+    userId: number;
+    accountId: number;
+    transactionType: string;
+    categoryName: string;
     amount: number;
-    TransactionDateTime: Date;
-    TransactionDescription?: string;
+    transactionDateTime: Date;
+    transactionDescription?: string;
     Account: Account;
     User: User
 }
