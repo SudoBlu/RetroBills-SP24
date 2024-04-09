@@ -22,7 +22,7 @@ import { BudgetReportComponent } from './budget-report/budget-report.component';
 import { ReportsComponent } from './reports/reports.component';
 import { SpendChartComponent } from './reports/spend-chart/spend-chart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BudgetCreationComponent } from './budget-creation/budget-creation.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
@@ -49,6 +49,7 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
     SpendChartComponent,
     BudgetCreationComponent,
     TransactionHistoryComponent,
+    BudgetReportComponent
 
 
   ],
@@ -60,7 +61,7 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
     ReactiveFormsModule,
     FontAwesomeModule,
     FormsModule,
-    RouterModule 
+    RouterModule
   ],
   providers: [
     provideAnimationsAsync()
