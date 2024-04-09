@@ -31,15 +31,14 @@ const routes: Routes = [
   { path: 'transaction/:accountId', component: TransactionComponent },
   {path: 'createaccount/:userId', component: AccountCreationComponent},
   {path: 'budget/report/:userId/:accountId', component: BudgetReportComponent},
-  {path: 'budget/creation', component: BudgetCreationComponent},
+  {path: 'budget/creation/:userId', component: BudgetCreationComponent},
   {path: 'transaction/history', component: TransactionHistoryComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
 
-  {path: 'budget/:userId/:accountId',component: BudgetPageComponent},
+  {path: 'budget/:userId',component: BudgetPageComponent},
   {path: 'dashboard/:id',component: DashboardComponent},
   {path: 'transaction/history/:id', component: TransactionHistoryComponent},
-  {path: 'reports/:id', component: BudgetReportComponent},
-  {path: 'budget/create/:id', component: BudgetCreationComponent},
+  {path: 'report', component: BudgetReportComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

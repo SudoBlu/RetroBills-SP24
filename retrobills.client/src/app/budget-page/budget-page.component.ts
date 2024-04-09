@@ -19,22 +19,22 @@ export class BudgetPageComponent implements OnInit{
     balance: 0,
     transactions: []
   };
-  
+
   async ngOnInit(): Promise<void> {
     this.account = await this.getAccount(this.accountId)
   }
   OnDashClick(){
     console.log(this.userId)
-    this.router.navigate(['dashboard', this.userId])
+    this.router.navigate(['dashboard/:userId'])
   }
 
-  OnHomeClick(){
+  OnReportClick(){
     this.authService.logoutUser();
-    this.router.navigate(['home'])
+    this.router.navigate(['report'])
   }
 
   OnAddBudget(){
-    this.router.navigate(['budget/create', this.userId])
+    this.router.navigate(['budget/creation/:userId'])
   }
 
   getAccount(accountId: number){

@@ -1,7 +1,7 @@
 <body>
   <div class="navbar">
     <h2>{{account.accountId}}: {{account.accountType}}</h2>
-    <a href="budget/report" class="active">Report</a>
+    <a (click)="OnReportClick()" class="active">Report</a>
     <a (click)="OnBudgetClick()">Budget</a>
     <a (click)="OnDashClick()">Dashboard</a>
     <a (click)="OnAddBudget()">Add Budget</a>

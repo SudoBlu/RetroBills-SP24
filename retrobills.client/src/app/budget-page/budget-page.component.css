@@ -71,6 +71,7 @@ body {
 .navbar a:hover {
   background-color: rgb(56, 2, 96);
   width:auto;
+  cursor: pointer;
 }
 
 .navbar a.active {

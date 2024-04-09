@@ -27,7 +27,7 @@ export class BudgetReportComponent implements OnInit{
   };
 
   constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private budgetService: BudgetsService, private transactionService: TransactionService, private accountService: AccountService) {Chart.register(...registerable)}
-  
+
 
   async ngOnInit(): Promise<void> {
     this.account = await this.getAccount(this.accountId)
@@ -49,25 +49,16 @@ export class BudgetReportComponent implements OnInit{
       this.router.navigate(['dashboard', this.userId])
     }
 
-    /**
-     * Navigates to the signup page after
-     * clicking the Sign Up button
-     */
-    OnSwitchClick(){
-      this.router.navigate(['dashboard', this.userId])
-    }
-
     OnBudgetClick(){
-      this.router.navigate(['budget', this.userId])
+      this.router.navigate(['budget'])
     }
 
-    OnHomeClick(){
-      this.authService.logoutUser();
-      this.router.navigate(['home'])
+    OnReportClick(){
+      this.router.navigate(['report'])
     }
 
     OnAddBudget(){
-      this.router.navigate(['budget/create', this.userId])
+      this.router.navigate(['budget/creation/:userId'])
     }
 
   ngOnDestroy(): void {
