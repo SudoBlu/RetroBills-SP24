@@ -15,7 +15,7 @@ export class TransactionComponent implements OnInit {
   transaction: Transaction = {} as Transaction;
 
   transactionTypes: string[] = ['Expense', 'Income'];
-  categories: string[] = ['Rent', 'Groceries', 'Salary', 'Investments'];
+  categories: string[] = ['Rent', 'Groceries', 'Salary', 'Investments', 'Other Expense', 'Other Income'];
 
   transactionForm!: FormGroup;
   accounts: Account[] = [];

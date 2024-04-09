@@ -3,6 +3,6 @@ import { Account } from "../account";
 export interface Budget{
     budgetId: number;
     AccountId: number;
-    BudgetAmount: number;
+    budgetAmount: number;
     Account: Account;
 }

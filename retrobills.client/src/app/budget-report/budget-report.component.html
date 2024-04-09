@@ -1,10 +1,10 @@
 <body>
   <div class="navbar">
-    <h2>Account Name</h2>
+    <h2>{{account.accountId}}: {{account.accountType}}</h2>
     <a href="budget/report" class="active">Report</a>
     <a (click)="OnBudgetClick()">Budget</a>
-    <a href="dashboard">Dashboard</a>
-    <a (click)="OnAddBudget()">Add  Budget</a>
+    <a (click)="OnDashClick()">Dashboard</a>
+    <a (click)="OnAddBudget()">Add Budget</a>
   </div>
   <div class="content">
     <div class="hero">
@@ -13,6 +13,7 @@
     </div>
     <div class="container">
       <div class="chart-container">
+        <span class="labelHelp">Click a category from the legend to filter out a specific category</span>
         <!-- Chart content goes here -->
       </div>
     </div>

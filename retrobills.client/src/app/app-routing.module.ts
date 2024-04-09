@@ -30,14 +30,14 @@ const routes: Routes = [
   {path: 'recovery', component: AccountRecoveryComponent},
   { path: 'transaction/:accountId', component: TransactionComponent },
   {path: 'createaccount/:userId', component: AccountCreationComponent},
-  {path: 'budget/report', component: BudgetReportComponent},
+  {path: 'budget/report/:userId/:accountId', component: BudgetReportComponent},
   {path: 'budget/creation', component: BudgetCreationComponent},
   {path: 'transaction/history', component: TransactionHistoryComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
 
-  {path: 'budget/:id',component: BudgetPageComponent, canActivate: [AuthGuard]},
-  {path: 'dashboard/:id',component: DashboardComponent, canActivate:[AuthGuard]},
-  {path: 'transaction/history/:id', component: TransactionHistoryComponent, canActivate:[AuthGuard]},
+  {path: 'budget/:userId/:accountId',component: BudgetPageComponent},
+  {path: 'dashboard/:id',component: DashboardComponent},
+  {path: 'transaction/history/:id', component: TransactionHistoryComponent},
   {path: 'reports/:id', component: BudgetReportComponent},
   {path: 'budget/create/:id', component: BudgetCreationComponent},
   {path: '**', component: PageNotFoundComponent}
