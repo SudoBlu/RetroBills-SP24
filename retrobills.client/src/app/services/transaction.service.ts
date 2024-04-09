@@ -10,7 +10,7 @@ import { Account } from '../account';
   providedIn: 'root'
 })
 export class TransactionService {
-  private baseUrl = 'https://localhost:7201/';
+  private baseUrl = 'https://localhost:7201';
   private transactionUrl = 'https://localhost:7201/api/Transaction'; // Replace with your base transaction API URL
 
   constructor(private http: HttpClient) { }
@@ -65,7 +65,7 @@ export class TransactionService {
 
   // Update an existing transaction
   updateTransaction(transaction: Transaction): Observable<Transaction> {
-    return this.http.put<Transaction>(`${this.transactionUrl}/${transaction.TransactionId}`, transaction)
+    return this.http.put<Transaction>(`${this.transactionUrl}/${transaction.transactionId}`, transaction)
       .pipe(
         catchError(error => {
           // Handle errors updating a transaction
@@ -88,14 +88,15 @@ export class TransactionService {
   }
 
   // Get all accounts for a specific user
- getAccountsByUser(userId: number): Observable<Account[]> {
-  return this.http.get<Account[]>(`${this.baseUrl}/account/user/${userId}`) // Adjust the URL
-      .pipe(
-        catchError(error => {
-          console.error('Error getting accounts by user:', error);
-          return throwError(() => new Error(error));
-        })
-      );
+getAccountsByUser(userId: number): Observable<Account[]> {
+  return this.http.get<Account[]>(`${this.baseUrl}/api/Account/${userId}/accounts`)
+    .pipe(
+      catchError(error => {
+        console.error('Error getting accounts by user:', error);
+        return throwError(() => new Error(error));
+      })
+    );
 }
+
 
 }

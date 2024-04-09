@@ -3,7 +3,7 @@ import { Transaction } from '../transaction'; // interface
 import { TransactionService } from '../services/transaction.service'; // service
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Account } from '../account';
-import { Router } from '@angular/router'; // Import Router
+import { Router, ActivatedRoute } from '@angular/router'; // Import Router
 
 @Component({
   selector: 'app-transaction',
@@ -15,14 +15,15 @@ export class TransactionComponent implements OnInit {
   transaction: Transaction = {} as Transaction;
 
   transactionTypes: string[] = ['Expense', 'Income'];
-  categories: string[] = ['Rent', 'Groceries', 'Salary', 'Investments'];
+  categories: string[] = ['Rent', 'Groceries', 'Salary', 'Investments', 'Other Expense', 'Other Income'];
 
   transactionForm!: FormGroup;
   accounts: Account[] = [];
   selectedAccountId!: number;
 
   constructor(private transactionService: TransactionService,
-              private router: Router) { } // Inject Router
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.transactionForm = new FormGroup({
@@ -34,7 +35,11 @@ export class TransactionComponent implements OnInit {
     });
 
     // Load accounts for the current user
-    this.getAccountsForUser(1); // Assuming user ID 1 for demo
+    this.route.params.subscribe(params => {
+      const userId = 1; // Assuming user ID 1 for demo
+      this.getAccountsForUser(userId);
+      this.selectedAccountId = +params['accountId']; // Get account ID from URL
+    });
   }
 
   getTransactions() {
@@ -45,12 +50,24 @@ export class TransactionComponent implements OnInit {
 
   getAccountsForUser(userId: number) {
     this.transactionService.getAccountsByUser(userId)
-      .subscribe(accounts => this.accounts = accounts);
+      .subscribe(accounts => {
+        this.accounts = accounts;
+        console.log("This.accounts : ", this.accounts);
+        console.log("accounts : ", accounts);
+        // Select the account based on the URL parameter
+        console.log("Selected Account Id : ", this.selectedAccountId)
+        if (this.selectedAccountId) {
+          const selectedAccount = this.accounts.find(account => account.accountId === this.selectedAccountId);
+          console.log ("const selected Account : ", selectedAccount)
+          if (selectedAccount) {
+            this.transactionForm.patchValue({ accountId: selectedAccount.accountId });
+          }
+        }
+      });
   }
 
   onSubmit() {
     const transactionData: Transaction = this.transactionForm.value;
-    transactionData.AccountId = this.selectedAccountId;
 
     this.transactionService.createTransaction(transactionData)
       .subscribe(

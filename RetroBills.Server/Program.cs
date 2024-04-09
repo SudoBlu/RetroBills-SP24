@@ -1,10 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using RetroBills.Server.Models; // Adjust to match your namespace
+using RetroBills.Server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.IgnoreNullValues = true;
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

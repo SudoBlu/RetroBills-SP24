@@ -1,32 +1,44 @@
 <header>
   <img src="../../assets/assets/Homepage assets/retro_Money__1_RemovebgPreview.png" alt="Retro Bills Logo"/>
-  <button class="link-button"(click)="OnDashClick()">Dashboard</button>
-  <button class="link-button" (click)="OnDetailedClick()">Detailed Transaction History
-  </button>
+  <button class="link-button" (click)="OnDashClick()">Dashboard</button>
+  <button class="link-button" (click)="OnDetailedClick()">Detailed Transaction History</button>
   <button class="link-button" (click)="OnBudgetClick()">Budget</button>
-  <button class="link-button"(click)="OnHomeClick()">Log Out</button>
+  <button class="link-button" (click)="OnHomeClick()">Log Out</button>
+
+  <!-- Add dropdown button -->
+  <div class="dropdown">
+    <button class="dropbtn">Switch Account</button>
+    <div class="dropdown-content">
+      <button *ngFor="let account of accounts" (click)="switchAccount(account)">{{ account.accountId }}</button>
+    </div>
+  </div>
 </header>
 
 <body>
   <div class="content">
     <div id="balance">
-    <p> shows actual balance</p>
+      <p>Actual Balance: {{ selectedAccount?.balance }}</p>
     </div>
 
     <div id="dash">
-    <table>
-      <tr>
-        <th> Date</th>
-        <th>amount</th>
-        <th>transaction</th>
-      </tr>
-    </table>
+      <table *ngIf="selectedAccount && selectedAccount.transactions">
+        <tr>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Transaction Description</th>
+        </tr>
+        <!-- Display transactions from selected account -->
+        <ng-container *ngFor="let transaction of selectedAccount.transactions">
+          <tr>
+            <td>{{ transaction.transactionDateTime }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.transactionDescription }}</td>
+          </tr>
+        </ng-container>
+      </table>
     </div>
+    
 
-    <button class="add-transaction-btn" (click)="OnAddClick()">Add Transaction</button>
+    <button class="add-transaction-btn" (click)="OnAddClick(selectedAccount!.accountId)">Add Transaction</button>
   </div>
 </body>
-
-
-
-
