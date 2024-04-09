@@ -2,7 +2,7 @@
     <!-- Desktop -->
     <img class="Logo" src="../../assets/assets/Homepage assets/retro_Money__1_RemovebgPreview.png" alt="Retro Bills Logo" />
 
-    <button class="link-button"(click)="OnHomeClicked()">Home</button>
+    <button id="active" class="link-button"(click)="OnHomeClicked()">Home</button>
     <button class="link-button" (click)="OnAboutClicked()">About
     </button>
     <button class="link-button" (click)="OnContactClicked()">Contact Us
@@ -14,10 +14,28 @@
 </header>
 
 <div class="content">
-    <div class="box">
-        <h2>It's who we are</h2>
-        <p>This is the content of the home page</p>
-    </div>
+  <div class="welcome">
+      <h1>Welcome to Your Financial Wellness</h1>
+      <p>Take control of your financial future with our app. Track your spending, set savings goals, and learn valuable financial tips.</p>
+      <a href="signup" class="btn">Get Started</a>
+  </div>
+  <div class="features">
+      <div class="feature">
+          <img src="../../assets/assets/Homepage assets/tracking-removebg-preview.png" alt="Track Spending Icon">
+          <h2>Track Spending</h2>
+          <p>Monitor your expenses and see where your money goes each month. Stay on top of your budget effortlessly.</p>
+      </div>
+      <div class="feature">
+          <img src="../../assets/assets/Homepage assets/goals-removebg-preview.png" alt="Set Goals Icon">
+          <h2>Set Savings Goals</h2>
+          <p>Set realistic savings goals and track your progress. Achieve your financial dreams faster.</p>
+      </div>
+      <div class="feature">
+          <img src="../../assets/assets/Homepage assets/reports-removebg-preview.png" alt="Financial Tips Icon">
+          <h2>Spending Analysis</h2>
+          <p>Breakdown of spending by category (e.g., groceries, dining out, entertainment) to identify areas for potential savings.</p>
+      </div>
+  </div>
 </div>
 <footer>
     <img class="Logo" src="../../assets/assets/Homepage assets/retro_Money__1_RemovebgPreview.png" alt="">
