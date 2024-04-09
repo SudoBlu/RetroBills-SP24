@@ -44,8 +44,8 @@ export class BudgetsService{
               Account: {
                 accountId: 0,
                 accountType: '',
-                Balance: 0,
-                Transactions: []
+                balance: 0,
+                transactions: []
               }
             }
             return of(fakeBudget);

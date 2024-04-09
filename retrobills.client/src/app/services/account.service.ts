@@ -8,7 +8,7 @@ import { Account } from '../account';
   providedIn: 'root'
 })
 export class AccountService {
-  private apiBaseUrl = 'https://localhost:7201/api/Account';  // Replace with your actual API URL
+  private apiBaseUrl = 'https://localhost:7201/api/Account';
 
   constructor(private http: HttpClient) { }
 
