@@ -1,23 +1,35 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Chart, registerables as registerable } from 'chart.js';
+import { BudgetsService } from '../services/budgets.service';
+import { EMPTY, of } from 'rxjs';
+import { Budget } from '../interfaces/budget';
+import { TransactionService } from '../services/transaction.service';
+import { Transaction } from '../transaction';
 
 @Component({
   selector: 'app-budget-page',
   templateUrl: './budget-report.component.html',
   styleUrl: './budget-report.component.css'
 })
-export class BudgetReportComponent {
-  tableData: any[] = [];
-  transactions: any[] = [];
+export class BudgetReportComponent implements OnInit{
+  tableData: number[] = [0, 0, 0, 0, 0, 0, 0];
+  transactions: Transaction[] = [];
   public chart: any;
 
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private budgetService: BudgetsService, private transactionService: TransactionService) {Chart.register(...registerable)}
+  private budget: any;
 
-  addRow() {
-    this.tableData.push(['', '', '', '']);
+  async ngOnInit(): Promise<void> {
+    let accountID: number = 12;
+    console.log(`Retrieving budget from accountId: ${accountID}`)
+    this.budget = this.checkForBudget(accountID);
+    console.log(this.budget)
+    let testData = await this.getTransactionData(accountID);
+    console.log(testData);
+    this.updateTableData(testData)
   }
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) {Chart.register(...registerable)}
   userId = this.route.snapshot.params['userId']
 
    /**
@@ -68,15 +80,74 @@ export class BudgetReportComponent {
     this.chart = new Chart(canvas, {
       type: 'pie', //this denotes the type of chart
       data: { //values on the x-axis
-        labels: ['Food', 'Groceries', 'Entertainment', 'Utilities', 'Transportation', 'Unspent'],
+        labels: ['Food', 'Groceries', 'Entertainment', 'Utilities', 'Transportation', 'Other', 'Unspent'],
         datasets: [{
           label: 'Percentage spent',
-          data: [25, 25, 10, 25, 5, 10],
-          backgroundColor: ['red', 'pink', 'green', 'yellow', 'orange', 'blue'],
+          data: [10, 10, 10, 10, 5, 5, 50],
+          backgroundColor: ['red', 'pink', 'green', 'yellow', 'orange', 'blue', 'gray'],
           hoverOffset: 36
         }],
       },
       options: {aspectRatio: 2.5}
     })
+  }
+
+  checkForBudget(accountID: number): Promise<Budget>{
+    return new Promise<Budget>((resolve, reject) => {
+      const subscription = this.budgetService.getBudget(accountID).subscribe(response => {
+        console.log(response);
+        console.log(response.budgetId);
+        resolve(response);
+        subscription.unsubscribe();
+      }, error => {
+        reject(error);
+        subscription.unsubscribe();
+      })
+    })
+  }
+
+  getTransactionData(accountID: number): Promise<Transaction[]>{
+    return new Promise<Transaction[]>((resolve, reject) => {
+      const subscription = this.transactionService.getTransactionsByAccount(accountID).subscribe(response => {
+        console.log(response);
+        console.log(response[0]);
+        resolve(response);
+        subscription.unsubscribe();
+      }, error => {
+        reject(error);
+        subscription.unsubscribe();
+      })
+    })
+  }
+
+  updateTableData(transactions: Transaction[]){
+    let totalAmount = 0;
+    transactions.forEach(transaction => {
+      console.log(transaction);
+      totalAmount += transaction.amount;
+      console.log(totalAmount)
+      switch(transaction.CategoryName){
+        case 'food':
+          this.tableData[0] += transaction.amount;
+          break;
+        case 'groceries':
+          this.tableData[1] += transaction.amount;
+          break;
+        case 'entertainment':
+          this.tableData[2] += transaction.amount;
+          break;
+        case 'utilities':
+          this.tableData[3] += transaction.amount;
+          break;
+        case 'transportation':
+          this.tableData[4] += transaction.amount;
+          break;
+        default:
+          this.tableData[5] += transaction.amount;
+          break;
+      }
+    });
+    this.tableData[6] = totalAmount;
+    console.log(this.tableData);
   }
 }

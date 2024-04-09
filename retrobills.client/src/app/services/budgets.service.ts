@@ -11,6 +11,12 @@ export class BudgetsService{
     constructor(private http: HttpClient){}
     private budgetURL = 'https://localhost:7201/api/Budget'
 
+    /**
+     * 
+     * @param accountId 
+     * @param budgetDTO 
+     * @returns 
+     */
     createBudget(accountId: number, budgetDTO: BudgetDTO){
         return this.http.post<Budget>(`${this.budgetURL}/${accountId}`, budgetDTO).pipe(
         catchError(error => {

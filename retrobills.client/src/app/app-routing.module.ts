@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'recovery', component: AccountRecoveryComponent},
   {path: 'transaction', component: TransactionComponent},
   {path: 'createaccount/:userId', component: AccountCreationComponent},
-  {path: 'budget/report', component: BudgetReportComponent},
+  {path: 'budget/report/:userId/:accountId', component: BudgetReportComponent},
   {path: 'budget/creation', component: BudgetCreationComponent},
   {path: 'transaction/history', component: TransactionHistoryComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
