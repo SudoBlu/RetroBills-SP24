@@ -37,6 +37,10 @@ export class BudgetPageComponent implements OnInit{
     this.router.navigate(['budget/create', this.userId])
   }
 
+  OnReportsClick(){
+    this.router.navigate(['budget/report', this.userId, this.accountId])
+  }
+
   getAccount(accountId: number){
     return new Promise<Account>((resolve, reject) => {
       const subscription = this.accountService.getAccountById(accountId).subscribe(response => {
