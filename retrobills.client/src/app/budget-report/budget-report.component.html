@@ -1,11 +1,13 @@
 <body>
   <div class="navbar">
     <h2>{{account.accountId}}: {{account.accountType}}</h2>
-    <a href="budget/report" class="active">Report</a>
+    
     <a (click)="OnBudgetClick()">Budget</a>
+    <a class="active">Report</a>
     <a (click)="OnDashClick()">Dashboard</a>
     <a (click)="OnAddBudget()">Add Budget</a>
   </div>
+  
   <div class="content">
     <div class="hero">
       <h1>Budget Report</h1>

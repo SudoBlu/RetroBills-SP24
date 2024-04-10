@@ -58,7 +58,7 @@ export class BudgetReportComponent implements OnInit{
     }
 
     OnBudgetClick(){
-      this.router.navigate(['budget', this.userId])
+      this.router.navigate(['budget', this.userId, this.accountId])
     }
 
     OnHomeClick(){
