@@ -3,6 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Account } from '../account';
 import { AccountService } from '../services/account.service';
+import { Transaction } from '../transaction';
+import { TransactionService } from '../services/transaction.service';
+import { Budget } from '../interfaces/budget';
+import { BudgetsService } from '../services/budgets.service';
+import { BudgetTable } from '../budget-table';
 
 @Component({
   selector: 'app-budget-page',
@@ -10,7 +15,7 @@ import { AccountService } from '../services/account.service';
   styleUrl: './budget-page.component.css'
 })
 export class BudgetPageComponent implements OnInit{
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private accountService: AccountService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private accountService: AccountService, private budgetService: BudgetsService, private transactionService: TransactionService) {}
   userId = this.route.snapshot.params['userId']
   accountId = this.route.snapshot.params['accountId']
   public account: Account = {
@@ -19,10 +24,28 @@ export class BudgetPageComponent implements OnInit{
     balance: 0,
     transactions: []
   };
+
+  public budget: Budget = {
+    budgetId: 0,
+    budgetAmount: 0,
+    AccountId: 0,
+    Account: this.account
+  }
+
+  public remainingAmount: number = 0;
+  public transactions: Transaction[] = [];
+  public spendingTransactions: Transaction[] = []
+  public budgetTableItems: BudgetTable[] = []
   
   async ngOnInit(): Promise<void> {
-    this.account = await this.getAccount(this.accountId)
+    this.account = await this.getAccount(this.accountId);
+    this.transactions = await this.getTransactionsForAccount(this.accountId);
+    this.budget = await this.getBudget(this.accountId);
+    this.remainingAmount = this.budget.budgetAmount;
+    this.spendingTransactions = this.filterSpendingTransactions(this.transactions)
+    this.createBudgetTableItems();
   }
+
   OnDashClick(){
     console.log(this.userId)
     this.router.navigate(['dashboard', this.userId])
@@ -45,9 +68,55 @@ export class BudgetPageComponent implements OnInit{
     return new Promise<Account>((resolve, reject) => {
       const subscription = this.accountService.getAccountById(accountId).subscribe(response => {
         resolve(response);
+        subscription.unsubscribe();
       }, error => {
         reject(error);
+        subscription.unsubscribe();
       })
     })
+  }
+
+  getBudget(accountId: number){
+    return new Promise<Budget>((resolve, reject) => {
+      const subscription = this.budgetService.getBudget(accountId).subscribe
+      (response => {
+        resolve(response);
+        subscription.unsubscribe();
+      }, error => {
+        reject(error);
+        subscription.unsubscribe();
+      })
+    })
+  }
+
+  getTransactionsForAccount(accountId: number){
+    return new Promise<Transaction[]>((resolve, reject) => {
+      const subscription = this.transactionService.getTransactionsByAccount(accountId).subscribe
+      (response => {
+        resolve(response);
+        subscription.unsubscribe();
+      }, error => {
+        reject(error);
+        subscription.unsubscribe();
+      })
+    })
+  }
+
+  filterSpendingTransactions(accountTransactions: Transaction[]){
+    return accountTransactions.filter(x => x.transactionType == 'Expense')
+  }
+
+  createBudgetTableItems(){
+    let remaining = this.budget.budgetAmount;
+    this.spendingTransactions.forEach(transaction => {
+      remaining = remaining - transaction.amount;
+      let object: BudgetTable = {
+        categoryName: transaction.categoryName,
+        transactionAmount: transaction.amount,
+        remainingBudget: remaining
+      }
+      this.budgetTableItems.push(object);
+    })
+    this.remainingAmount = remaining;
   }
 }
