@@ -28,7 +28,7 @@
   </div>
 
   <div id="dash">
-    <span class="noAccount" *ngIf="!selectedAccount">No account created. Create one now!</span>
+    <span class="noAccount" *ngIf="!selectedAccount">No account created. <a (click)="OnAccountClick()" class="link-button">Create one now!</a></span>
     <table *ngIf="selectedAccount && selectedAccount.transactions">
       <tr>
         <th>Date</th>
