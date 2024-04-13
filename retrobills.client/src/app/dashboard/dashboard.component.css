@@ -52,6 +52,23 @@ header {
   background-color: rgb(42, 24, 109);
 }
 
+.add-account-btn {
+  margin: 5% auto; /* Center the button horizontally */
+  display: block; /* Ensure the button is displayed as a block element */
+  padding: 10px 20px;
+  background-color: #3b2685ff;
+  outline: solid 3px #00d4d5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-account-btn:hover {
+  background-color: rgb(42, 24, 109);
+}
+
+
 .link-button {
   position: relative;
   display: inline-block;

@@ -13,8 +13,10 @@ export class AccountCreationComponent implements OnInit{
   accounts: Account[] = [];
   selectedAccountType: string = 'Checking';
 
-  constructor(private accountService: AccountService,
-    private route: ActivatedRoute) {}
+  constructor(
+    private accountService: AccountService,
+    private route: ActivatedRoute,
+    private router: Router) {}
 
     ngOnInit() {
       // Retrieve userId from the route
@@ -47,5 +49,5 @@ export class AccountCreationComponent implements OnInit{
         () => { console.log('Account created successfully!'); /* Handle success */ },
         error => { console.error('Account creation error:', error); /* Handle errors */ }
       );  
-    }  
+    }
 }

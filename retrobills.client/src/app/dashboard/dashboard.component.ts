@@ -13,8 +13,8 @@ import { TransactionService } from '../services/transaction.service';
 })
 export class DashboardComponent implements OnInit {
 
-  accounts: Account[] = [];
   selectedAccount!: Account;
+  accounts: Account[] = [];
   transactions: Transaction[] = [];
 
   private userId!: number;
@@ -99,5 +99,14 @@ export class DashboardComponent implements OnInit {
 
   OnAddClick(accountId: number): void {
     this.router.navigate(['/transaction', accountId]);
+  }
+
+  // Function to navigate to AccountCreationComponent and create a new account
+  OnAddAccountClick() {
+    if (this.userId) {
+      this.router.navigate(['/createaccount', this.userId]);
+    } else {
+      console.error('User ID not found.');
+    }
   }
 }
