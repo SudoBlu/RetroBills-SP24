@@ -89,7 +89,7 @@ export class DashboardComponent implements OnInit {
   }
 
   OnBudgetClick(): void {
-    this.router.navigate(['budget', this.userId])
+    this.router.navigate(['budget', this.userId, this.selectedAccount.accountId])
   }
 
   OnHomeClick(): void {
@@ -99,5 +99,9 @@ export class DashboardComponent implements OnInit {
 
   OnAddClick(accountId: number): void {
     this.router.navigate(['/transaction', accountId]);
+  }
+
+  OnAccountClick(){
+    this.router.navigate(['/createaccount', this.userId])
   }
 }

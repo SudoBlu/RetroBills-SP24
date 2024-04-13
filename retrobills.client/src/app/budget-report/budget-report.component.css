@@ -86,7 +86,7 @@ body {
 }
 
 
-.chart-container {
+.chart-container, .bar-chart-container {
   width: 80%; /* Set the width of the chart container */
   max-width: 1200px; /* Optionally set a maximum width */
   padding: 20px; /* Add some padding */

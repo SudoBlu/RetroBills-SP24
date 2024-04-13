@@ -19,6 +19,7 @@ export class BudgetReportComponent implements OnInit{
   tableData: number[] = [0, 0, 0, 0];
   transactions: Transaction[] = [];
   public chart: any;
+  public barChart: any;
   public account: Account = {
     accountId: 0,
     accountType: '',
@@ -27,7 +28,7 @@ export class BudgetReportComponent implements OnInit{
   };
 
   constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private budgetService: BudgetsService, private transactionService: TransactionService, private accountService: AccountService) {Chart.register(...registerable)}
-
+  
 
   async ngOnInit(): Promise<void> {
     this.account = await this.getAccount(this.accountId)
@@ -37,6 +38,7 @@ export class BudgetReportComponent implements OnInit{
     let testData = await this.getTransactionData(this.accountId);
     this.updateTableData(testData, budget.budgetAmount)
     this.createChart();
+    this.createBarChart();
   }
   userId = this.route.snapshot.params['userId']
   accountId = this.route.snapshot.params['accountId']
@@ -49,16 +51,25 @@ export class BudgetReportComponent implements OnInit{
       this.router.navigate(['dashboard', this.userId])
     }
 
-    OnBudgetClick(){
-      this.router.navigate(['budget'])
+    /**
+     * Navigates to the signup page after
+     * clicking the Sign Up button
+     */
+    OnSwitchClick(){
+      this.router.navigate(['dashboard', this.userId])
     }
 
-    OnReportClick(){
-      this.router.navigate(['report'])
+    OnBudgetClick(){
+      this.router.navigate(['budget', this.userId, this.accountId])
+    }
+
+    OnHomeClick(){
+      this.authService.logoutUser();
+      this.router.navigate(['home'])
     }
 
     OnAddBudget(){
-      this.router.navigate(['budget/creation/:userId'])
+      this.router.navigate(['budget/create', this.userId])
     }
 
   ngOnDestroy(): void {
@@ -75,7 +86,7 @@ export class BudgetReportComponent implements OnInit{
     document.querySelector('.chart-container')?.appendChild(canvas);
 
     this.chart = new Chart(canvas, {
-      type: 'pie', //this denotes the type of chart
+      type: 'pie', //this denotes the type of chart,
       data: { //values on the x-axis
         labels: ['Rent', 'Groceries', 'Other Expense', 'Unspent'],
         datasets: [{
@@ -85,8 +96,69 @@ export class BudgetReportComponent implements OnInit{
           hoverOffset: 36
         }],
       },
-      options: {aspectRatio: 2.5}
+      options: {
+        aspectRatio: 2.5,
+      }
     })
+  }
+
+  createBarChart(){
+    const canvas: HTMLCanvasElement = document.createElement('canvas');
+    canvas.id = 'myBarChart';
+    canvas.width = 200;
+    canvas.height = 200;
+    document.querySelector('.bar-chart-container')?.appendChild(canvas);
+
+    this.barChart = new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels: ['Rent', 'Groceries', 'Other Expense'],
+        datasets: [{
+          label: 'Amount Spent',
+          data: this.tableData,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+          ],
+          borderColor: [
+            'rgb(255, 99, 132)',
+            'rgb(255, 205, 86)',
+            'rgb(54, 162, 235)',
+          ],
+          borderWidth: 1
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          //disables the legend (don't need it in this case)
+          display: false,
+        }
+      },
+      scales: {
+        y: {
+          ticks: {
+            //adds $ to each tick mark
+            callback: function(value, index, ticks){return '$' + value}
+          },
+          title: {
+            //adds label to y axis
+            display: true,
+            text: 'Amount Spent ($)'
+          }
+        },
+
+        x: {
+          title: {
+            //adds label to x axis
+            display: true,
+            text: 'Transaction Category'
+          }
+        }
+      }
+    }
+  })
   }
 
   checkForBudget(accountID: number): Promise<Budget>{
