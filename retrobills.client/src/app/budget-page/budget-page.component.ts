@@ -57,7 +57,8 @@ export class BudgetPageComponent implements OnInit{
   }
 
   OnAddBudget(){
-    this.router.navigate(['budget/create', this.userId])
+    console.log('Adding budget...')
+    this.router.navigate(['createbudget', this.userId, this.accountId])
   }
 
   OnReportsClick(){
@@ -80,6 +81,7 @@ export class BudgetPageComponent implements OnInit{
     return new Promise<Budget>((resolve, reject) => {
       const subscription = this.budgetService.getBudget(accountId).subscribe
       (response => {
+        console.log(response);
         resolve(response);
         subscription.unsubscribe();
       }, error => {

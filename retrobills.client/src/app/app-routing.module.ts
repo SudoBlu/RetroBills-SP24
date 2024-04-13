@@ -13,11 +13,6 @@ import { AccountCreationComponent } from './account-creation/account-creation.co
 import { BudgetReportComponent } from './budget-report/budget-report.component';
 import { BudgetCreationComponent } from './budget-creation/budget-creation.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
-
-
-
-
-
 import { AuthGuard } from "./auth/Auth.guard";
 import { TransactionComponent } from "./transaction/transaction.component";
 
@@ -31,15 +26,13 @@ const routes: Routes = [
   { path: 'transaction/:accountId', component: TransactionComponent },
   {path: 'createaccount/:userId', component: AccountCreationComponent},
   {path: 'budget/report/:userId/:accountId', component: BudgetReportComponent},
-  {path: 'budget/creation', component: BudgetCreationComponent},
   {path: 'transaction/history', component: TransactionHistoryComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
 
   {path: 'budget/:userId/:accountId',component: BudgetPageComponent},
   {path: 'dashboard/:id',component: DashboardComponent},
   {path: 'transaction/history/:id', component: TransactionHistoryComponent},
-  {path: 'reports/:id', component: BudgetReportComponent},
-  {path: 'budget/create/:id', component: BudgetCreationComponent},
+  {path: 'createbudget/:userId/:accountId', component: BudgetCreationComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

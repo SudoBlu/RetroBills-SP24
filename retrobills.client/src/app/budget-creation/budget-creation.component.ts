@@ -20,10 +20,12 @@ export class BudgetCreationComponent {
   private userId: number | undefined;
   public accounts: Account[] = [];
   public invalidCreate: boolean = false;
+  private accountId = this.route.snapshot.params['accountId']
 
   ngOnInit(): void {
+    console.log('Create budget form initialized')
     console.log(this.route.snapshot.params)
-    this.userId = parseInt(this.route.snapshot.params['id'])
+    this.userId = parseInt(this.route.snapshot.params['userId'])
     this.accountService.getAccountsForUser(this.userId).subscribe(response => {
       console.log(response);
       this.accounts = response;
@@ -55,7 +57,7 @@ export class BudgetCreationComponent {
         if(budgetId == 0){
           console.log(`Creating budget...`)
           this.budgetService.createBudget(accountID!, budgetDTO).subscribe(() => {
-            this.router.navigate(['budget', this.userId])
+            this.router.navigate(['budget', this.userId, this.accountId])
           })
         }else{
           console.log(`Editing budget with ID: ${budgetId}`)
@@ -95,5 +97,9 @@ export class BudgetCreationComponent {
       return false;
     }
     return true;
+  }
+
+  onCancelClick(){
+    this.router.navigate(['budget', this.userId, this.accountId])
   }
 }

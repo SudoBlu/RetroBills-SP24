@@ -29,7 +29,8 @@
 
   <div id="dash">
     <span class="noAccount" *ngIf="!selectedAccount">No account created. <a (click)="OnAccountClick()" class="link-button">Create one now!</a></span>
-    <table *ngIf="selectedAccount && selectedAccount.transactions">
+    <span *ngIf="selectedAccount && selectedAccount.transactions.length === 0">No transactions recorded...</span>
+    <table *ngIf="selectedAccount && selectedAccount.transactions.length > 0">
       <tr>
         <th>Date</th>
         <th>Amount</th>
