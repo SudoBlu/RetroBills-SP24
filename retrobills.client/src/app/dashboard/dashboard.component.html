@@ -27,13 +27,15 @@
       </div>
     </div>
 
-    <div class="add-transaction-container">
+    <div class="add-transaction-container" *ngIf="selectedAccount">
       <button class="add-transaction-btn" (click)="OnAddClick(selectedAccount!.accountId)">Add Transaction</button>
     </div>
   </div>
 
   <div id="dash">
-    <table *ngIf="selectedAccount && selectedAccount.transactions">
+    <span class="noAccount" *ngIf="!selectedAccount">No account created. <a (click)="OnAccountClick()" class="link-button">Create one now!</a></span>
+    <span *ngIf="selectedAccount && selectedAccount.transactions.length === 0">No transactions recorded...</span>
+    <table *ngIf="selectedAccount && selectedAccount.transactions.length > 0">
       <tr>
         <th>Date</th>
         <th>Amount</th>

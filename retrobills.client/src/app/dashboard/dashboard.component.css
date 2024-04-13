@@ -13,6 +13,10 @@ body {
   display: flex;
 }
 
+.noAccount{
+  background-color: hsla(293, 59%, 42%, 1);
+}
+
 .balance-container {
   flex: 1; /* Take up remaining space */
 }
