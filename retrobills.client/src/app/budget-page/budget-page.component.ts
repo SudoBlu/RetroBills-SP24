@@ -48,7 +48,9 @@ export class BudgetPageComponent implements OnInit{
 
   OnDashClick(){
     console.log(this.userId)
-    this.router.navigate(['dashboard', this.userId])
+    this.router.navigate(['dashboard', this.userId], 
+      {queryParams: {accountId: this.accountId}}
+    )
   }
 
   OnHomeClick(){
