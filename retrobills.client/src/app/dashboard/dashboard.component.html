@@ -7,18 +7,23 @@
 
   <!-- Add dropdown button -->
   <div class="dropdown">
-    <button class="dropbtn">Switch Account</button>
+    <button class="dropbtn">Switch Account: ID {{ selectedAccount?.accountId }}</button>
     <div class="dropdown-content">
-      <button *ngFor="let account of accounts" (click)="switchAccount(account)">{{ account.accountId }}</button>
+      <ul>
+        <li *ngFor="let account of accounts" (click)="switchAccount(account)">
+          {{ account.accountId }}
+        </li>
+      </ul>
     </div>
   </div>
+  
 </header>
 
 <body>
   <div class="content">
     <div class="balance-container">
-      <div id="balance" *ngIf="selectedAccount">
-        <p>Actual Balance: {{ selectedAccount.balance }}</p>
+      <div id="balance">
+        <p>Actual Balance: {{ selectedAccount!.balance }}</p>
       </div>
     </div>
 
