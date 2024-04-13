@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, of, switchMap, tap } from 'rxjs';
+import { Observable, catchError, map, of, switchMap, tap, throwError } from 'rxjs';
 import { UserDTO } from '../DTOs/UserDTO';
 
 @Injectable({
@@ -70,5 +70,16 @@ export class UserService {
   CreateUser(userDTO: UserDTO){
     console.log(userDTO);
     return this.http.post<UserDTO>(`${this.userUrl}`, userDTO)
+  }
+
+  UpdateUser(userDTO: UserDTO, userId: number){
+    console.log(userDTO);
+    return this.http.put<User>(`${this.userUrl}/${userId}`, userDTO).pipe(
+      catchError(error => {
+        // Handle errors from the backend (e.g., log to console)
+        console.error('Error editing user:', error);
+        return throwError(() => new Error(error));
+      })
+    );
   }
 }
