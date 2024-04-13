@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Account } from '../account';
 import { Transaction } from '../transaction';
@@ -13,8 +13,8 @@ import { TransactionService } from '../services/transaction.service';
 })
 export class DashboardComponent implements OnInit {
 
+  selectedAccount!: Account;
   accounts: Account[] = [];
-  selectedAccount: Account | undefined;
   transactions: Transaction[] = [];
 
   private userId!: number;
@@ -70,7 +70,20 @@ export class DashboardComponent implements OnInit {
 
   switchAccount(account: Account): void {
     this.selectedAccount = account;
+    this.accountId = account.accountId;
     this.fetchTransactionsForSelectedAccount();
+
+    // Update both route path and query parameters
+    const navigationExtras: NavigationExtras = {
+      queryParams: { accountId: this.accountId }
+    };
+
+    // Navigate to the same route with updated query parameters
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { accountId: this.accountId },
+      queryParamsHandling: 'merge'
+    });
   }
 
   fetchTransactionsForSelectedAccount(): void {
@@ -115,7 +128,12 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/transaction', accountId]);
   }
 
-  OnAccountClick(){
-    this.router.navigate(['/createaccount', this.userId])
+  // Function to navigate to AccountCreationComponent and create a new account
+  OnAddAccountClick() {
+    if (this.userId) {
+      this.router.navigate(['/createaccount', this.userId]);
+    } else {
+      console.error('User ID not found.');
+    }
   }
 }

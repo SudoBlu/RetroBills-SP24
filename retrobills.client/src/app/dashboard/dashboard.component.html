@@ -23,17 +23,18 @@
   <div class="content">
     <div class="balance-container">
       <div id="balance" *ngIf="selectedAccount">
-        <p>Actual Balance: {{ selectedAccount.balance }}</p>
+        <p>Actual Balance: {{ selectedAccount!.balance }}</p>
       </div>
     </div>
 
     <div class="add-transaction-container" *ngIf="selectedAccount">
+      <button class="add-account-btn" (click)="OnAddAccountClick()">Add Account</button>
       <button class="add-transaction-btn" (click)="OnAddClick(selectedAccount!.accountId)">Add Transaction</button>
     </div>
   </div>
 
   <div id="dash">
-    <span class="noAccount" *ngIf="accountId == 0">No account created. <a (click)="OnAccountClick()" class="link-button">Create one now!</a></span>
+    <span class="noAccount" *ngIf="accountId == 0">No account created. <a (click)="OnAddAccountClick()" class="link-button">Create one now!</a></span>
     <span *ngIf="selectedAccount && selectedAccount.transactions.length === 0">No transactions recorded...</span>
     <table *ngIf="selectedAccount && selectedAccount.transactions.length > 0">
       <tr>
