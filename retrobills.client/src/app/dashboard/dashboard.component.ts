@@ -112,7 +112,7 @@ export class DashboardComponent implements OnInit {
   }
 
   OnDetailedClick(): void {
-    this.router.navigate(['transaction/history', this.userId])
+    this.router.navigate(['transaction/history', this.userId, this.accountId])
   }
 
   OnBudgetClick(): void {
