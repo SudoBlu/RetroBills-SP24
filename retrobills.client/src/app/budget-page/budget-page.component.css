@@ -15,9 +15,13 @@
 }
 
 
+.remain{
+  font-size: 3em;
+  padding-top: -60px;
+}
 .hero p {
   font-size: 1.5em;
-  padding-bottom: 0;
+  padding-bottom: 15px;
   color: white;
 }
 
@@ -80,11 +84,11 @@ body {
 
 .table-container {
   padding-top: 5px;
-  width: 80%; /* Adjust the width if needed */
+  width: 40%; /* Adjust the width if needed */
   max-width: none; /* Remove the maximum width restriction */
   margin: 0 auto;
-  margin-top: 12%; /* Move the table down */
-  margin-left: 13.2%; /* Move the table to the right */
+  margin-top: 10.7%; /* Move the table down */
+  margin-left: 10%; /* Move the table to the right */
   background-color: white;
 }
 
@@ -98,7 +102,7 @@ th, td {
   padding: 8px;
   text-align: center;
   width: 200vh; /* Set the minimum width for the columns */
-  min-width: 65vh;
+  min-width: 63.8vh;
 }
 
 th, td {
