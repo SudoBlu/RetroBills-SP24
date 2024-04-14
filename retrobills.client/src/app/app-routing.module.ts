@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'transaction/:accountId', component: TransactionComponent },
   {path: 'createaccount/:userId', component: AccountCreationComponent},
   {path: 'budget/report/:userId/:accountId', component: BudgetReportComponent},
-  {path: 'transaction/history', component: TransactionHistoryComponent},
+  {path: 'transaction/history/:userId/:accountId', component: TransactionHistoryComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
 
   {path: 'budget/:userId/:accountId',component: BudgetPageComponent},
