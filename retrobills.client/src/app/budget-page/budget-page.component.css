@@ -1,6 +1,6 @@
 .hero {
   text-align: center;
-  padding: 15px 0; /* Reduced padding */
+  padding: 0px 0; /* Reduced padding */
   position: fixed;
   width: 100%;
   top: 0;
@@ -11,15 +11,13 @@
 
 .hero h1 {
   font-size: 3em;
-  margin-bottom: 20px;
-  margin-bottom: 10px;
   color:white;
 }
 
 
-
 .hero p {
   font-size: 1.5em;
+  padding-bottom: 0;
   color: white;
 }
 
@@ -82,14 +80,13 @@ body {
 
 .table-container {
   padding-top: 5px;
-  width: 100%; /* Extend the table to the right of the page */
+  width: 80%; /* Adjust the width if needed */
   max-width: none; /* Remove the maximum width restriction */
   margin: 0 auto;
-  margin-top: 18%; /* Add space between hero and table */
-  margin-left: 25%; /* Add space to the right of the navbar */
+  margin-top: 12%; /* Move the table down */
+  margin-left: 13.2%; /* Move the table to the right */
   background-color: white;
 }
-
 
 table {
   width: 100%;
@@ -99,13 +96,14 @@ table {
 th, td {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: left;
-  min-width: 200px; /* Set the minimum width for the columns */
-
+  text-align: center;
+  width: 200vh; /* Set the minimum width for the columns */
+  min-width: 65vh;
 }
 
-th {
+th, td {
   background-color: #f2f2f2;
+  width: auto;
 }
 
 tr:nth-child(even) {

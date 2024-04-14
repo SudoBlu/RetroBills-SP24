@@ -12,7 +12,7 @@
   <div class="hero">
       <h1>Budget</h1>
       <p>Welcome to the Budget page, how would you like to save today</p>
-      <p *ngIf="budget.budgetId !== 0">Budget remaining: ${{remainingAmount}}/${{budget.budgetAmount}}</p>
+      <p class="remain" *ngIf="budget.budgetId !== 0">Budget remaining: ${{remainingAmount}}/${{budget.budgetAmount}}</p>
   </div>
   <div class="table-container">
     <span *ngIf="budget.budgetId === 0">No budget found!</span>
