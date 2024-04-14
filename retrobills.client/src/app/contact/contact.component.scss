@@ -1,5 +1,5 @@
 .contact-form {
-  position: absolute;
+  position: relative;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -56,6 +56,23 @@
 .contact-form button[type="submit"]:hover {
   background-color: #00b9b9; /* Slightly darker on hover */
 }
+
+.contact-group {
+  margin-bottom: 20px;
+}
+
+.contact-group h3 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.contact-group p {
+  color: #fff;
+  margin: 5px 0;
+}
+
+
 .link-button {
   position: relative;
   display: inline-block;
