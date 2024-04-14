@@ -37,6 +37,10 @@ export class AccountCreationComponent implements OnInit{
       });
       return userId; 
     }
+
+    onCancelClick(){
+      this.router.navigate(['dashboard', this.getCurrentUserId()], {queryParams: {accountId: this.accounts[0].accountId}})
+    }
   
 
     onCreateAccount() {
