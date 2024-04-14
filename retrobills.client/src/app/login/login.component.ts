@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../auth/auth.service';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'cl-login-page',
@@ -10,7 +11,7 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginPageComponent{
-  constructor(private router: Router, private userService: UserService, private authService: AuthService) {}
+  constructor(private router: Router, private userService: UserService, private authService: AuthService, private accountService: AccountService) {}
 
   
 
@@ -43,9 +44,21 @@ export class LoginPageComponent{
             console.log(response);
             //if the password matches
             if(response?.password === password){
-              //log the user in
-              this.authService.loginUser();
-              this.router.navigate(['dashboard', response?.userId])
+              let accountId = 0;
+              this.accountService.getAccountsForUser(response?.userId).subscribe(
+                accounts => {
+                  if(accounts.length > 0){
+                    accountId = accounts[0].accountId;
+                  }
+                  //log the user in
+                  this.authService.loginUser();
+                  this.router.navigate(['dashboard', response?.userId], {
+                    queryParams: {accountId: accountId}
+              })
+                }
+              )
+
+              
             } else{
               //throw error
               this.invalidLogin = true; 

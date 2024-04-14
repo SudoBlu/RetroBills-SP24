@@ -13,8 +13,10 @@ export class AccountCreationComponent implements OnInit{
   accounts: Account[] = [];
   selectedAccountType: string = 'Checking';
 
-  constructor(private accountService: AccountService,
-    private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private accountService: AccountService,
+    private route: ActivatedRoute,
+    private router: Router) {}
 
     ngOnInit() {
       // Retrieve userId from the route
@@ -49,5 +51,5 @@ export class AccountCreationComponent implements OnInit{
           this.router.navigate(['dashboard', this.getCurrentUserId()])},
         error => { console.error('Account creation error:', error); /* Handle errors */ }
       );  
-    }  
+    }
 }

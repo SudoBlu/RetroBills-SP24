@@ -66,7 +66,9 @@ export class SignupPageComponent {
                 if(userId){
                   //log user in
                   this.authService.loginUser();
-                  this.router.navigate(['dashboard', userId])
+                  this.router.navigate(['dashboard', userId], 
+                    {queryParams: {accountId: undefined}}
+                  )
                 }
               },
               error => {console.error('Error occured while fetching the latest user: ', error);}

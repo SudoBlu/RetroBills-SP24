@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Account } from '../account';
 import { Transaction } from '../transaction';
@@ -13,11 +13,12 @@ import { TransactionService } from '../services/transaction.service';
 })
 export class DashboardComponent implements OnInit {
 
-  accounts: Account[] = [];
   selectedAccount!: Account;
+  accounts: Account[] = [];
   transactions: Transaction[] = [];
 
   private userId!: number;
+  accountId: number = 0;
 
   constructor(
     private router: Router,
@@ -28,24 +29,37 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => this.accountId = params['accountId'])
+    console.log(this.accountId)
     this.route.params.subscribe(params => {
       this.userId = parseInt(params['id']);
       if (isNaN(this.userId)) {
         console.error('Invalid user ID:', params['id']);
       } else {
         console.log('User ID:', this.userId);
-        this.fetchAccountsForUser();
+        if(this.accountId > 0){
+          this.fetchAccountsForUser();
+        }
+
+        if(this.accountId == 0){
+          console.log('User has no accounts...')
+        }
       }
     });
   }
 
   fetchAccountsForUser(): void {
+    let index = 0;
     this.accountService.getAccountsForUser(this.userId).subscribe(
       (accounts: Account[]) => {
         this.accounts = accounts;
         if (this.accounts.length > 0) {
-          this.selectedAccount = this.accounts[0];
-          this.fetchTransactionsForSelectedAccount();
+          if(this.accountId! > 0){
+            console.log('Fetching for existing account...')
+            index = this.accounts.findIndex(x => x.accountId == this.accountId)
+            this.selectedAccount = this.accounts[index];
+            this.fetchTransactionsForSelectedAccount();
+          }
         }
       },
       (error) => {
@@ -56,7 +70,20 @@ export class DashboardComponent implements OnInit {
 
   switchAccount(account: Account): void {
     this.selectedAccount = account;
+    this.accountId = account.accountId;
     this.fetchTransactionsForSelectedAccount();
+
+    // Update both route path and query parameters
+    const navigationExtras: NavigationExtras = {
+      queryParams: { accountId: this.accountId }
+    };
+
+    // Navigate to the same route with updated query parameters
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { accountId: this.accountId },
+      queryParamsHandling: 'merge'
+    });
   }
 
   fetchTransactionsForSelectedAccount(): void {
@@ -67,7 +94,7 @@ export class DashboardComponent implements OnInit {
           this.selectedAccount!.transactions = transactions;
           console.log("Selected account:", this.selectedAccount);
           console.log("Transactions for selected account:", this.selectedAccount!.transactions);
-          if (this.selectedAccount!.transactions && this.selectedAccount.transactions.length > 0) {
+          if (this.selectedAccount!.transactions && this.selectedAccount!.transactions.length > 0) {
             console.log("Transactions exist.");
           } else {
             console.log("No transactions found.");
@@ -89,7 +116,7 @@ export class DashboardComponent implements OnInit {
   }
 
   OnBudgetClick(): void {
-    this.router.navigate(['budget', this.userId, this.selectedAccount.accountId])
+    this.router.navigate(['budget', this.userId, this.selectedAccount!.accountId])
   }
 
   OnHomeClick(): void {
@@ -101,7 +128,12 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/transaction', accountId]);
   }
 
-  OnAccountClick(){
-    this.router.navigate(['/createaccount', this.userId])
+  // Function to navigate to AccountCreationComponent and create a new account
+  OnAddAccountClick() {
+    if (this.userId) {
+      this.router.navigate(['/createaccount', this.userId]);
+    } else {
+      console.error('User ID not found.');
+    }
   }
 }

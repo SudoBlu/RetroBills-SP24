@@ -7,7 +7,7 @@
 
   <!-- Add dropdown button -->
   <div class="dropdown">
-    <button class="dropbtn">Switch Account: ID {{ selectedAccount?.accountId }}</button>
+    <button class="dropbtn" *ngIf="accountId > 0">Switch Account: ID {{ selectedAccount!.accountId }}</button>
     <div class="dropdown-content">
       <ul>
         <li *ngFor="let account of accounts" (click)="switchAccount(account)">
@@ -22,18 +22,19 @@
 <body>
   <div class="content">
     <div class="balance-container">
-      <div id="balance">
+      <div id="balance" *ngIf="selectedAccount">
         <p>Actual Balance: {{ selectedAccount!.balance }}</p>
       </div>
     </div>
 
     <div class="add-transaction-container" *ngIf="selectedAccount">
+      <button class="add-account-btn" (click)="OnAddAccountClick()">Add Account</button>
       <button class="add-transaction-btn" (click)="OnAddClick(selectedAccount!.accountId)">Add Transaction</button>
     </div>
   </div>
 
   <div id="dash">
-    <span class="noAccount" *ngIf="!selectedAccount">No account created. <a (click)="OnAccountClick()" class="link-button">Create one now!</a></span>
+    <span class="noAccount" *ngIf="accountId == 0">No account created. <a (click)="OnAddAccountClick()" class="link-button">Create one now!</a></span>
     <span *ngIf="selectedAccount && selectedAccount.transactions.length === 0">No transactions recorded...</span>
     <table *ngIf="selectedAccount && selectedAccount.transactions.length > 0">
       <tr>
