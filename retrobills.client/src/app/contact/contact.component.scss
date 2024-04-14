@@ -17,6 +17,13 @@
   align-items: center;
 }
 
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Set the height to fill the viewport */
+}
+
 .contact-form span {
   display: flex;
   flex-direction: row;

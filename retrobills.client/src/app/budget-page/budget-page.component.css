@@ -1,6 +1,6 @@
 .hero {
   text-align: center;
-  padding: 15px 0; /* Reduced padding */
+  padding: 0px 0; /* Reduced padding */
   position: fixed;
   width: 100%;
   top: 0;
@@ -11,15 +11,17 @@
 
 .hero h1 {
   font-size: 3em;
-  margin-bottom: 20px;
-  margin-bottom: 10px;
   color:white;
 }
 
 
-
+.remain{
+  font-size: 3em;
+  padding-top: -60px;
+}
 .hero p {
   font-size: 1.5em;
+  padding-bottom: 15px;
   color: white;
 }
 
@@ -50,7 +52,7 @@ body {
   font-size: 24px;
   text-align: center;
   margin: 0; /* Remove margin to align with top of the page */
-  padding: 30% 15px; /* Add padding for better readability */
+  padding: 25% 15px; /* Add padding for better readability */
   width: 100%; /* Full width */
   box-sizing: border-box; /* Include padding in width calculation */
 }
@@ -71,7 +73,9 @@ body {
 .navbar a:hover {
   background-color: rgb(56, 2, 96);
   width:auto;
+  cursor: pointer;
 }
+
 .navbar a.active {
   background-color: #00d4d5;
   color: white;
@@ -80,14 +84,13 @@ body {
 
 .table-container {
   padding-top: 5px;
-  width: 100%; /* Extend the table to the right of the page */
+  width: 40%; /* Adjust the width if needed */
   max-width: none; /* Remove the maximum width restriction */
   margin: 0 auto;
-  margin-top: 18%; /* Add space between hero and table */
-  margin-left: 25%; /* Add space to the right of the navbar */
+  margin-top: 10.7%; /* Move the table down */
+  margin-left: 10%; /* Move the table to the right */
   background-color: white;
 }
-
 
 table {
   width: 100%;
@@ -97,13 +100,14 @@ table {
 th, td {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: left;
-  min-width: 200px; /* Set the minimum width for the columns */
-
+  text-align: center;
+  width: 200vh; /* Set the minimum width for the columns */
+  min-width: 63.8vh;
 }
 
-th {
+th, td {
   background-color: #f2f2f2;
+  width: auto;
 }
 
 tr:nth-child(even) {
