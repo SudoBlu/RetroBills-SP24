@@ -48,7 +48,14 @@ export class AccountCreationComponent implements OnInit{
       this.accountService.createAccount(userId, accountDTO).subscribe(
         () => { 
           console.log('Account created successfully!');
-          this.router.navigate(['dashboard', this.getCurrentUserId()])},
+          this.accountService.getAccountsForUser(userId).subscribe(response => {
+            console.log(response);
+            let sortedArray = response.sort((a, b) => a.accountId - b.accountId);
+            console.log(sortedArray)
+            let accountId = sortedArray[sortedArray.length - 1].accountId
+            console.log(accountId)
+            this.router.navigate(['dashboard', this.getCurrentUserId()], {queryParams: {accountId: accountId}})
+          })},
         error => { console.error('Account creation error:', error); /* Handle errors */ }
       );  
     }
