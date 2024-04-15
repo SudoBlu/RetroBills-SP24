@@ -79,12 +79,13 @@ body {
 
 
 .table-container {
+ 
   padding-top: 5px;
   width: 100%; /* Extend the table to the right of the page */
   max-width: none; /* Remove the maximum width restriction */
   margin: 0 auto;
-  margin-top: 18%; /* Add space between hero and table */
-  margin-left: 25%; /* Add space to the right of the navbar */
+  margin-top: 50%; /* Add space between hero and table */
+  margin-left: 80%; /* Add space to the right of the navbar */
   background-color: white;
 }
 
@@ -113,4 +114,5 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #ddd;
 }
+
 
