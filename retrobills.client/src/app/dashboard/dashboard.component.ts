@@ -54,6 +54,7 @@ export class DashboardComponent implements OnInit {
       (accounts: Account[]) => {
         this.accounts = accounts;
         if (this.accounts.length > 0) {
+          this.accounts.sort((a, b) => a.accountId - b.accountId);
           if(this.accountId! > 0){
             console.log('Fetching for existing account...')
             index = this.accounts.findIndex(x => x.accountId == this.accountId)
