@@ -156,7 +156,7 @@ body {
 }
 
 .forgotPassword {
-  position:absolute;
+  position:relative;
   left: 70%;
   top: 66%;
   color: #fff;
@@ -167,6 +167,7 @@ body {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin: 2px;
 }
 
 .rectangleBtn {
