@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent },
   {path: 'signup', component: SignupPageComponent },
   {path: 'recovery', component: AccountRecoveryComponent},
-  { path: 'transaction/:accountId', component: TransactionComponent },
+  {path: 'transaction', component: TransactionComponent },
   {path: 'createaccount/:userId', component: AccountCreationComponent},
   {path: 'budget/report/:userId/:accountId', component: BudgetReportComponent},
   {path: 'transaction/history/:userId/:accountId', component: TransactionHistoryComponent},

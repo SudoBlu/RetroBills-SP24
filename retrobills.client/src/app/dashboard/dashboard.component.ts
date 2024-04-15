@@ -129,7 +129,9 @@ export class DashboardComponent implements OnInit {
   }
 
   OnAddClick(accountId: number): void {
-    this.router.navigate(['/transaction', accountId]);
+    this.router.navigate(['transaction'], {
+      queryParams: { id: this.userId, accountId: accountId }
+    });
   }
 
   // Function to navigate to AccountCreationComponent and create a new account
