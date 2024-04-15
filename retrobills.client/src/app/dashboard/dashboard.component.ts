@@ -108,8 +108,11 @@ export class DashboardComponent implements OnInit {
   }
 
   OnDashClick(): void {
-    this.router.navigate(['dashboard', this.userId])
+    this.router.navigate(['dashboard', this.userId], {
+      queryParams: { accountId: this.accountId }
+    });
   }
+  
 
   OnDetailedClick(): void {
     this.router.navigate(['transaction/history', this.userId, this.accountId])
