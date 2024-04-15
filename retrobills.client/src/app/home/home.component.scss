@@ -67,6 +67,7 @@ header, footer{
 }
 
 footer{
+    margin-top: 0;
     text-align: left;
     vertical-align: middle;
     height: 2vh;
@@ -79,7 +80,7 @@ footer{
     background-position: center;
     background-size: cover;
     background-color: aliceblue;
-    height: 80vh;
+    height: 100vh;
     text-align: center;
     padding: 50px 0;
 }
@@ -108,6 +109,7 @@ footer{
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-bottom: 10%;
 }
 
 .feature {
@@ -115,7 +117,7 @@ footer{
   color: white;
   max-width: 300px;
   padding: 10px;
-  margin: 10px;
+  margin-top: 15px;
   background-color: #602893;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

@@ -48,7 +48,7 @@ export class BudgetReportComponent implements OnInit{
    * Navigates to the login page after clicking the Log In Button
    */
     OnDashClick(){
-      this.router.navigate(['dashboard', this.userId])
+      this.router.navigate(['dashboard', this.userId], {queryParams: {accountId: this.accountId }})
     }
 
     /**

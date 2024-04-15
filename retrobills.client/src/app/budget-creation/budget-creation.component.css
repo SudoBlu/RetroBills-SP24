@@ -64,10 +64,10 @@ body {
   outline: solid 5px #00d4d5;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 0 auto; /* Center the box horizontally */
+  margin-bottom: 20px; /* Add margin between the box and the button */
   text-align: center;
-
-}
+  display: flex;
+  flex-direction: column;}
 
 .box-title {
   color: white;
@@ -98,18 +98,32 @@ body {
   width: 100px; /* Adjust width as needed */
 }
 
-.submit-btn {
-  padding: 15px 30px; /* Increased padding */
+.submit-btn:hover {
+  background-color: rgb(49, 30, 117);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.cancel-button-container {
+  width: 600px; /* Match the width of the box */
+  display: flex;
+  justify-content: center;
+}
+.submit-btn,
+.submit-btn-cancel {
+  flex: 1; /* Equal width for both buttons */
+  padding: 5px 10px; /* Reduced padding */
   background-color: #3b2685ff;
   outline: solid 3px #00d4d5;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  display: block;
-  margin: 10 auto; /* Center the button horizontally */
-}
-
-.submit-btn:hover {
-  background-color: rgb(49, 30, 117);
+  margin: 10px; /* Add margin between the buttons */
+  font-size: 15px; /* Reduced font size */
 }

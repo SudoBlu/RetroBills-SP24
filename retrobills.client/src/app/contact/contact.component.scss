@@ -1,6 +1,6 @@
 .contact-form {
-  position: absolute;
-  left: 50%;
+  position: relative;
+  left: 20%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 400px; /* Set a fixed width for the form */
@@ -15,6 +15,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Set the height to fill the viewport */
 }
 
 .contact-form span {
@@ -56,6 +63,23 @@
 .contact-form button[type="submit"]:hover {
   background-color: #00b9b9; /* Slightly darker on hover */
 }
+
+.contact-group {
+  margin-bottom: 20px;
+}
+
+.contact-group h3 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.contact-group p {
+  color: #fff;
+  margin: 5px 0;
+}
+
+
 .link-button {
   position: relative;
   display: inline-block;
