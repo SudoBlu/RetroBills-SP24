@@ -67,7 +67,7 @@ export class SignupPageComponent {
                   //log user in
                   this.authService.loginUser();
                   this.router.navigate(['dashboard', userId], 
-                    {queryParams: {accountId: undefined}}
+                    {queryParams: {accountId: 0}}
                   )
                 }
               },

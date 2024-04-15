@@ -50,6 +50,7 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
     SpendChartComponent,
     BudgetCreationComponent,
     TransactionHistoryComponent,
+    BudgetReportComponent
 
 
   ],

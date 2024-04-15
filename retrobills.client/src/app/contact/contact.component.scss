@@ -3,18 +3,28 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 400px; /* Set a fixed width for the form */
+  width: 80%; /* Set a fixed width for the form */
+  max-width: 400px; /* Limit the maximum width of the form */
   background-color: #602893;
   border: 2px solid #00d4d5;
   text-align: center;
   color: white;
-  padding: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .contact-form form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Set the height to fill the viewport */
 }
 
 .contact-form span {
@@ -56,6 +66,23 @@
 .contact-form button[type="submit"]:hover {
   background-color: #00b9b9; /* Slightly darker on hover */
 }
+
+.contact-group {
+  margin-bottom: 20px;
+}
+
+.contact-group h3 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.contact-group p {
+  color: #fff;
+  margin: 5px 0;
+}
+
+
 .link-button {
   position: relative;
   display: inline-block;

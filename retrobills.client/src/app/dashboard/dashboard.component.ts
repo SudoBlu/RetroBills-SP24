@@ -54,6 +54,7 @@ export class DashboardComponent implements OnInit {
       (accounts: Account[]) => {
         this.accounts = accounts;
         if (this.accounts.length > 0) {
+          this.accounts.sort((a, b) => a.accountId - b.accountId);
           if(this.accountId! > 0){
             console.log('Fetching for existing account...')
             index = this.accounts.findIndex(x => x.accountId == this.accountId)
@@ -108,11 +109,14 @@ export class DashboardComponent implements OnInit {
   }
 
   OnDashClick(): void {
-    this.router.navigate(['dashboard', this.userId])
+    this.router.navigate(['dashboard', this.userId], {
+      queryParams: { accountId: this.accountId }
+    });
   }
+  
 
   OnDetailedClick(): void {
-    this.router.navigate(['transaction/history', this.userId])
+    this.router.navigate(['transaction/history', this.userId, this.accountId])
   }
 
   OnBudgetClick(): void {
@@ -125,7 +129,9 @@ export class DashboardComponent implements OnInit {
   }
 
   OnAddClick(accountId: number): void {
-    this.router.navigate(['/transaction', accountId]);
+    this.router.navigate(['transaction'], {
+      queryParams: { id: this.userId, accountId: accountId }
+    });
   }
 
   // Function to navigate to AccountCreationComponent and create a new account

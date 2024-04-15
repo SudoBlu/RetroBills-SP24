@@ -16,6 +16,19 @@ body {
 .noAccount{
   background-color: hsla(293, 59%, 42%, 1);
 }
+/*moves no transaction message*/
+#noTransaction{
+  position: relative;
+  top: 30%;
+  margin-left: 40%;
+  font-size: 15pt;
+  border: black 1px solid;
+  color:white;
+  background-color: hsla(293, 59%, 42%, 1);
+  padding:2px;
+  
+  
+}
 
 .balance-container {
   flex: 1; /* Take up remaining space */
@@ -51,7 +64,6 @@ header {
   border-radius: 5px;
   cursor: pointer;
 }
-
 .add-transaction-btn:hover {
   background-color: rgb(42, 24, 109);
 }

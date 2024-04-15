@@ -109,7 +109,7 @@ label{
   border-radius: 5px;
   cursor: pointer;
   display: block;
-  margin: 0 auto; /* Center the button horizontally */
+  margin: 10px auto; /* Center the button horizontally */
 }
 
 .submit-btn:hover {
