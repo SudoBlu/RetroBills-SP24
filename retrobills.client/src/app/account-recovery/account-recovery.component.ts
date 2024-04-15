@@ -13,7 +13,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./account-recovery.component.css', '../home/home.component.scss']
 })
 export class AccountRecoveryComponent {
-  validChange: boolean = true;
+  samePasswordError: boolean = false;
+  differentPasswordError: boolean = false;
+  emptyFieldsError: boolean = false;
+  validChange: boolean = !this.samePasswordError && !this.differentPasswordError && !this.emptyFieldsError;
+  
   constructor(private userService: UserService, private router: Router){}
 
   recoveryForm = new FormGroup({
@@ -34,21 +38,27 @@ export class AccountRecoveryComponent {
             console.log(user)
             oldUserObject = user;
 
-            let newUserObject: UserDTO = {
-              UserName: oldUserObject.UserName,
-              password: this.recoveryForm.value.newPassword!,
-              email: oldUserObject.email,
-              FirstName: oldUserObject.FirstName,
-              LastName: oldUserObject.LastName,
-              Address: oldUserObject.Address
+            if(oldUserObject.password === this.recoveryForm.value.newPassword){
+              this.samePasswordError = true;
             }
-
-            this.userService.UpdateUser(newUserObject, oldUserObject.userId).subscribe(
-              response => {
-                if(response) this.router.navigate(['login'])
-              }, error => {
-                console.error('There was an error', error)
+            else{
+              this.samePasswordError = false;
+              let newUserObject: UserDTO = {
+                UserName: oldUserObject.UserName,
+                password: this.recoveryForm.value.newPassword!,
+                email: oldUserObject.email,
+                FirstName: oldUserObject.FirstName,
+                LastName: oldUserObject.LastName,
+                Address: oldUserObject.Address
+              }
+  
+              console.log(oldUserObject);
+              console.log(newUserObject);
+  
+              this.userService.UpdateUser(newUserObject, oldUserObject.userId).subscribe(() => {
+                this.router.navigate(['login'])
               })
+            }
           }else{
             console.log('No user found')
           }
@@ -60,15 +70,25 @@ export class AccountRecoveryComponent {
 
 
   validateForm(){
-    const email = this.recoveryForm.value.email;
     const newPass = this.recoveryForm.value.newPassword;
     const confPass = this.recoveryForm.value.confirmPassword;
 
     if(this.recoveryForm.valid && newPass == confPass){
-      this.validChange = true;
+      this.differentPasswordError = false;
+      this.samePasswordError = false;
+      this.emptyFieldsError = false;
+    }else if(newPass !== confPass){
+      this.emptyFieldsError = false;
+      this.samePasswordError = false;
+      this.differentPasswordError = true;
     }else{
-      this.validChange = false;
+      this.emptyFieldsError = true;
+      this.samePasswordError = false;
+      this.differentPasswordError = false;
     }
+    console.log(this.differentPasswordError, this.samePasswordError, this.emptyFieldsError)
+    this.validChange = !this.samePasswordError && !this.differentPasswordError && !this.emptyFieldsError;
+    console.log(this.validChange);
   }
 
   getUserObject(email: string): Observable<User | undefined>{
