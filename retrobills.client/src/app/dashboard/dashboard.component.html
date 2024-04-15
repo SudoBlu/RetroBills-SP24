@@ -27,9 +27,9 @@
       </div>
     </div>
 
-    <div class="add-transaction-container" *ngIf="selectedAccount">
+    <div class="add-transaction-container">
       <button class="add-account-btn" (click)="OnAddAccountClick()">Add Account</button>
-      <button class="add-transaction-btn" (click)="OnAddClick(selectedAccount!.accountId)">Add Transaction</button>
+      <button *ngIf="selectedAccount" class="add-transaction-btn" (click)="OnAddClick(selectedAccount!.accountId)">Add Transaction</button>
     </div>
   </div>
 
