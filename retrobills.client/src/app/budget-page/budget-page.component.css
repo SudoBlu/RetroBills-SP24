@@ -83,14 +83,16 @@ body {
 
 
 .table-container {
+ 
   padding-top: 5px;
   width: 40%; /* Adjust the width if needed */
   max-width: none; /* Remove the maximum width restriction */
   margin: 0 auto;
-  margin-top: 14%; /* Move the table down */
-  margin-left: 10%; /* Move the table to the right */
+  margin-top: 16%; /* Move the table down */
+  margin-left: 16%; /* Move the table to the right */
   background-color: white;
 }
+
 
 table {
   width: 100%;
@@ -102,7 +104,7 @@ th, td {
   padding: 8px;
   text-align: center;
   width: 200vh; /* Set the minimum width for the columns */
-  min-width: 66.8vh;
+  min-width: 63.8vh;
 }
 
 th, td {
@@ -117,4 +119,5 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #ddd;
 }
+
 
