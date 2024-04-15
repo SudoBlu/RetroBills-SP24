@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, switchMap, throwError } from 'rxjs';
 import { Transaction } from '../transaction';
 import { Account } from '../account';
+import { TransactionDTO } from '../DTOs/TransactionDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class TransactionService {
   constructor(private http: HttpClient) { }
 
   // Create a new transaction
-  createTransaction(transaction: Transaction): Observable<Transaction> {
+  createTransaction(transaction: TransactionDTO): Observable<Transaction> {
+    console.log(transaction);
     return this.http.post<Transaction>(this.transactionUrl, transaction)
       .pipe(
         catchError(error => {

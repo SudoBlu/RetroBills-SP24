@@ -4,6 +4,7 @@ import { TransactionService } from '../services/transaction.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Account } from '../account';
 import { Router, ActivatedRoute } from '@angular/router';
+import { TransactionDTO } from '../DTOs/TransactionDTO';
 
 @Component({
   selector: 'app-transaction',
@@ -30,8 +31,8 @@ ngOnInit(): void {
   this.transactionForm = new FormGroup({
     userId: new FormControl('', Validators.required),
     accountId: new FormControl('', Validators.required),
-    transactionTypes: new FormControl('', Validators.required),
-    categoryName: new FormControl('', Validators.required),
+    transactionType: new FormControl('Expense', Validators.required),
+    categoryName: new FormControl('Rent', Validators.required),
     amount: new FormControl(0, Validators.required),
     transactionDescription: new FormControl(''),
 });
@@ -93,7 +94,7 @@ ngOnInit(): void {
 
   onSubmit() {
     console.log("DMIPWADIASPDNWAIPNDAS");
-    const transactionData: Transaction = this.transactionForm.value;
+    const transactionData: TransactionDTO = this.transactionForm.value;
     console.log("Data of the transactions : " , transactionData);
 
     this.transactionService.createTransaction(transactionData)
