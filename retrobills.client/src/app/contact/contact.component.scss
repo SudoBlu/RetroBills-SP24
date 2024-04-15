@@ -1,14 +1,16 @@
 .contact-form {
-  position: relative;
+  position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 400px; /* Set a fixed width for the form */
+  width: 80%; /* Set a fixed width for the form */
+  max-width: 400px; /* Limit the maximum width of the form */
   background-color: #602893;
   border: 2px solid #00d4d5;
   text-align: center;
   color: white;
-  padding: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .contact-form form {
@@ -18,6 +20,7 @@
 }
 
 .content {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

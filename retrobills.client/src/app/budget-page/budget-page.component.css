@@ -87,7 +87,7 @@ body {
   width: 40%; /* Adjust the width if needed */
   max-width: none; /* Remove the maximum width restriction */
   margin: 0 auto;
-  margin-top: 10.7%; /* Move the table down */
+  margin-top: 14%; /* Move the table down */
   margin-left: 10%; /* Move the table to the right */
   background-color: white;
 }
@@ -102,7 +102,7 @@ th, td {
   padding: 8px;
   text-align: center;
   width: 200vh; /* Set the minimum width for the columns */
-  min-width: 63.8vh;
+  min-width: 66.8vh;
 }
 
 th, td {

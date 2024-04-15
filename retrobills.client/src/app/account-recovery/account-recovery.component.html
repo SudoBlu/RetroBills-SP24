@@ -1,16 +1,24 @@
 <header>
   <div class="bannerFrame">
-    <div class="retroBills">Retro Bills</div>
+    <a href="home">
+      <div class="retroBills">Retro Bills</div>
+    </a>
   </div>
 </header>
 
 <div class="content">
-  <form>
-    <h1>Forgot your password?</h1>
-    <p>Don't worry! Enter the email address you used during registration and we will send you instructions to reset your password</p>
-    <label>Email: </label><br>
-    <input type="email" placeholder="email@domain.com"/>
-    <button type="submit">Send Reset Instructions</button><br>
-    <a [routerLink]="'/login'">Return to login</a>
-  </form>
+  <div class="recovery-form">
+    <form>
+      <h2>Account Recovery</h2>
+      <p>Enter your email address and new password below to recover your account.</p>
+      <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" placeholder="Enter your new password" required>
+          <label for="new-password">New Password:</label>
+          <input type="password" id="new-password" name="new-password" placeholder="Confirm your new password" required>
+      <button type="submit">Recover Account</button><br>
+      <a [routerLink]="'/login'">Return to login</a>
+    </form>
+  </div>
 </div>

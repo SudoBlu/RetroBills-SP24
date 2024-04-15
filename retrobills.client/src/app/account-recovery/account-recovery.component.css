@@ -69,6 +69,10 @@ button{
   margin-top: 10px;
 }
 
+button:hover{
+  background-color: #370e5e;
+}
+
 a{
   margin-top: 10px;
   color: #00D4D5;
@@ -96,11 +100,49 @@ header > h1{
 
 form {
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: auto;
   padding: 20px;
   background-color: #602893;
+  outline: solid 5px #00d4d5;
 }
+
+.recovery-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recovery-form h2 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.recovery-form p {
+  margin-bottom: 20px;
+}
+
+.recovery-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.recovery-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.recovery-form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
 
