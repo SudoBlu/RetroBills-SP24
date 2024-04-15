@@ -1,36 +1,143 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { Account } from '../account';
+import { Transaction } from '../transaction';
+import { AccountService } from '../services/account.service';
+import { TransactionService } from '../services/transaction.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) {}
-  userId = this.route.snapshot.params['userId']
-  /**
-   * Navigates to the login page after clicking the Log In Button
-   */
-  OnDashClick(){
-    this.router.navigate(['dashboard', this.userId])
+export class DashboardComponent implements OnInit {
+
+  selectedAccount!: Account;
+  accounts: Account[] = [];
+  transactions: Transaction[] = [];
+
+  private userId!: number;
+  accountId: number = 0;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private accountService: AccountService,
+    private transactionService: TransactionService
+  ) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => this.accountId = params['accountId'])
+    console.log(this.accountId)
+    this.route.params.subscribe(params => {
+      this.userId = parseInt(params['id']);
+      if (isNaN(this.userId)) {
+        console.error('Invalid user ID:', params['id']);
+      } else {
+        console.log('User ID:', this.userId);
+        if(this.accountId > 0){
+          this.fetchAccountsForUser();
+        }
+
+        if(this.accountId == 0){
+          console.log('User has no accounts...')
+        }
+      }
+    });
   }
 
-  /**
-   * Navigates to the signup page after
-   * clicking the Sign Up button
-   */
-  OnDetailedClick(){
-    this.router.navigate(['dashboard', this.userId])
+  fetchAccountsForUser(): void {
+    let index = 0;
+    this.accountService.getAccountsForUser(this.userId).subscribe(
+      (accounts: Account[]) => {
+        this.accounts = accounts;
+        if (this.accounts.length > 0) {
+          this.accounts.sort((a, b) => a.accountId - b.accountId);
+          if(this.accountId! > 0){
+            console.log('Fetching for existing account...')
+            index = this.accounts.findIndex(x => x.accountId == this.accountId)
+            this.selectedAccount = this.accounts[index];
+            this.fetchTransactionsForSelectedAccount();
+          }
+        }
+      },
+      (error) => {
+        console.error('Error fetching accounts:', error);
+      }
+    );
   }
 
-  OnBudgetClick(){
-    this.router.navigate(['dashboard', this.userId])
+  switchAccount(account: Account): void {
+    this.selectedAccount = account;
+    this.accountId = account.accountId;
+    this.fetchTransactionsForSelectedAccount();
+
+    // Update both route path and query parameters
+    const navigationExtras: NavigationExtras = {
+      queryParams: { accountId: this.accountId }
+    };
+
+    // Navigate to the same route with updated query parameters
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { accountId: this.accountId },
+      queryParamsHandling: 'merge'
+    });
   }
 
-  OnHomeClick(){
+  fetchTransactionsForSelectedAccount(): void {
+    if (this.selectedAccount) {
+      const accountId = this.selectedAccount.accountId;
+      this.transactionService.getTransactionsByAccount(accountId).subscribe(
+        (transactions: Transaction[]) => {
+          this.selectedAccount!.transactions = transactions;
+          console.log("Selected account:", this.selectedAccount);
+          console.log("Transactions for selected account:", this.selectedAccount!.transactions);
+          if (this.selectedAccount!.transactions && this.selectedAccount!.transactions.length > 0) {
+            console.log("Transactions exist.");
+          } else {
+            console.log("No transactions found.");
+          }
+        },
+        (error) => {
+          console.error('Error fetching transactions:', error);
+        }
+      );
+    }
+  }
+
+  OnDashClick(): void {
+    this.router.navigate(['dashboard', this.userId], {
+      queryParams: { accountId: this.accountId }
+    });
+  }
+  
+
+  OnDetailedClick(): void {
+    this.router.navigate(['transaction/history', this.userId, this.accountId])
+  }
+
+  OnBudgetClick(): void {
+    this.router.navigate(['budget', this.userId, this.selectedAccount!.accountId])
+  }
+
+  OnHomeClick(): void {
     this.authService.logoutUser();
     this.router.navigate(['home'])
+  }
+
+  OnAddClick(accountId: number): void {
+    this.router.navigate(['/transaction', accountId]);
+  }
+
+  // Function to navigate to AccountCreationComponent and create a new account
+  OnAddAccountClick() {
+    if (this.userId) {
+      this.router.navigate(['/createaccount', this.userId]);
+    } else {
+      console.error('User ID not found.');
+    }
   }
 }

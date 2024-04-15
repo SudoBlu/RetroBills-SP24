@@ -13,203 +13,6 @@ header{
   margin: auto;
   box-shadow: 0px 10px 10px 0px #00000080;
 }
-
-body {
-  background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
-  background-repeat: no-repeat;
-  background-position: center center; /* Center the background image */
-  background-size: cover;
-  background-color: aliceblue;
-  height: 125vh;
-  width: auto;
-  padding-top: 20%;
-  margin: 0; /* Remove default margin */
-}
-
-.imageRemovebgPreview2 {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: calc(50% - -67px);
-  height: 1180px;
-  background-image: url('/assets/imageRemovebgPreview2.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transform: translateY(-50%);
-}
-
-.blurForBackground {
-  position: absolute;
-  left: -3px;
-  top: calc(50% - -65px);
-  width: 1361px;
-  height: 1180px;
-  overflow: visible;
-  transform: translateY(-50%);
-}
-
-.achieveYourDesiredLifestyleWit {
-  color: #522e81;
-  font-size: 36px;
-  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  position: absolute;
-  left: 6%;
-  top: calc(50% - -330px);
-  width: 744px;
-  height: 218px;
-  text-align: center;
-  align-items: center;
-  flex-direction: column;
-  transform: translateY(-50%);
-}
-.retroLoginLogo {
-  position: absolute;
-  left: 85px;
-  top: calc(50% - 10px);
-  width: 676px;
-  height: 738px;
-  background-image: url('/assets/retroLoginLogo.png');
-  background-position: center;
-  background-repeat: no-repeat;
-
-  transform: translateY(-50%);
-}
-.rectangleBox {
-  position: absolute;
-  left: calc(50% - -453px);
-  top: 65%;
-  padding-bottom:30%;
-  width: 766px;
-  height: 740px;
-  outline: solid 5px #00d4d5;
-  outline-offset: -5px;
-  border-radius: 9px;
-  background-color: #602893;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.rectangleBtn {
-  position: absolute;
-  left: 850%;
-  top: 500%;
-  width: 433px;
-  height: 103px;
-  overflow: visible;
-  color:black;
-  transform: translate(-50%, -50%);
-}
-
-.login {
-  color: #00d4d5;
-  font-size: 64px;
-  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  position: absolute;
-  left: 50%;
-  top: 40%;
-  width: 164px;
-  height: 66px;
-  flex-direction: column;
-  transform: translate(-50%, -50%);
-}
-.keepMeLoggedIn {
-  color: #fff;
-  font-size: 20px;
-  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  position: absolute;
-  left: calc(50% - -197px);
-  top: calc(50% - -151px);
-  width: 150px;
-  height: 26px;
-  flex-direction: column;
-  transform: translate(-50%, -50%);
-}
-.rectangle4 {
-  position: absolute;
-  left: 6.5%;
-  top: 60%;
-  width: 40px;
-  height: 40px;
-}
-.forgotPassword {
-  color: #00d4d5;
-  font-size: 20px;
-  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  position: absolute;
-  left: 1300%;
-  top: 50%;
-  width: 163px;
-  height: 25px;
-  flex-direction: column;
-  transform: translate(-50%, -50%);
-  text-decoration: underline;
-}
-.passwordForm {
-  position: absolute;
-  left: 46.5%;
-  top: calc(50% - -67.5px);
-  width: 616px;
-  height: 69px;
-  border-radius: 5px;
-  /*background-color: #fff;*/
-  transform: translate(-50%, -50%);
-}
-.password {
-  color: #fff;
-  font-size: 36px;
-  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  position: absolute;
-  left: 16%;
-  top: calc(50% - -1.5px);
-  width: 308px;
-  height: 47px;
-  flex-direction: column;
-  transform: translate(-50%, -50%);
-}
-.emailForm {
-  position: absolute;
-  left: 46.5%;
-  top: calc(50% - 80.5px);
-  width: 616px;
-  height: 69px;
-  border-radius: 5px;
-  transform: translate(-50%, -50%);
-}
-.emailAddress {
-  color: #fff;
-  font-size: 36px;
-  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  position: absolute;
-  left: 20%;
-  top: calc(50% - 143px);
-  width: 349px;
-  height: 56px;
-  flex-direction: column;
-  transform: translate(-50%, -50%);
-}
-.loginTitle {
-  color: #fff;
-  font-size: 128px;
-  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  position: absolute;
-  left: 50%;
-  top: 7%;
-  width: 296px;
-  height: 124px;
-  flex-direction: column;
-  transform: translate(-50%, -50%);
-}
-
 .bannerFrame {
   position: absolute;
   left: -14px;
@@ -225,7 +28,6 @@ body {
   overflow: hidden;
   box-shadow: 0px 10px 10px 0px #00000080;
 }
-
 .retroBills {
   color: #fff;
   font-size: 96px;
@@ -239,47 +41,182 @@ body {
   flex-direction: column;
 }
 
-*{
-  font-family: Jua;
+body {
+  background-image: url('../../assets/assets/Homepage assets/retroWallpaper2.jpeg');
+  background-repeat: no-repeat;
+  background-position: center center; /* Center the background image */
+  background-size: cover;
+  background-color: aliceblue;
+  height: 110vh;
+  width: auto;
+  padding-top: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 0 20px;
 }
 
-.keepme {
-  top: 55%;
-  left: 8%;
-  width: 400%;
-  display: flex
+.blurForBackground {
+  position: absolute;
+  left: 0;
+  top: 45%;
+  width: auto;
+  height: auto;
+  padding: 20px;
 }
 
-.label {
-  color: #fff;
-  font-size: 16px;
-  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-}
-
-p {
-  color: #00d4d5;
-  font-size: 36px;
+.achieveYourDesiredLifestyleWit {
+  color: #000;
+  font-size: 25px;
   font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   position: absolute;
-  left: 20%;
-  top: calc(50% - 143px);
-  width: 349px;
-  height: 56px;
+  left: 80px;
+  top: 800%;
+  width: 814.2382px;
+  height: 177px;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  padding-right: 3%;
+  transform: translateY(-50%);
+}
+.achieveYourDesiredLifestyleWitT {
+  color: rgb(42, 23, 111);
+  font-size: 25px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 100px;
+  top: 980%;
+  width: 814.2382px;
+  height: 177px;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  padding-right: 3%;
+  transform: translateY(-50%);
+  text-decoration: underline; /* Add underline */
+}
+.retroLoginLogo {
+  position: absolute;
+  left: 1000%;
+  top: -200%;
+  width: 219px;
+  height: 315px;
+  background-image: url('/assets/retroSignupLogo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.rectangleBox {
+  position: absolute;
+  right: 10%; /* Adjust to move the box horizontally */
+  top: 60%; /* Adjust to move the box vertically */
+  transform: translateY(-50%);
+  width: 500px; /* Adjust the width as needed */
+  padding: 30px;
+  background-color: #602893; /* Background color */
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow */
+  outline: solid 5px #00d4d5;
+}
+
+.loginTitle {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.password,
+.emailAddress {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.passwordForm,
+.emailForm {
+  margin-bottom: 20px;
+}
+
+
+
+.keepme {
+  font-size: 16px;
+  color: white;
+}
+
+.forgotPassword {
+  position:absolute;
+  left: 70%;
+  top: 66%;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  width: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rectangleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00d4d5; /* Button background color */
+  color: #ffffff; /* Button text color */
+  border-radius: 5px;
+  cursor: pointer;
+  padding-top: 20px;
+}
+.rectangleBtn:hover {
+  background-color: #00b9b9; /* Button background color */
+}
+
+.rectangleBtn p {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
+.error{
+  font-size: 20px;
+  font-family: Jua, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: red;
+  position: absolute;
+  left: 90%;
+  top: 24%;
+  width: 650px;
+  height: 59px;
   flex-direction: column;
   transform: translate(-50%, -50%);
 }
 
-.error{
-  font-size: 36px;
-  font-family: Jua, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color: red;
+*{
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+  'Liberation Sans', sans-serif;
+}
+
+.keepMeLoggedIn {
+  color: #fff;
+  font-size: 20px;
+  font-family: Jua, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
   position: absolute;
-  left: 50%;
-  top: 24%;
-  width: 650px;
-  height: 59px;
+  left: calc(50% - -197px);
+  top: calc(50% - -151px);
+  width: 150px;
+  height: 26px;
   flex-direction: column;
   transform: translate(-50%, -50%);
 }

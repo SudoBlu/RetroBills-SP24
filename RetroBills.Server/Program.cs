@@ -1,24 +1,27 @@
 using Microsoft.EntityFrameworkCore;
-using RetroBills.Server.Models; // Adjust to match your namespace
+using RetroBills.Server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.IgnoreNullValues = true;
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Add CORS services
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin", builder =>
+    options.AddPolicy("AllowSpecificOrigins", builder =>
     {
-        builder.WithOrigins("https://127.0.0.1:4200") // Replace with your Angular app's URL
+        builder.WithOrigins("http://localhost:4200", "http://127.0.0.1:4200",
+                            "https://localhost:4200", "https://127.0.0.1:4200") // Include HTTPS origins 
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
 });
-
 // Added code to use the Database. Connection string is in appsettings.json
 builder.Services.AddDbContext<RetroBillsContext>(options =>
 {
@@ -41,7 +44,7 @@ app.UseStaticFiles();  // To serve static files (CSS, JS etc.)
 
 app.UseAuthorization();
 
-app.UseCors("AllowSpecificOrigin"); // Enable CORS 
+app.UseCors("AllowSpecificOrigins"); // Enable CORS 
 
 app.MapControllers();
 

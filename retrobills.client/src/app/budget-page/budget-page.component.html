@@ -1,47 +1,38 @@
+
 <body>
-    <header>
-        <div id="bar">
-            <img src="\assets\image.png" alt="logo">
-            <nav>
-            <ul>
-                <li> <button class="link"> sign out </button></li>
-            <li> <button class="link">  dashboard </button></li>
+  <div class="navbar">
+    <h2>{{account.accountId}}: {{account.accountType}}</h2>
+    <a  class="active">Budget</a>
+    <a (click)="OnReportsClick()">Reports</a>
+    <a (click)="OnDashClick()">Dashboard</a>
+    <a (click)="OnAddBudget()">Add Budget</a>
 
-            </ul>
-            </nav>
-        </div>
-
-    </header>
-    <div id="options">
-        <h2>BUDGET</h2>
-        <nav>
-            <ul>
-                <li><button class="menu"> <span>Reports</span> </button></li>
-                <li><button class="menu"> <span>accounts</span></button></li>
-                <li><button class="menu"> <span>budget</span> </button></li>
-                <li><button class="menu"> <span>Tracking</span> </button></li>
-                <li><button class="menu"> <span>Closed</span></button></li>
-            </ul>
-        </nav>
-    </div>
-    <div>
-        <table>
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Budgeted</th>
-                <th>Activity</th>
-                <th>available</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>item</td>
-                <td>item</td>
-                <td>item</td>
-                <td> item </td>
-              </tr>
-            </tbody>
-            </table>
-    </div>
+</div>
+<div class="content">
+  <div class="hero">
+      <h1>Budget</h1>
+      <p>Welcome to the Budget page, how would you like to save today</p>
+      <p class="remain" *ngIf="budget.budgetId !== 0">Budget remaining: ${{remainingAmount}}/${{budget.budgetAmount}}</p>
+  </div>
+  <div class="table-container">
+    <span *ngIf="budget.budgetId === 0">No budget found!</span>
+    <span *ngIf="budget.budgetId !== 0 && budgetTableItems.length === 0">No spending transactions recorded</span>
+    <table *ngIf="budget.budgetId !== 0">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Transaction Amount</th>
+          <th>Budget Remaining</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of budgetTableItems">
+          <td>{{item.categoryName}}</td>
+          <td>{{item.transactionAmount}}</td>
+          <td>{{item.remainingBudget}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 </body>

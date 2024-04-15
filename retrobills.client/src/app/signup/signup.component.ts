@@ -12,7 +12,7 @@ import { UserDTO } from '../DTOs/UserDTO';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class SignupPage1Component {
+export class SignupPageComponent {
   constructor(private router: Router, private userService: UserService, private authService: AuthService) {}
 
   invalidRegister: boolean = false; //flag for invalid form
@@ -66,7 +66,9 @@ export class SignupPage1Component {
                 if(userId){
                   //log user in
                   this.authService.loginUser();
-                  this.router.navigate(['dashboard', userId])
+                  this.router.navigate(['dashboard', userId], 
+                    {queryParams: {accountId: 0}}
+                  )
                 }
               },
               error => {console.error('Error occured while fetching the latest user: ', error);}

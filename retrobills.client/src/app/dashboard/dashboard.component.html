@@ -1,32 +1,55 @@
 <header>
   <img src="../../assets/assets/Homepage assets/retro_Money__1_RemovebgPreview.png" alt="Retro Bills Logo"/>
-  <button class="link-button"(click)="OnDashClick()">Dashboard</button>
-  <button class="link-button" (click)="OnDetailedClick()">Detailed Report
-  </button>
+  <button id="active" class="link-button" (click)="OnDashClick()">Dashboard</button>
+  <button class="link-button" (click)="OnDetailedClick()">Detailed Transaction History</button>
   <button class="link-button" (click)="OnBudgetClick()">Budget</button>
-  <button class="link-button"(click)="OnHomeClick()">Log Out</button>
+  <button class="link-button" (click)="OnHomeClick()">Log Out</button>
+
+  <!-- Add dropdown button -->
+  <div class="dropdown">
+    <button class="dropbtn" *ngIf="accountId > 0">Switch Account: ID {{ selectedAccount!.accountId }}</button>
+    <div class="dropdown-content">
+      <ul>
+        <li *ngFor="let account of accounts" (click)="switchAccount(account)">
+          {{ account.accountId }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
 </header>
 
 <body>
-  <div id="balance">
-    <p> shows actual balance</p>
+  <div class="content">
+    <div class="balance-container">
+      <div id="balance" *ngIf="selectedAccount">
+        <p>Actual Balance: {{ selectedAccount!.balance }}</p>
+      </div>
+    </div>
+
+    <div class="add-transaction-container">
+      <button class="add-account-btn" (click)="OnAddAccountClick()">Add Account</button>
+      <button *ngIf="selectedAccount" class="add-transaction-btn" (click)="OnAddClick(selectedAccount!.accountId)">Add Transaction</button>
+    </div>
   </div>
 
   <div id="dash">
-    <table>
+    <span class="noAccount" *ngIf="accountId == 0">No account created. <a (click)="OnAddAccountClick()" class="link-button">Create one now!</a></span>
+    <span id="noTransaction" *ngIf="selectedAccount && selectedAccount.transactions.length === 0">No transactions recorded...</span>
+    <table *ngIf="selectedAccount && selectedAccount.transactions.length > 0">
       <tr>
-        <th> Date</th>
-        <th>amount</th>
-        <th>transaction</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Transaction Description</th>
       </tr>
+      <!-- Display transactions from selected account -->
+      <ng-container *ngFor="let transaction of selectedAccount.transactions">
+        <tr>
+          <td>{{ transaction.transactionDateTime }}</td>
+          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.transactionDescription }}</td>
+        </tr>
+      </ng-container>
     </table>
   </div>
-
-  <div id="button">
-    <p>button for add transaction</p>
-  </div>
 </body>
-
-
-
-

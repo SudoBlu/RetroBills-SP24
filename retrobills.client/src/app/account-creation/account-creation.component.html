@@ -1,0 +1,25 @@
+<header>
+  <div class="bannerFrame">
+    <div class="retroBills">Retro Bills</div>
+  </div>
+</header>
+
+
+<body>
+  <div class="box">
+    <form (ngSubmit)="onCreateAccount()">  
+      <div class="box-title">Choose an Account Type</div> 
+      
+      <div class="radio-group">
+        <input type="radio" name="accountType" value="Checking" [(ngModel)]="selectedAccountType" class="radio-input"> Checking 
+        <input type="radio" name="accountType" value="Saving" [(ngModel)]="selectedAccountType" class="radio-input"> Saving 
+      </div>
+
+      <button type="submit" class="submit-btn">Create Account</button>
+      <button type="button" (click)="onCancelClick()" class="submit-btn">Cancel Account Creation</button>
+    </form>
+  </div>
+</body>
+
+
+

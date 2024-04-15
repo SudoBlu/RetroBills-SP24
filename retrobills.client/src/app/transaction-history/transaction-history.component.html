@@ -1,0 +1,32 @@
+<header>
+  <img src="../../assets/assets/Homepage assets/retro_Money__1_RemovebgPreview.png" alt="Retro Bills Logo"/>
+  <button class="link-button"(click)="OnDashClick()">Dashboard</button>
+  <button id="active" class="link-button">Detailed Transaction History
+  </button>
+  <button class="link-button" (click)="OnBudgetClick()">Budget</button>
+  <button class="link-button"(click)="OnHomeClick()">Log Out</button>
+</header>
+
+<body>
+  <div class="transaction-list">
+    <span *ngIf="transactions.length == 0">No transactions recorded...</span>
+    <table *ngIf="transactions.length > 0">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{transaction.transactionDateTime}}</td>
+          <td>{{transaction.transactionDescription}}</td>
+          <td>{{transaction.amount}}</td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </div>
+</body>
+
