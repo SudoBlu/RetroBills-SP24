@@ -23,16 +23,16 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent },
   {path: 'signup', component: SignupPageComponent },
   {path: 'recovery', component: AccountRecoveryComponent},
-  {path: 'transaction', component: TransactionComponent },
-  {path: 'createaccount/:userId', component: AccountCreationComponent},
-  {path: 'budget/report/:userId/:accountId', component: BudgetReportComponent},
-  {path: 'transaction/history/:userId/:accountId', component: TransactionHistoryComponent},
+  {path: 'transaction', component: TransactionComponent, canActivate: [AuthGuard]},
+  {path: 'createaccount/:userId', component: AccountCreationComponent, canActivate: [AuthGuard]},
+  {path: 'budget/report/:userId/:accountId', component: BudgetReportComponent, canActivate: [AuthGuard]},
+  {path: 'transaction/history/:userId/:accountId', component: TransactionHistoryComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: 'home', pathMatch: "full"},
 
-  {path: 'budget/:userId/:accountId',component: BudgetPageComponent},
-  {path: 'dashboard/:id',component: DashboardComponent},
-  {path: 'transaction/history/:id', component: TransactionHistoryComponent},
-  {path: 'createbudget/:userId/:accountId', component: BudgetCreationComponent},
+  {path: 'budget/:userId/:accountId',component: BudgetPageComponent, canActivate: [AuthGuard]},
+  {path: 'dashboard/:id',component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'transaction/history/:id', component: TransactionHistoryComponent, canActivate: [AuthGuard]},
+  {path: 'createbudget/:userId/:accountId', component: BudgetCreationComponent, canActivate: [AuthGuard]},
   {path: '**', component: PageNotFoundComponent}
 ];
 
