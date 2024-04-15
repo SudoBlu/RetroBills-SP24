@@ -92,7 +92,7 @@ export class DashboardComponent implements OnInit {
       const accountId = this.selectedAccount.accountId;
       this.transactionService.getTransactionsByAccount(accountId).subscribe(
         (transactions: Transaction[]) => {
-          this.selectedAccount!.transactions = transactions;
+          this.selectedAccount!.transactions = transactions.sort((a, b) => new Date(b.transactionDateTime).getTime() - new Date(a.transactionDateTime).getTime()).slice(0, 9);
           console.log("Selected account:", this.selectedAccount);
           console.log("Transactions for selected account:", this.selectedAccount!.transactions);
           if (this.selectedAccount!.transactions && this.selectedAccount!.transactions.length > 0) {
