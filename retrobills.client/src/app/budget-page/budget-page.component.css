@@ -88,11 +88,31 @@ body {
   width: 40%; /* Adjust the width if needed */
   max-width: none; /* Remove the maximum width restriction */
   margin: 0 auto;
-  margin-top: 16%; /* Move the table down */
-  margin-left: 16%; /* Move the table to the right */
-  background-color: white;
+  margin-top:20%; /* Move the table down */
+  margin-left: 15.5%; /* Move the table to the right */
+ /* background-color: white;*/
+  
 }
+/*sets the color and background color of error messages*/
+span{
+  color:white;
+  background-color: hsla(293, 59%, 42%, 1);
+}
+/*possitions no budget error message*/
+.error{
+  position: relative;
+  display:flex;
 
+  font-size: 12pt;
+  margin-top: 60px; /* moves it down */
+  margin-left:200px;/* moves it right*/
+  padding:5px;
+  height:auto;
+  width:fit-content;
+  
+
+  
+}
 
 table {
   width: 100%;

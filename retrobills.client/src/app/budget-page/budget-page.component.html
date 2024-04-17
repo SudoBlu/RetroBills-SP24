@@ -15,8 +15,8 @@
       <p class="remain" *ngIf="budget.budgetId !== 0">Budget remaining: ${{remainingAmount}}/${{budget.budgetAmount}}</p>
   </div>
   <div class="table-container">
-    <span *ngIf="budget.budgetId === 0">No budget found!</span>
-    <span *ngIf="budget.budgetId !== 0 && budgetTableItems.length === 0">No spending transactions recorded</span>
+    <span class="error" *ngIf="budget.budgetId === 0">No budget found!</span>
+    <span class="error" *ngIf="budget.budgetId !== 0 && budgetTableItems.length === 0">No spending transactions recorded</span>
     <table *ngIf="budget.budgetId !== 0">
       <thead>
         <tr>
