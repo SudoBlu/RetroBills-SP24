@@ -20,8 +20,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let transaction of transactions">
-          <td>{{transaction.transactionDateTime}}</td>
-          <td>{{transaction.transactionDescription}}</td>
+          <td>{{formatDate(transaction.transactionDateTime)}}</td>
+          <td>{{transaction.transactionDescription || 'N/A'}}</td>
           <td>{{transaction.amount}}</td>
         </tr>
         <!-- Add more rows as needed -->

@@ -5,6 +5,7 @@ import { Account } from '../account';
 import { Transaction } from '../transaction';
 import { AccountService } from '../services/account.service';
 import { TransactionService } from '../services/transaction.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +27,8 @@ export class DashboardComponent implements OnInit {
     private route: ActivatedRoute,
     private authService: AuthService,
     private accountService: AccountService,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -176,5 +178,15 @@ export class DashboardComponent implements OnInit {
     } else {
       console.error('User ID not found.');
     }
+  }
+
+  /**
+   * Formats the date of a {@link Transaction} object to be
+   * represented as a MM/DD/YYYY format
+   * @param date the date of the transaction to format
+   * @returns a string in the MM/DD/YYYY format
+   */
+  formatDate(date: Date){
+    return this.datePipe.transform(date, 'MM/dd/yyyy');
   }
 }
