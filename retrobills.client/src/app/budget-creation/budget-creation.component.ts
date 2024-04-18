@@ -62,7 +62,7 @@ export class BudgetCreationComponent {
         }else{
           console.log(`Editing budget with ID: ${budgetId}`)
           this.budgetService.updateBudget(accountID!, budgetDTO).subscribe(() => {
-            this.router.navigate(['budget', this.userId])
+            this.router.navigate(['budget', this.userId, this.accountId])
           })
         }
       }else{
