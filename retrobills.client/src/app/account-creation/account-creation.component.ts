@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AccountService } from '../services/account.service';
 import { Account } from '../account';
 import { AccountDTO } from '../DTOs/AccountDTO';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-account-creation',
@@ -11,12 +12,17 @@ import { AccountDTO } from '../DTOs/AccountDTO';
 })
 export class AccountCreationComponent implements OnInit{
   accounts: Account[] = [];
-  selectedAccountType: string = 'Checking';
 
   constructor(
     private accountService: AccountService,
     private route: ActivatedRoute,
     private router: Router) {}
+
+    accountForm = new FormGroup({
+      accountName: new FormControl('', [Validators.required])
+    })
+
+    invalidCreate: boolean = false;
 
     ngOnInit() {
       // Retrieve userId from the route
@@ -44,23 +50,28 @@ export class AccountCreationComponent implements OnInit{
   
 
     onCreateAccount() {
-      const userId = this.getCurrentUserId(); 
-      const accountDTO: AccountDTO = { 
-        AccountType: this.selectedAccountType,
-      };
-
-      this.accountService.createAccount(userId, accountDTO).subscribe(
-        () => { 
-          console.log('Account created successfully!');
-          this.accountService.getAccountsForUser(userId).subscribe(response => {
-            console.log(response);
-            let sortedArray = response.sort((a, b) => a.accountId - b.accountId);
-            console.log(sortedArray)
-            let accountId = sortedArray[sortedArray.length - 1].accountId
-            console.log(accountId)
-            this.router.navigate(['dashboard', this.getCurrentUserId()], {queryParams: {accountId: accountId}})
-          })},
-        error => { console.error('Account creation error:', error); /* Handle errors */ }
-      );  
+      if(this.accountForm.valid){
+        this.invalidCreate = false;
+        const userId = this.getCurrentUserId(); 
+        const accountDTO: AccountDTO = { 
+          AccountType: this.accountForm.value.accountName!,
+        };
+  
+        this.accountService.createAccount(userId, accountDTO).subscribe(
+          () => { 
+            console.log('Account created successfully!');
+            this.accountService.getAccountsForUser(userId).subscribe(response => {
+              console.log(response);
+              let sortedArray = response.sort((a, b) => a.accountId - b.accountId);
+              console.log(sortedArray)
+              let accountId = sortedArray[sortedArray.length - 1].accountId
+              console.log(accountId)
+              this.router.navigate(['dashboard', this.getCurrentUserId()], {queryParams: {accountId: accountId}})
+            })},
+          error => { console.error('Account creation error:', error); /* Handle errors */ }
+        );  
+      }else{
+        this.invalidCreate = true;
+      }
     }
 }

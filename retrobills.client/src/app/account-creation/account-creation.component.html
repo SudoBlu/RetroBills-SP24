@@ -7,12 +7,12 @@
 
 <body>
   <div class="box">
-    <form (ngSubmit)="onCreateAccount()">  
-      <div class="box-title">Choose an Account Type</div> 
+    <span *ngIf="invalidCreate" class="error">Please name the account!</span>
+    <form [formGroup]="accountForm" (ngSubmit)="onCreateAccount()">  
+      <div class="box-title">Name the account</div> 
       
       <div class="radio-group">
-        <input type="radio" name="accountType" value="Checking" [(ngModel)]="selectedAccountType" class="radio-input"> Checking 
-        <input type="radio" name="accountType" value="Saving" [(ngModel)]="selectedAccountType" class="radio-input"> Saving 
+        <input type="text" formControlName="accountName" placeholder="Account Name"/>
       </div>
 
       <button type="submit" class="submit-btn">Create Account</button>
