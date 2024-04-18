@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { TransactionService } from '../services/transaction.service';
 import { Transaction } from '../transaction'
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-transaction-history',
@@ -10,7 +11,7 @@ import { Transaction } from '../transaction'
   styleUrl: './transaction-history.component.css'
 })
 export class TransactionHistoryComponent {
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private transactionService: TransactionService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private transactionService: TransactionService, private datePipe: DatePipe) {}
 
 
   private userId: number | undefined;
@@ -50,5 +51,15 @@ export class TransactionHistoryComponent {
         subscription.unsubscribe();
       })
     })
+  }
+
+  /**
+   * Formats the date of a {@link Transaction} object to be
+   * represented as a MM/DD/YYYY format
+   * @param date the date of the transaction to format
+   * @returns a string in the MM/DD/YYYY format
+   */
+  formatDate(date: Date){
+    return this.datePipe.transform(date, 'MM/dd/yyyy');
   }
 }

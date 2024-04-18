@@ -90,15 +90,15 @@ export class TransactionService {
   }
 
   // Get all accounts for a specific user
-getAccountsByUser(userId: number): Observable<Account[]> {
-  return this.http.get<Account[]>(`${this.baseUrl}/api/Account/${userId}/accounts`)
-    .pipe(
-      catchError(error => {
-        console.error('Error getting accounts by user:', error);
-        return throwError(() => new Error(error));
-      })
-    );
-}
+  getAccountsByUser(userId: number): Observable<Account[]> {
+    return this.http.get<Account[]>(`${this.baseUrl}/api/Account/${userId}/accounts`)
+      .pipe(
+        catchError(error => {
+          console.error('Error getting accounts by user:', error);
+          return throwError(() => new Error(error));
+        })
+      );
+  }
 
 
 }

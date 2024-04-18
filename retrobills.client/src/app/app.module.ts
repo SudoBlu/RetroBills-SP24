@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BudgetCreationComponent } from './budget-creation/budget-creation.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -65,7 +66,8 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
     RouterModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
