@@ -9,19 +9,23 @@
 <div class="content">
   <div class="recovery-form">
     <form [formGroup]="recoveryForm">
-      <h2>Account Recovery</h2>
-      <p>Enter your email address and new password below to recover your account.</p>
+      <h2>Update Password</h2>
+      <p>Enter your new password and confirm it below.</p>
       <p class="error" *ngIf="emptyFieldsError">Please input all fields</p>
       <p class="error" *ngIf="samePasswordError">You entered the password associated with your account. Either enter a new password or login with the current password</p>
       <p class="error" *ngIf="differentPasswordError">The new and confirm password fields don't match</p>
-      <label for="email">Email:</label>
-          <input formControlName="email" type="email" id="email" name="email" placeholder="Enter your email address" required>
-          <label for="password">Password:</label>
+
+      <!--<label for="email">Email:</label>
+          <input formControlName="email" type="email" id="email" name="email" placeholder="Enter your email address" required>-->
+          <label for="password">New Password:</label>
           <input formControlName="newPassword" type="password" id="password" name="password" placeholder="Enter your new password" required>
-          <label for="new-password">New Password:</label>
+          <label for="new-password">Confirm Password:</label>
           <input formControlName="confirmPassword" type="password" id="new-password" name="new-password" placeholder="Confirm your new password" required>
-      <button type="submit" (click)="onSubmit()">Recover Account</button><br>
-      <a [routerLink]="'/login'">Return to login</a>
+
+          <!--Needs to function as the button should-->
+          <button type="submit" (click)="onSubmit()">Save</button><br>
+      <!--Needs to function as the button should-->
+      <a [routerLink]="'/login'">Return to Dashboard</a>    <!--could be a cancel button instead-->
     </form>
   </div>
 </div>

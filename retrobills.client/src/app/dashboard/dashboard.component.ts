@@ -78,17 +78,17 @@ export class DashboardComponent implements OnInit {
       // If it's the same account, no need to fetch transactions again
       return;
     }
-  
+
     // Proceed with fetching transactions for the selected account
     this.selectedAccount = account;
     this.accountId = account.accountId;
     this.fetchTransactionsForSelectedAccount();
-  
+
     // Update both route path and query parameters
     const navigationExtras: NavigationExtras = {
       queryParams: { accountId: this.accountId }
     };
-  
+
     // Navigate to the same route with updated query parameters
     this.router.navigate([], {
       relativeTo: this.route,
@@ -96,7 +96,7 @@ export class DashboardComponent implements OnInit {
       queryParamsHandling: 'merge'
     });
   }
-  
+
 
   fetchTransactionsForSelectedAccount(): void {
     if (this.selectedAccount) {
@@ -109,7 +109,7 @@ export class DashboardComponent implements OnInit {
           // console.log("Transactions for selected account:", this.selectedAccount!.transactions);
           if (this.selectedAccount!.transactions && this.selectedAccount!.transactions.length > 0) {
             //console.log("Transactions exist.");
-            
+
             let total = this.accountBalance;
 
             this.selectedAccount.transactions.forEach(transaction  => {
@@ -126,14 +126,14 @@ export class DashboardComponent implements OnInit {
             // console.log("TOTAL BEFORE : ", total);
             // console.log("ACCOUNT BALANCE BEFORE : ", this.accountBalance);
             // console.log("SELECT ACCOUNT BALANCE BEFORE: ", this.selectedAccount.balance);
-            
+
             this.accountBalance = total;
             this.selectedAccount.balance = total;
 
             // console.log("TOTAL AFTER : ", total);
             // console.log("ACCOUNT BALANCE AFTER : ", this.accountBalance);
             // console.log("SELECT ACCOUNT BALANCE AFTER: ", this.selectedAccount.balance);
-            
+
           } else {
             console.log("No transactions found.");
           }
@@ -169,6 +169,10 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['transaction'], {
       queryParams: { id: this.userId, accountId: accountId }
     });
+  }
+
+  OnForgotPasswordClick(){
+    this.router.navigate(['recovery'])
   }
 
   // Function to navigate to AccountCreationComponent and create a new account
