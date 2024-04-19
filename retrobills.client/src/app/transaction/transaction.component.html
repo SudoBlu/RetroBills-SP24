@@ -12,7 +12,7 @@
       <label for="account">Account:</label>
       <select id="account" formControlName="accountId" (change)="onAccountSelected($event)">
         <option *ngFor="let account of accounts" [value]="account.accountId">
-          {{ account.accountId }} - {{ account.accountType }} - {{ account.balance | currency }}
+          {{ account.accountType }} - {{ account.balance | currency}}
         </option>
       </select>
     </div>

@@ -13,7 +13,7 @@
       <form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
         <label for="accounts">Select an Account: </label>
         <select *ngIf="accounts.length > 0" formControlName="accountID" name="accounts">
-          <option *ngFor="let account of accounts" [value]="account.accountId">{{account.accountId}}: {{account.accountType}}</option>
+          <option *ngFor="let account of accounts" [value]="account.accountId">{{account.accountType}}</option>
         </select>
         <div class="dollar-input">
           <span>$</span>

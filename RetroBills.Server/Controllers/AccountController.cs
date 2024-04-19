@@ -46,7 +46,7 @@ namespace RetroBills.Server.Controllers
                 return NotFound("User is not tied to an account");
             return Ok(userAccounts);
         }
-
+        
         //Create an account for a user
         [HttpPost]
         public async Task<IActionResult> CreateAccountForUser(int userID, AccountDTO accountDTO)
