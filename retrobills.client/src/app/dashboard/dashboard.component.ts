@@ -6,7 +6,7 @@ import { Transaction } from '../transaction';
 import { AccountService } from '../services/account.service';
 import { TransactionService } from '../services/transaction.service';
 import { DatePipe } from '@angular/common';
-import { catchError, map, tap, throwError } from 'rxjs';
+import { Subscription, catchError, map, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +22,8 @@ export class DashboardComponent implements OnInit {
   private userId!: number;
   accountId: number = 0;
   newBalance:number = 0;
+  private transactionSubscription: Subscription | undefined;
+
 
   constructor(
     private router: Router,
@@ -33,6 +35,10 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.transactionSubscription = this.transactionService.subscribeToNewTransactions().subscribe((newTransaction: Transaction) => {
+      // Trigger balance update process
+      this.fetchTransactionsForSelectedAccount();
+    });
     this.route.queryParams.subscribe(params => this.accountId = params['accountId'])
     this.route.params.subscribe(params => {
       this.userId = parseInt(params['id']);
@@ -49,11 +55,13 @@ export class DashboardComponent implements OnInit {
         }
       }
     });
+  }
 
-    this.transactionService.subscribeToNewTransactions().subscribe((newTransaction: Transaction) => {
-      // Trigger balance update process
-      this.fetchTransactionsForSelectedAccount();
-    });
+  ngOnDestroy(): void {
+    // Unsubscribe from the new transaction subscription to avoid memory leaks
+    if (this.transactionSubscription) {
+      this.transactionSubscription.unsubscribe();
+    }
   }
 
   fetchAccountsForUser(): void {
@@ -111,6 +119,7 @@ export class DashboardComponent implements OnInit {
         return this.calculateBalance();
       }),
       tap((balance: number) => {
+        console.log("BALANCE : ", balance);
         this.updateAccountBalance(balance);
       }),
       catchError((error) => {
