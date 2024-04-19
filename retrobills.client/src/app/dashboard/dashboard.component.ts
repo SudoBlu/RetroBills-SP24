@@ -120,6 +120,25 @@ export class DashboardComponent implements OnInit {
             this.accountBalance = total;
             this.selectedAccount.balance = total;
 
+            // Update balances for all accounts
+          this.accounts.forEach(account => {
+            if (account.accountId !== accountId) {
+              account.balance = account.transactions.reduce((acc, curr) => {
+                if (curr.transactionType === 'Income') {
+                  return acc + curr.amount;
+                } else {
+                  return acc - curr.amount;
+                }
+              }, account.balance);
+            }
+          });
+
+          console.log("USER ID : ", this.userId);
+          console.log("ACCOUNT ID", this.selectedAccount);
+          console.log("SELECTED ACCOUNT BALANCE : ", this.selectedAccount.balance);
+          // Call the function to update the account balance on the server
+          this.accountService.updateAccountBalance(this.userId, accountId, this.selectedAccount.balance);
+
           } else {
             console.log("No transactions found.");
           }

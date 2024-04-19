@@ -37,6 +37,11 @@ export class AccountService {
         return this.http.put(`${this.apiBaseUrl}/${userId}/accounts/${accountId}`, accountDTO);
     }
 
+    updateAccountBalance(userId: number, accountId: number, balance: number): Observable<any> {
+      const url = `${this.apiBaseUrl}/${userId}/accounts/${accountId}/balance`;
+      return this.http.put(url, balance);
+    }    
+    
     deleteAccount(userId: number, accountId: number): Observable<any> 
     {
         return this.http.delete(`${this.apiBaseUrl}/${userId}/accounts/${accountId}`);
