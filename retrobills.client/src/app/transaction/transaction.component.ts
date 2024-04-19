@@ -93,25 +93,21 @@ ngOnInit(): void {
   }
 
   onSubmit() {
-    console.log("DMIPWADIASPDNWAIPNDAS");
     const transactionData: TransactionDTO = this.transactionForm.value;
-    console.log("Data of the transactions : " , transactionData);
-
     this.transactionService.createTransaction(transactionData)
       .subscribe(
         (newTransaction) => {
           console.log('Transaction created:', newTransaction);
-          // Reset the form after successful submission
-          console.log("SOCLOSE: ", this.selectedAccountId);
-          // Call OnSaveClick with the selectedAccountId
+          // Emit the new transaction to trigger balance update
+          this.transactionService.emitNewTransaction(newTransaction);
           this.OnSaveClick(this.selectedAccountId);
-
+          // Reset the form after successful submission
           this.transactionForm.reset(); 
-          
         },
         (error) => console.error('Error creating transaction:', error)
       );
   }
+  
 
   OnSaveClick(accountId: number): void {
     this.router.navigate(['dashboard', this.userId], {

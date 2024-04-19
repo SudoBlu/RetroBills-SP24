@@ -112,13 +112,22 @@ namespace RetroBills.Server.Controllers
 
         }
 
+        //Get Account Balance
+        [HttpGet("{userID}/accounts/{accountID}/balance")]
+        public async Task<IActionResult> GetAccountBalance(int userID, int accountID)
+        {
+            var account = await _retroBillsContext.Accounts.FindAsync(accountID);
+            if (account == null)
+                return NotFound("Account not found");
+
+            return Ok(account.Balance);
+        }
+
+
         // Update account balance for a user
         [HttpPut("{userID}/accounts/{accountID}/balance")]
         public async Task<IActionResult> UpdateAccountBalanceForUser(int userID, int accountID, decimal balance)
         {
-
-            Console.WriteLine($"Updating balance for user ID: {userID}, account ID: {accountID}, balance: {balance}");
-
             var userAccount = await _retroBillsContext.UserAccounts.FirstOrDefaultAsync(ua => ua.UserId == userID && ua.AccountId == accountID);
             if (userAccount == null)
                 return NotFound("User account not found");

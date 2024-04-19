@@ -37,10 +37,17 @@ export class AccountService {
         return this.http.put(`${this.apiBaseUrl}/${userId}/accounts/${accountId}`, accountDTO);
     }
 
-    updateAccountBalance(userId: number, accountId: number, balance: number): Observable<any> {
+    getAccountBalance(userId: number, accountId: number): Observable<number> {
       const url = `${this.apiBaseUrl}/${userId}/accounts/${accountId}/balance`;
-      return this.http.put(url, balance);
-    }    
+      return this.http.get<number>(url);
+    }
+
+    updateAccountBalance(userId: number, accountId: number, balance: number): Observable<number> {
+      const url = `${this.apiBaseUrl}/${userId}/accounts/${accountId}/balance`;
+      const params = new HttpParams().set('balance', balance.toString());
+      return this.http.put<number>(url, {}, { params });
+    }
+      
     
     deleteAccount(userId: number, accountId: number): Observable<any> 
     {

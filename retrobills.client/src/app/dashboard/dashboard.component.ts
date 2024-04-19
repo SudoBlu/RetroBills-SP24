@@ -6,6 +6,7 @@ import { Transaction } from '../transaction';
 import { AccountService } from '../services/account.service';
 import { TransactionService } from '../services/transaction.service';
 import { DatePipe } from '@angular/common';
+import { catchError, map, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,7 @@ export class DashboardComponent implements OnInit {
 
   private userId!: number;
   accountId: number = 0;
-  accountBalance: number = 0;
+  newBalance:number = 0;
 
   constructor(
     private router: Router,
@@ -48,6 +49,11 @@ export class DashboardComponent implements OnInit {
         }
       }
     });
+
+    this.transactionService.subscribeToNewTransactions().subscribe((newTransaction: Transaction) => {
+      // Trigger balance update process
+      this.fetchTransactionsForSelectedAccount();
+    });
   }
 
   fetchAccountsForUser(): void {
@@ -58,7 +64,6 @@ export class DashboardComponent implements OnInit {
         if (this.accounts.length > 0) {
           this.accounts.sort((a, b) => a.accountId - b.accountId);
           if(this.accountId! > 0){
-            //console.log('Fetching for existing account...')
             index = this.accounts.findIndex(x => x.accountId == this.accountId)
             this.selectedAccount = this.accounts[index];
             this.fetchTransactionsForSelectedAccount();
@@ -98,57 +103,48 @@ export class DashboardComponent implements OnInit {
 
 
   fetchTransactionsForSelectedAccount(): void {
-    if (this.selectedAccount) {
+    if(this.selectedAccount){
       const accountId = this.selectedAccount.accountId;
-      this.accountBalance = this.selectedAccount.balance;
-      this.transactionService.getTransactionsByAccount(accountId).subscribe(
-        (transactions: Transaction[]) => {
-          this.selectedAccount!.transactions = transactions.sort((a, b) => new Date(b.transactionDateTime).getTime() - new Date(a.transactionDateTime).getTime()).slice(0, 9);
-          if (this.selectedAccount!.transactions && this.selectedAccount!.transactions.length > 0) {
-
-            let total = this.accountBalance;
-
-            this.selectedAccount.transactions.forEach(transaction  => {
-              if(transaction.transactionType === 'Income'){
-                total += transaction.amount;
-              }
-              else{
-                total -= transaction.amount;
-              }
-            });
-
-            this.accountBalance = total;
-            this.selectedAccount.balance = total;
-
-            // Update balances for all accounts
-          this.accounts.forEach(account => {
-            if (account.accountId !== accountId) {
-              account.balance = account.transactions.reduce((acc, curr) => {
-                if (curr.transactionType === 'Income') {
-                  return acc + curr.amount;
-                } else {
-                  return acc - curr.amount;
-                }
-              }, account.balance);
-            }
-          });
-
-          console.log("USER ID : ", this.userId);
-          console.log("ACCOUNT ID", this.selectedAccount);
-          console.log("SELECTED ACCOUNT BALANCE : ", this.selectedAccount.balance);
-          // Call the function to update the account balance on the server
-          this.accountService.updateAccountBalance(this.userId, accountId, this.selectedAccount.balance);
-
-          } else {
-            console.log("No transactions found.");
-          }
-        },
-        (error) => {
-          console.error('Error fetching transactions:', error);
-        }
-      );
+    this.transactionService.getTransactionsByAccount(accountId).pipe(
+      map((transactions: Transaction[]) => {
+        this.selectedAccount.transactions = transactions.sort((a, b) => new Date(b.transactionDateTime).getTime() - new Date(a.transactionDateTime).getTime()).slice(0, 9);
+        return this.calculateBalance();
+      }),
+      tap((balance: number) => {
+        this.updateAccountBalance(balance);
+      }),
+      catchError((error) => {
+        console.error('Error fetching transactions:', error);
+        return throwError(error);
+      })
+    ).subscribe();
     }
   }
+
+  calculateBalance(): number {
+    let total = 0;
+    this.selectedAccount.transactions.forEach(transaction => {
+      if (transaction.transactionType === 'Income') {
+        total += transaction.amount;
+      } else {
+        total -= transaction.amount;
+      }
+    });
+    return total;
+  }
+
+  updateAccountBalance(balance: number): void {
+    this.newBalance = balance;
+    this.accountService.updateAccountBalance(this.userId, this.selectedAccount.accountId, this.newBalance).subscribe(
+      (updatedBalance: number) => {
+        console.log('Updated balance:', updatedBalance);
+      },
+      (error) => {
+        console.error('Error updating balance:', error);
+      }
+    );
+  }
+
 
 
   OnDashClick(): void {
