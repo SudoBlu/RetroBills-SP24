@@ -33,7 +33,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => this.accountId = params['accountId'])
-    //console.log(this.accountId)
     this.route.params.subscribe(params => {
       this.userId = parseInt(params['id']);
       if (isNaN(this.userId)) {
@@ -105,34 +104,21 @@ export class DashboardComponent implements OnInit {
       this.transactionService.getTransactionsByAccount(accountId).subscribe(
         (transactions: Transaction[]) => {
           this.selectedAccount!.transactions = transactions.sort((a, b) => new Date(b.transactionDateTime).getTime() - new Date(a.transactionDateTime).getTime()).slice(0, 9);
-          // console.log("Selected account:", this.selectedAccount);
-          // console.log("Transactions for selected account:", this.selectedAccount!.transactions);
           if (this.selectedAccount!.transactions && this.selectedAccount!.transactions.length > 0) {
-            //console.log("Transactions exist.");
 
             let total = this.accountBalance;
 
             this.selectedAccount.transactions.forEach(transaction  => {
               if(transaction.transactionType === 'Income'){
                 total += transaction.amount;
-                //console.log("Transaction Add :", total);
               }
               else{
-                total -= transaction.amount
-                //console.log("Transaction Minus :", total);
+                total -= transaction.amount;
               }
             });
 
-            // console.log("TOTAL BEFORE : ", total);
-            // console.log("ACCOUNT BALANCE BEFORE : ", this.accountBalance);
-            // console.log("SELECT ACCOUNT BALANCE BEFORE: ", this.selectedAccount.balance);
-
             this.accountBalance = total;
             this.selectedAccount.balance = total;
-
-            // console.log("TOTAL AFTER : ", total);
-            // console.log("ACCOUNT BALANCE AFTER : ", this.accountBalance);
-            // console.log("SELECT ACCOUNT BALANCE AFTER: ", this.selectedAccount.balance);
 
           } else {
             console.log("No transactions found.");
@@ -172,7 +158,9 @@ export class DashboardComponent implements OnInit {
   }
 
   OnForgotPasswordClick(){
-    this.router.navigate(['recovery'])
+    this.router.navigate(['recovery', this.userId], {
+      queryParams: {accountId: this.accountId}
+    })
   }
 
   // Function to navigate to AccountCreationComponent and create a new account

@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'home/contact', component: ContactComponent},
   {path: 'login', component: LoginPageComponent },
   {path: 'signup', component: SignupPageComponent },
-  {path: 'recovery', component: AccountRecoveryComponent},
+  {path: 'recovery/:userId', component: AccountRecoveryComponent, canActivate: [AuthGuard]},
   {path: 'transaction', component: TransactionComponent, canActivate: [AuthGuard]},
   {path: 'createaccount/:userId', component: AccountCreationComponent, canActivate: [AuthGuard]},
   {path: 'budget/report/:userId/:accountId', component: BudgetReportComponent, canActivate: [AuthGuard]},

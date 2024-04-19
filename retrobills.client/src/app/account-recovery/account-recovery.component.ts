@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router';
 import { AccountService } from '../services/account.service';
 import { UserService } from '../services/user.service';
@@ -12,16 +12,21 @@ import { Observable } from 'rxjs';
   templateUrl: './account-recovery.component.html',
   styleUrls: ['./account-recovery.component.css', '../home/home.component.scss']
 })
-export class AccountRecoveryComponent {
+export class AccountRecoveryComponent implements OnInit{
   samePasswordError: boolean = false;
   differentPasswordError: boolean = false;
   emptyFieldsError: boolean = false;
   validChange: boolean = !this.samePasswordError && !this.differentPasswordError && !this.emptyFieldsError;
+  userId: number = this.route.snapshot.params['userId'];
+  accountId: number = 0;
   
-  constructor(private userService: UserService, private router: Router){}
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute){}
+
+  ngOnInit(){
+    this.accountId = this.route.snapshot.queryParams['accountId']
+  }
 
   recoveryForm = new FormGroup({
-    email: new FormControl('', [Validators.required]),
     newPassword: new FormControl('', [Validators.required]),
     confirmPassword: new FormControl('', [Validators.required])
   })
@@ -30,9 +35,8 @@ export class AccountRecoveryComponent {
     this.validateForm();
 
     if(this.validChange){
-      const email = this.recoveryForm.value.email!;
       let oldUserObject: User;
-      this.getUserObject(email).subscribe(
+      this.getUserObject(this.userId).subscribe(
         (user: User | undefined) => {
           if(user){
             console.log(user)
@@ -56,7 +60,9 @@ export class AccountRecoveryComponent {
               console.log(newUserObject);
   
               this.userService.UpdateUser(newUserObject, oldUserObject.userId).subscribe(() => {
-                this.router.navigate(['login'])
+                this.router.navigate(['dashboard', this.userId], {
+                  queryParams: {accountId: this.accountId}
+                })
               })
             }
           }else{
@@ -91,7 +97,13 @@ export class AccountRecoveryComponent {
     console.log(this.validChange);
   }
 
-  getUserObject(email: string): Observable<User | undefined>{
-    return this.userService.GetUserByEmail(email);
+  getUserObject(userId: number): Observable<User | undefined>{
+    return this.userService.GetUserById(userId);
+  }
+
+  onCancelClick(){
+    this.router.navigate(['dashboard', this.userId], {
+      queryParams: {accountId: this.accountId}
+    })
   }
 }

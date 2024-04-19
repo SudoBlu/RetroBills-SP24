@@ -62,6 +62,22 @@ export class UserService {
     )
   }
 
+  GetUserById(userId: number): Observable<User | undefined>{
+    console.log(userId);
+    return this.GetUsers().pipe(
+      switchMap(users => {
+        if(users.length > 0){
+          console.log(users);
+          let foundUser = users.find(user => user.userId == userId);
+          console.log(foundUser);
+          return of(foundUser !== undefined ? foundUser : undefined);
+        }else{
+          throw new Error('User not found')
+        }
+      })
+    )
+  }
+
   /**
    * Creates a User entry in the database
    * @param userDTO the parameters of the User object
