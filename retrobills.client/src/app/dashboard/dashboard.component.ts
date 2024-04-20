@@ -6,7 +6,7 @@ import { Transaction } from '../transaction';
 import { AccountService } from '../services/account.service';
 import { TransactionService } from '../services/transaction.service';
 import { DatePipe } from '@angular/common';
-import { Subscription, catchError, map, tap, throwError } from 'rxjs';
+import { Observable, Subscription, catchError, map, switchMap, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,9 +36,12 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.transactionSubscription = this.transactionService.subscribeToNewTransactions().subscribe((newTransaction: Transaction) => {
+      // Perform action with newTransaction here
+      console.log('New transaction received:', newTransaction);
       // Trigger balance update process
       this.fetchTransactionsForSelectedAccount();
     });
+    
     this.route.queryParams.subscribe(params => this.accountId = params['accountId'])
     this.route.params.subscribe(params => {
       this.userId = parseInt(params['id']);
@@ -66,23 +69,24 @@ export class DashboardComponent implements OnInit {
 
   fetchAccountsForUser(): void {
     let index = 0;
-    this.accountService.getAccountsForUser(this.userId).subscribe(
-      (accounts: Account[]) => {
+    this.accountService.getAccountsForUser(this.userId).subscribe({
+      next: (accounts: Account[]) => {
         this.accounts = accounts;
         if (this.accounts.length > 0) {
           this.accounts.sort((a, b) => a.accountId - b.accountId);
-          if(this.accountId! > 0){
+          if (this.accountId! > 0) {
             index = this.accounts.findIndex(x => x.accountId == this.accountId)
             this.selectedAccount = this.accounts[index];
             this.fetchTransactionsForSelectedAccount();
           }
         }
       },
-      (error) => {
+      error: (error) => {
         console.error('Error fetching accounts:', error);
       }
-    );
+    });
   }
+  
 
   switchAccount(account: Account): void {
     // Check if the selected account is different from the previously selected one
@@ -124,10 +128,13 @@ export class DashboardComponent implements OnInit {
       }),
       catchError((error) => {
         console.error('Error fetching transactions:', error);
-        return throwError(error);
+        return error(error);
       })
     ).subscribe();
     }
+    console.log("Selected Account : ", this.selectedAccount);
+    console.log("Accounts : ", this.accounts);
+    console.log("Transactions : ", this.transactions);
   }
 
   calculateBalance(): number {
@@ -142,19 +149,19 @@ export class DashboardComponent implements OnInit {
     return total;
   }
 
-  updateAccountBalance(balance: number): void {
-    this.newBalance = balance;
-    this.accountService.updateAccountBalance(this.userId, this.selectedAccount.accountId, this.newBalance).subscribe(
-      (updatedBalance: number) => {
-        console.log('Updated balance:', updatedBalance);
-      },
-      (error) => {
-        console.error('Error updating balance:', error);
-      }
-    );
+  async updateAccountBalance(balance: number): Promise<void> {
+    try {
+      this.newBalance = balance;
+      const updatedBalance = await this.accountService.updateAccountBalance(this.userId, this.selectedAccount.accountId, this.newBalance).toPromise();
+      console.log('Updated balance:', updatedBalance);
+      // Update the selectedAccount balance with the latest balance
+      this.selectedAccount.balance = updatedBalance;
+    } catch (error) {
+      console.error('Error updating balance:', error);
+      throw error; // Rethrow the error to handle it in the calling function
+    }
   }
-
-
+  
 
   OnDashClick(): void {
     this.router.navigate(['dashboard', this.userId], {

@@ -136,12 +136,12 @@ namespace RetroBills.Server.Controllers
             var account = await _retroBillsContext.Accounts.FindAsync(accountID);
             if (account == null)
                 return NotFound("Account not found");
+
             account.Balance = balance;
             await _retroBillsContext.SaveChangesAsync();
-            return NoContent();
+
+            // Return updated balance value with status code 200 (OK)
+            return Ok(balance);
         }
-
-
-
     }
 }

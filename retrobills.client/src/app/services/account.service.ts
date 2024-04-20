@@ -42,7 +42,7 @@ export class AccountService {
       return this.http.get<number>(url);
     }
 
-    updateAccountBalance(userId: number, accountId: number, balance: number): Observable<number> {
+    updateAccountBalance(userId: number, accountId: number, balance: number): Observable<any> {
       const url = `${this.apiBaseUrl}/${userId}/accounts/${accountId}/balance`;
       const params = new HttpParams().set('balance', balance.toString());
       return this.http.put<number>(url, {}, { params });
