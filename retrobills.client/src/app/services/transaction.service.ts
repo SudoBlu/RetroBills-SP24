@@ -2,7 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, switchMap, throwError } from 'rxjs';
+import { Observable, Subject, catchError, map, switchMap, tap, throwError } from 'rxjs';
 import { Transaction } from '../transaction';
 import { Account } from '../account';
 import { TransactionDTO } from '../DTOs/TransactionDTO';
@@ -13,21 +13,35 @@ import { TransactionDTO } from '../DTOs/TransactionDTO';
 export class TransactionService {
   private baseUrl = 'https://localhost:7201';
   private transactionUrl = 'https://localhost:7201/api/Transaction'; // Replace with your base transaction API URL
+  private newTransactionSubject: Subject<Transaction> = new Subject<Transaction>();
 
   constructor(private http: HttpClient) { }
 
+  // Expose a method to allow subscription to new transactions
+  subscribeToNewTransactions(): Observable<Transaction> {
+    return this.newTransactionSubject.asObservable();
+  }
+
+  // Method to emit new transactions
+  emitNewTransaction(transaction: Transaction): void {
+    this.newTransactionSubject.next(transaction);
+  }
+
   // Create a new transaction
   createTransaction(transaction: TransactionDTO): Observable<Transaction> {
-    console.log(transaction);
     return this.http.post<Transaction>(this.transactionUrl, transaction)
       .pipe(
+        tap((newTransaction: Transaction) => {
+          // Emit the new transaction
+          this.emitNewTransaction(newTransaction);
+        }),
         catchError(error => {
-          // Handle errors from the backend (e.g., log to console)
           console.error('Error creating transaction:', error);
           return throwError(() => new Error(error));
         })
       );
   }
+  
 
   // Get a transaction by ID
   getTransactionById(id: number): Observable<Transaction> {
