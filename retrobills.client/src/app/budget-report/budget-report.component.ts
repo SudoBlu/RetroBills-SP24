@@ -1,9 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Chart, registerables as registerable } from 'chart.js';
 import { BudgetsService } from '../services/budgets.service';
-import { EMPTY, of } from 'rxjs';
 import { Budget } from '../interfaces/budget';
 import { TransactionService } from '../services/transaction.service';
 import { Transaction } from '../transaction';
@@ -15,7 +14,7 @@ import { AccountService } from '../services/account.service';
   templateUrl: './budget-report.component.html',
   styleUrl: './budget-report.component.css'
 })
-export class BudgetReportComponent implements OnInit{
+export class ExpenseReportComponent implements OnInit{
   tableData: number[] = [0, 0, 0, 0];
   transactions: Transaction[] = [];
   public chart: any;
@@ -60,7 +59,7 @@ export class BudgetReportComponent implements OnInit{
     }
 
     OnBudgetClick(){
-      this.router.navigate(['budget', this.userId, this.accountId])
+      this.router.navigate(['expense', this.userId, this.accountId])
     }
 
     OnHomeClick(){
@@ -69,7 +68,7 @@ export class BudgetReportComponent implements OnInit{
     }
 
     OnAddBudget(){
-      this.router.navigate(['budget/create', this.userId])
+      this.router.navigate(['createexpenseplan', this.userId, this.accountId])
     }
 
   ngOnDestroy(): void {
@@ -115,7 +114,7 @@ export class BudgetReportComponent implements OnInit{
         labels: ['Rent', 'Groceries', 'Other Expense'],
         datasets: [{
           label: 'Amount Spent',
-          data: this.tableData,
+          data: this.tableData.slice(0, 3),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 205, 86, 0.2)',

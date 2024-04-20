@@ -8,8 +8,8 @@
 <body>
   <div class="container">
     <div class="box">
-      <div class="box-title">Enter Your Budget Amount</div>
-      <div>Note: If a budget exists for an account, it will be updated with the new amount</div>
+      <div class="box-title">Enter Your Expense Plan Amount</div>
+      <div>Note: If an expense plan exists for an account, it will be updated with the new amount</div>
       <form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
         <label for="accounts">Select an Account: </label>
         <select *ngIf="accounts.length > 0" formControlName="accountID" name="accounts">
@@ -20,7 +20,7 @@
           <input formControlName="budgetAmount" type="text" placeholder="0.00" pattern="\d+(\.\d{2})?" title="Please enter a valid dollar amount (e.g., 100.00)" required>
         </div>
         <button *ngIf="accounts.length > 0" type="submit" class="submit-btn">Submit</button>
-        <button class="submit-btn-cancel" (click)="onCancelClick()">Cancel</button>
+        <button type="button" class="submit-btn-cancel" (click)="onCancelClick()">Cancel</button>
       </form>
     </div>
   </div>
