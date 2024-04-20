@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
 export class TransactionComponent implements OnInit, OnDestroy {
   transactions: Transaction[] = [];
   transactionTypes: string[] = ['Expense', 'Income'];
-  categories: string[] = ['Rent', 'Groceries', 'Salary', 'Investments', 'Other Expense', 'Other Income'];
+  categories: string[] = [];
   transactionForm!: FormGroup;
   accounts: Account[] = [];
   userId!: number;
@@ -64,6 +64,9 @@ export class TransactionComponent implements OnInit, OnDestroy {
         selectedAccountId: this.selectedAccountId
       });
     });
+
+    // Initialize categories based on default transaction type
+    this.updateCategories(this.transactionForm.value.transactionType);
   }
 
   ngOnDestroy(): void {
@@ -99,6 +102,21 @@ export class TransactionComponent implements OnInit, OnDestroy {
   onAccountSelected(event: any) {
     const accountId = event.target.value;
     this.selectedAccountId = accountId;
+  }
+
+  // Update categories based on selected transaction type
+  onTransactionTypeChange(event: any) {
+    const selectedTransactionType = event.target.value;
+    this.updateCategories(selectedTransactionType);
+  }
+
+  // Dynamically update categories based on transaction type
+  updateCategories(transactionType: string) {
+    if (transactionType === 'Expense') {
+      this.categories = ['Rent', 'Groceries', 'Other Expense'];
+    } else if (transactionType === 'Income') {
+      this.categories = ['Investments', 'Salary', 'Other Income'];
+    }
   }
 
   onSubmit() {
