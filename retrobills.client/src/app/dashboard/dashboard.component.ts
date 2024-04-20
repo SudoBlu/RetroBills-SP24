@@ -174,7 +174,7 @@ export class DashboardComponent implements OnInit {
   }
 
   OnBudgetClick(): void {
-    this.router.navigate(['budget', this.userId, this.selectedAccount!.accountId])
+    this.router.navigate(['expense', this.userId, this.selectedAccount!.accountId])
   }
 
   OnHomeClick(): void {

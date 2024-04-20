@@ -12,19 +12,19 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SignupPageComponent } from './signup/signup.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AccountRecoveryComponent } from './account-recovery/account-recovery.component';
-import { BudgetPageComponent } from './budget-page/budget-page.component';
+import { ExpensePageComponent } from './budget-page/budget-page.component';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { TransactionComponent } from './transaction/transaction.component';
 import { AccountCreationComponent } from './account-creation/account-creation.component';
-import { BudgetReportComponent } from './budget-report/budget-report.component';
+import { ExpenseReportComponent } from './budget-report/budget-report.component';
 import { ReportsComponent } from './reports/reports.component';
 import { SpendChartComponent } from './reports/spend-chart/spend-chart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { BudgetCreationComponent } from './budget-creation/budget-creation.component';
+import { ExpensePlanCreationComponent } from './budget-creation/budget-creation.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { DatePipe } from '@angular/common';
 
@@ -42,16 +42,16 @@ import { DatePipe } from '@angular/common';
     PageNotFoundComponent,
     AccountRecoveryComponent,
     AboutComponent,
-    BudgetPageComponent,
+    ExpensePageComponent,
     TransactionComponent,
     AccountCreationComponent,
-    BudgetReportComponent,
+    ExpenseReportComponent,
 
     ReportsComponent,
     SpendChartComponent,
-    BudgetCreationComponent,
+    ExpensePlanCreationComponent,
     TransactionHistoryComponent,
-    BudgetReportComponent
+    ExpenseReportComponent
 
 
   ],

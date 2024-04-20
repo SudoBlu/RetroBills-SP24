@@ -1,22 +1,22 @@
 <body>
   <div class="navbar">
-    <h2>{{account.accountType}}</h2>
-
-    <a (click)="OnBudgetClick()">Budget</a>
-    <a class="active">Report</a>
-    <a (click)="OnAddBudget()">Add Budget</a>
+    <h2>{{account.accountId}}: {{account.accountType}}</h2>
+    
+    <a (click)="OnBudgetClick()">Expenses</a>
+    <a class="active">Expense Reports</a>
+    <a (click)="OnAddBudget()">Add Expense Plan</a>
     <a (click)="OnDashClick()">Dashboard</a>
   </div>
   
   <div class="content">
     <div class="hero">
-      <h1>Budget Report</h1>
-      <p>Welcome to the Budget Report page, Take a look at you spending</p>
+      <h1>Expense Reports</h1>
+      <p>Welcome to the Expense Report page, Take a look at your spending</p>
     </div>
     <div class="container">
       
       <div class="chart-container">
-        <h3>Budget Breakdown</h3>
+        <h3>Expense Breakdown</h3>
         <span class="labelHelp">Click a category from the legend to filter out a specific category</span>
         <!-- Chart content goes here -->
       </div>
@@ -24,7 +24,7 @@
       
       <div class="bar-chart-container">
         <h3>Amount Spent by Category</h3>
-        <!-- Chart content goes here -->
+        <!-- Bar Chart content goes here -->
       </div>
     </div>
   </div>

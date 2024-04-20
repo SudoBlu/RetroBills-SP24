@@ -14,7 +14,7 @@ import { BudgetTable } from '../budget-table';
   templateUrl: './budget-page.component.html',
   styleUrl: './budget-page.component.css'
 })
-export class BudgetPageComponent implements OnInit{
+export class ExpensePageComponent implements OnInit{
   constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private accountService: AccountService, private budgetService: BudgetsService, private transactionService: TransactionService) {}
   userId = this.route.snapshot.params['userId']
   accountId = this.route.snapshot.params['accountId']
@@ -60,11 +60,11 @@ export class BudgetPageComponent implements OnInit{
 
   OnAddBudget(){
     console.log('Adding budget...')
-    this.router.navigate(['createbudget', this.userId, this.accountId])
+    this.router.navigate(['createexpenseplan', this.userId, this.accountId])
   }
 
   OnReportsClick(){
-    this.router.navigate(['budget/report', this.userId, this.accountId])
+    this.router.navigate(['expense/report', this.userId, this.accountId])
   }
 
   getAccount(accountId: number){

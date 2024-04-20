@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BudgetsService } from '../services/budgets.service';
 import { BudgetDTO } from '../DTOs/BudgetDTO';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../services/account.service';
 import { Account } from '../account';
-import { Observable, map } from 'rxjs';
-import { resolve } from '@angular/compiler-cli';
 
 @Component({
   selector: 'app-budget-creation',
@@ -14,7 +12,7 @@ import { resolve } from '@angular/compiler-cli';
   styleUrl: './budget-creation.component.css'
 })
 
-export class BudgetCreationComponent {
+export class ExpensePlanCreationComponent {
   constructor(private route: ActivatedRoute, private accountService: AccountService, private budgetService: BudgetsService, private router: Router){}
 
   private userId: number | undefined;
@@ -62,7 +60,7 @@ export class BudgetCreationComponent {
         }else{
           console.log(`Editing budget with ID: ${budgetId}`)
           this.budgetService.updateBudget(accountID!, budgetDTO).subscribe(() => {
-            this.router.navigate(['budget', this.userId, this.accountId])
+            this.router.navigate(['expense', this.userId, this.accountId])
           })
         }
       }else{
@@ -100,6 +98,6 @@ export class BudgetCreationComponent {
   }
 
   onCancelClick(){
-    this.router.navigate(['budget', this.userId, this.accountId])
+    this.router.navigate(['expense', this.userId, this.accountId])
   }
 }
