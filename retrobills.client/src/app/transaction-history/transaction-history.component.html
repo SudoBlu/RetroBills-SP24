@@ -5,9 +5,22 @@
   </button>
   <button class="link-button" (click)="OnBudgetClick()">Expenses</button>
   <button class="link-button"(click)="OnHomeClick()">Log Out</button>
+
+  <!-- Add dropdown button -->
+  <div class="dropdown">
+    <button class="dropbtn" *ngIf="selectedAccount && selectedAccount.accountId > 0">Switch Account: {{ selectedAccount.accountType }}</button>
+    <div class="dropdown-content">
+      <ul>
+        <li *ngFor="let account of accounts" (click)="switchAccount(account)">
+          {{ account.accountType }}
+        </li>
+      </ul>
+    </div>
+  </div>
 </header>
 
 <body>
+  
   <div class="transaction-list">
     <span *ngIf="transactions.length == 0">No transactions recorded...</span>
     <table *ngIf="transactions.length > 0">

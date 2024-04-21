@@ -4,6 +4,8 @@ import { AuthService } from '../auth/auth.service';
 import { TransactionService } from '../services/transaction.service';
 import { Transaction } from '../transaction'
 import { DatePipe } from '@angular/common';
+import { Account } from '../account';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-transaction-history',
@@ -11,19 +13,48 @@ import { DatePipe } from '@angular/common';
   styleUrl: './transaction-history.component.css'
 })
 export class TransactionHistoryComponent {
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private transactionService: TransactionService, private datePipe: DatePipe) {}
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private transactionService: TransactionService, private datePipe: DatePipe, private accountService: AccountService) {}
 
 
   private userId: number | undefined;
   private accountId: number | undefined;
+  public selectedAccount: Account | undefined;
+  public accounts: Account[] = [];
   public transactions: Transaction[] = [];
   async ngOnInit(): Promise<void> {
     console.log(this.route.snapshot.params)
     this.userId = parseInt(this.route.snapshot.params['userId'])
     this.accountId = parseInt(this.route.snapshot.params['accountId'])
     console.log(this.userId);
+    this.fetchAccountsForUser();
     this.transactions = await this.getTransactionHistory(this.accountId)
     console.log(this.transactions);
+  }
+
+  fetchAccountsForUser(): void{
+    this.accountService.getAccountsForUser(this.userId!).subscribe({
+      next: (accounts: Account[]) => {
+        this.accounts = accounts;
+        console.log(this.accounts);
+        if(this.accounts.length > 0){
+          this.accounts.sort((a, b) => a.accountId - b.accountId);
+          let index = this.accounts.findIndex(x => x.accountId == this.accountId);
+          this.selectedAccount = this.accounts[index];
+        }
+      }
+    })
+  }
+
+  async switchAccount(account: Account){
+    if(this.selectedAccount && this.selectedAccount.accountId === account.accountId){
+      return;
+    }
+
+    this.selectedAccount = account;
+    this.accountId = account.accountId;
+    this.transactions = await this.getTransactionHistory(this.accountId);
+
+    this.router.navigate(['transaction/history', this.userId, this.accountId])
   }
 
   /**
