@@ -190,21 +190,29 @@ export class ExpenseReportComponent implements OnInit{
     let totalAmount = 0;
     let unspent = 0;
     transactions.forEach(transaction => {
-      totalAmount += transaction.amount;
-      switch(transaction.categoryName){
-        case 'Rent':
-          this.tableData[0] += transaction.amount;
-          break;
-        case 'Groceries':
-          this.tableData[1] += transaction.amount;
-          break;
-        case 'Other Expense':
-          this.tableData[2] += transaction.amount;
-          break;
-        default:
-          break;
+      if(transaction.transactionType == 'Expense')
+      {
+        totalAmount += transaction.amount;
+        console.log('Total: ', totalAmount)
+        switch(transaction.categoryName){
+          case 'Rent':
+            console.log('Rent', transaction.amount)
+            this.tableData[0] += transaction.amount;
+            break;
+          case 'Groceries':
+            console.log('Groceries', transaction.amount)
+            this.tableData[1] += transaction.amount;
+            break;
+          case 'Other Expense':
+            console.log('Other', transaction.amount)
+            this.tableData[2] += transaction.amount;
+            break;
+          default:
+            break;
+        }
       }
     });
+    console.log(totalAmount)
     unspent = budgetAmount - totalAmount;
     if(unspent < 0) unspent = 0;
     this.tableData[3] = unspent;
