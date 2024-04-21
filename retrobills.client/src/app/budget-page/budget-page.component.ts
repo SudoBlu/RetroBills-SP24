@@ -36,14 +36,45 @@ export class ExpensePageComponent implements OnInit{
   public transactions: Transaction[] = [];
   public spendingTransactions: Transaction[] = []
   public budgetTableItems: BudgetTable[] = []
+  public accounts: Account[] = []
   
   async ngOnInit(): Promise<void> {
     this.account = await this.getAccount(this.accountId);
     this.transactions = await this.getTransactionsForAccount(this.accountId);
+    this.fetchAccountsForUser();
     this.budget = await this.getBudget(this.accountId);
     this.remainingAmount = this.budget.budgetAmount;
     this.spendingTransactions = this.filterSpendingTransactions(this.transactions)
     this.createBudgetTableItems();
+  }
+
+  fetchAccountsForUser(): void{
+    this.accountService.getAccountsForUser(this.userId!).subscribe({
+      next: (accounts: Account[]) => {
+        this.accounts = accounts;
+        console.log(this.accounts);
+        if(this.accounts.length > 0){
+          this.accounts.sort((a, b) => a.accountId - b.accountId);
+          let index = this.accounts.findIndex(x => x.accountId == this.accountId);
+          this.account = this.accounts[index];
+        }
+      }
+    })
+  }
+
+  async switchAccount(account: Account){
+    if(this.account && this.account.accountId === account.accountId){
+      return;
+    }
+
+    this.account = account;
+    this.accountId = account.accountId;
+    this.transactions = await this.getTransactionsForAccount(this.accountId);
+    this.spendingTransactions = this.filterSpendingTransactions(this.transactions);
+    this.budgetTableItems = [];
+    this.createBudgetTableItems();
+
+    this.router.navigate(['expense', this.userId, this.accountId])
   }
 
   OnDashClick(){
