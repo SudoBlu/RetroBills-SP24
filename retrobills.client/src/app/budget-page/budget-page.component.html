@@ -6,32 +6,33 @@
     <a (click)="OnReportsClick()">Expense Reports</a>
     <a (click)="OnAddBudget()">Add Expense Plan</a>
     <a (click)="OnDashClick()">Dashboard</a>
+  </div>
 
-<div class="content">
-  <div class="hero">
-      <h1>Expenses</h1>
-      <p>Welcome to the Expenses page, take a look at your expenses!</p>
-      <p class="remain" *ngIf="budget.budgetId !== 0">Budget remaining: ${{remainingAmount}}/${{budget.budgetAmount}}</p>
+  <div class="content">
+    <div class="hero">
+        <h1>Expenses</h1>
+        <p>Welcome to the Expenses page, take a look at your expenses!</p>
+        <p class="remain" *ngIf="budget.budgetId !== 0">Budget remaining: ${{remainingAmount}}/${{budget.budgetAmount}}</p>
+    </div>
+    <div class="table-container">
+      <span class="error" *ngIf="budget.budgetId === 0">No expense plan defined!</span>
+      <span class="error" *ngIf="budget.budgetId !== 0 && budgetTableItems.length === 0">No spending transactions recorded</span>
+      <table *ngIf="budget.budgetId !== 0">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Transaction Amount</th>
+            <th>Amount Remaining</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of budgetTableItems">
+            <td>{{item.categoryName}}</td>
+            <td>{{item.transactionAmount}}</td>
+            <td>{{item.remainingBudget}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div class="table-container">
-    <span class="error" *ngIf="budget.budgetId === 0">No expense plan defined!</span>
-    <span class="error" *ngIf="budget.budgetId !== 0 && budgetTableItems.length === 0">No spending transactions recorded</span>
-    <table *ngIf="budget.budgetId !== 0">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Transaction Amount</th>
-          <th>Amount Remaining</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of budgetTableItems">
-          <td>{{item.categoryName}}</td>
-          <td>{{item.transactionAmount}}</td>
-          <td>{{item.remainingBudget}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 </body>
