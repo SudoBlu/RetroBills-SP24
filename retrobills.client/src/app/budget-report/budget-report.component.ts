@@ -1,9 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Chart, registerables as registerable } from 'chart.js';
 import { BudgetsService } from '../services/budgets.service';
-import { EMPTY, of } from 'rxjs';
 import { Budget } from '../interfaces/budget';
 import { TransactionService } from '../services/transaction.service';
 import { Transaction } from '../transaction';
@@ -15,7 +14,7 @@ import { AccountService } from '../services/account.service';
   templateUrl: './budget-report.component.html',
   styleUrl: './budget-report.component.css'
 })
-export class BudgetReportComponent implements OnInit{
+export class ExpenseReportComponent implements OnInit{
   tableData: number[] = [0, 0, 0, 0];
   transactions: Transaction[] = [];
   public chart: any;
@@ -60,7 +59,7 @@ export class BudgetReportComponent implements OnInit{
     }
 
     OnBudgetClick(){
-      this.router.navigate(['budget', this.userId, this.accountId])
+      this.router.navigate(['expense', this.userId, this.accountId])
     }
 
     OnHomeClick(){
@@ -69,7 +68,7 @@ export class BudgetReportComponent implements OnInit{
     }
 
     OnAddBudget(){
-      this.router.navigate(['budget/create', this.userId])
+      this.router.navigate(['createexpenseplan', this.userId, this.accountId])
     }
 
   ngOnDestroy(): void {
@@ -115,7 +114,7 @@ export class BudgetReportComponent implements OnInit{
         labels: ['Rent', 'Groceries', 'Other Expense'],
         datasets: [{
           label: 'Amount Spent',
-          data: this.tableData,
+          data: this.tableData.slice(0, 3),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 205, 86, 0.2)',
@@ -191,21 +190,29 @@ export class BudgetReportComponent implements OnInit{
     let totalAmount = 0;
     let unspent = 0;
     transactions.forEach(transaction => {
-      totalAmount += transaction.amount;
-      switch(transaction.categoryName){
-        case 'Rent':
-          this.tableData[0] += transaction.amount;
-          break;
-        case 'Groceries':
-          this.tableData[1] += transaction.amount;
-          break;
-        case 'Other Expense':
-          this.tableData[2] += transaction.amount;
-          break;
-        default:
-          break;
+      if(transaction.transactionType == 'Expense')
+      {
+        totalAmount += transaction.amount;
+        console.log('Total: ', totalAmount)
+        switch(transaction.categoryName){
+          case 'Rent':
+            console.log('Rent', transaction.amount)
+            this.tableData[0] += transaction.amount;
+            break;
+          case 'Groceries':
+            console.log('Groceries', transaction.amount)
+            this.tableData[1] += transaction.amount;
+            break;
+          case 'Other Expense':
+            console.log('Other', transaction.amount)
+            this.tableData[2] += transaction.amount;
+            break;
+          default:
+            break;
+        }
       }
     });
+    console.log(totalAmount)
     unspent = budgetAmount - totalAmount;
     if(unspent < 0) unspent = 0;
     this.tableData[3] = unspent;

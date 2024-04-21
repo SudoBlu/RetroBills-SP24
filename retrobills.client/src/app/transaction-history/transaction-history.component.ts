@@ -34,7 +34,7 @@ export class TransactionHistoryComponent {
   }
 
   OnBudgetClick(){
-    this.router.navigate(['budget', this.userId, this.accountId])
+    this.router.navigate(['expense', this.userId, this.accountId])
   }
   OnHomeClick(){
     this.authService.logoutUser();

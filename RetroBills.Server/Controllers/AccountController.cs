@@ -46,7 +46,7 @@ namespace RetroBills.Server.Controllers
                 return NotFound("User is not tied to an account");
             return Ok(userAccounts);
         }
-
+        
         //Create an account for a user
         [HttpPost]
         public async Task<IActionResult> CreateAccountForUser(int userID, AccountDTO accountDTO)
@@ -112,6 +112,36 @@ namespace RetroBills.Server.Controllers
 
         }
 
+        //Get Account Balance
+        [HttpGet("{userID}/accounts/{accountID}/balance")]
+        public async Task<IActionResult> GetAccountBalance(int userID, int accountID)
+        {
+            var account = await _retroBillsContext.Accounts.FindAsync(accountID);
+            if (account == null)
+                return NotFound("Account not found");
 
+            return Ok(account.Balance);
+        }
+
+
+        // Update account balance for a user
+        [HttpPut("{userID}/accounts/{accountID}/balance")]
+        public async Task<IActionResult> UpdateAccountBalanceForUser(int userID, int accountID, decimal balance)
+        {
+            var userAccount = await _retroBillsContext.UserAccounts.FirstOrDefaultAsync(ua => ua.UserId == userID && ua.AccountId == accountID);
+            if (userAccount == null)
+                return NotFound("User account not found");
+
+            // Update account balance
+            var account = await _retroBillsContext.Accounts.FindAsync(accountID);
+            if (account == null)
+                return NotFound("Account not found");
+
+            account.Balance = balance;
+            await _retroBillsContext.SaveChangesAsync();
+
+            // Return updated balance value with status code 200 (OK)
+            return Ok(balance);
+        }
     }
 }
