@@ -37,8 +37,8 @@ const routes: Routes = [
   {path: 'expense/report/:userId/:accountId', component: ExpenseReportComponent, canActivate: [AuthGuard]},
   {path: 'createexpenseplan/:userId/:accountId', component: ExpensePlanCreationComponent, canActivate: [AuthGuard]},
 
-  {path: '**', component: PageNotFoundComponent},
   {path: '', redirectTo: 'home', pathMatch: "full"},
+  {path: '**', component: PageNotFoundComponent},
 ];
 
 
