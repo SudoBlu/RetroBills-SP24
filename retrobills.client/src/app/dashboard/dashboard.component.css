@@ -197,7 +197,7 @@ p {
   z-index: 1;
   left: 50%;
   transform: translateX(-50%);
-  min-width: 20px;
+  min-width: 200px;
   height: 150px; /* Set a fixed height for the dropdown */
   overflow-y:auto; /* Enable vertical scrolling */
   color: black;
