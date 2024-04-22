@@ -49,10 +49,12 @@
         <tr>
           <td>{{ transaction.transactionDescription || 'N/A'}}</td>
           <td>{{transaction.transactionType}}</td>
-          <td>{{ transaction.amount }}</td>
+          <td [ngClass]="{ 'income': transaction.transactionType === 'Income'}">
+            {{ transaction.transactionType === 'Income' ? '+' : '-' }}{{ transaction.amount | currency }}
+          </td>
           <td>{{ formatDate(transaction.transactionDateTime) }}</td>
         </tr>
-      </ng-container>
+      </ng-container>      
     </table>
   </div>
 </body>
