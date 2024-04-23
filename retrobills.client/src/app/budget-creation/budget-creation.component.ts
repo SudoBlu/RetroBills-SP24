@@ -55,7 +55,7 @@ export class ExpensePlanCreationComponent {
         if(budgetId == 0){
           console.log(`Creating budget...`)
           this.budgetService.createBudget(accountID!, budgetDTO).subscribe(() => {
-            this.router.navigate(['budget', this.userId, this.accountId])
+            this.router.navigate(['expense', this.userId, this.accountId])
           })
         }else{
           console.log(`Editing budget with ID: ${budgetId}`)
