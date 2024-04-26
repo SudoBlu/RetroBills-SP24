@@ -39,20 +39,22 @@
     <span id="noTransaction" *ngIf="selectedAccount && selectedAccount.transactions.length === 0">No transactions recorded...</span>
     <table *ngIf="selectedAccount && selectedAccount.transactions.length > 0">
       <tr>
-        <th>Date</th>
         <th>Transaction Description</th>
         <th>Transaction Type</th>
         <th>Amount</th>
+        <th>Date</th>
       </tr>
       <!-- Display transactions from selected account -->
       <ng-container *ngFor="let transaction of selectedAccount.transactions">
         <tr>
-          <td>{{ formatDate(transaction.transactionDateTime) }}</td>
           <td>{{ transaction.transactionDescription || 'N/A'}}</td>
           <td>{{transaction.transactionType}}</td>
-          <td>{{ transaction.amount }}</td>
+          <td [ngClass]="{ 'income': transaction.transactionType === 'Income'}">
+            {{ transaction.transactionType === 'Income' ? '+' : '-' }}{{ transaction.amount | currency }}
+          </td>
+          <td>{{ formatDate(transaction.transactionDateTime) }}</td>
         </tr>
-      </ng-container>
+      </ng-container>      
     </table>
   </div>
 </body>

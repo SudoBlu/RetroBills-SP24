@@ -12,7 +12,19 @@
     <div class="hero">
         <h1>Expenses</h1>
         <p>Welcome to the Expenses page, take a look at your expenses!</p>
+        <!-- Add dropdown button -->
+        <div class="dropdown">
+          <button class="dropbtn" *ngIf="account && account.accountId > 0">Switch Account: {{ account.accountType }}</button>
+          <div class="dropdown-content">
+            <ul>
+              <li *ngFor="let account of accounts" (click)="switchAccount(account)">
+                {{ account.accountType }}
+              </li>
+            </ul>
+          </div>
+        </div>
         <p class="remain" *ngIf="budget.budgetId !== 0">Budget remaining: ${{remainingAmount}}/${{budget.budgetAmount}}</p>
+        
     </div>
     <div class="table-container">
       <span class="error" *ngIf="budget.budgetId === 0">No expense plan defined!</span>
